@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+<!-- Google Tag Manager -->
+<script type="text/plain" class="optanon-category-C0002">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5RHQV7');</script>
+<!-- End Google Tag Manager -->
+  <title>Features and Capabilities &mdash; Vitis Video Analytics SDK (VVAS) for Data Center 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GStreamer Plug-ins" href="common/gstreamer_plugins/common_plugins.html" />
+    <link rel="prev" title="Quickstart Tutorial" href="getting_started_tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="index.html" class="icon icon-home"> Vitis Video Analytics SDK (VVAS) for Data Center
+            <img src="_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="system_requirements.html">Software &amp; Hardware Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_tutorial.html">Quickstart Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Features and Capabilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#specification-of-video-decoder-unit-vdu">Specification of Video Decoder Unit (VDU)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#specification-of-image-processing-accelerator">Specification of Image Processing Accelerator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#specification-of-deep-learning-processing-unit-dpu">Specification of Deep learning Processing Unit (DPU)</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VVAS GStreamer Interface</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/gstreamer_plugins/common_plugins.html">GStreamer Plug-ins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/meta_data/vvas_meta_data_structures.html">VVAS Meta Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/for_developers.html">Development Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VVAS Core API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">VVAS C API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_guide.html">VVAS C API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_examples.html">VVAS C API Samples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vvas_build.html">Build and install from the VVAS source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding_models.html">Supporting Deep Learning Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="card_management.html">Device Management &amp; Utility tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Vitis Video Analytics SDK (VVAS) for Data Center</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Features and Capabilities</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/features_and_capabilities.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="features-and-capabilities">
+<span id="features-and-capabilities-rst"></span><h1>Features and Capabilities<a class="headerlink" href="#features-and-capabilities" title="Permalink to this heading">¶</a></h1>
+<p>The Alveo V70 accelerator card is the first AMD Alveo production card leveraging AMD XDNA™ architecture with AI Engines. It is designed for AI inference efficiency and is tuned for video analytics and natural language processing applications. Providing low power and a small form factor, the V70 helps reduce cost per AI channel and provides high channel density for video applications allowing you to meets your demanding AI performance requirements.</p>
+<p>The Alveo V70 is pre-equipped with best in class Versal high-throughput DPU (DPUCV2DX8G) implemented using next generation AI engine, powerful Video Decoder Unit (VDU), along with other capable hardware accelerator such as ABR Scaler that are used for media processing.</p>
+<div class="section" id="specification-of-video-decoder-unit-vdu">
+<h2>Specification of Video Decoder Unit (VDU)<a class="headerlink" href="#specification-of-video-decoder-unit-vdu" title="Permalink to this heading">¶</a></h2>
+<p>The Xilinx® LogiCORE™ IP H.264/H.265 Video Decode Unit (VDU) is a Hard IP in Alveo V70. The VDU has multiple instances of decoder cores (up to four cores) and the V70 solution uses two instances of the decoder.</p>
+<p>The features of each instance of the decoder core in VDU are as follows:</p>
+<ul>
+<li><p>Multi-standard decoding support, including:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ISO MPEG-4 Part 10: Advanced Video Coding (AVC)/ITU H.264</p></li>
+<li><p>ISO MPEG-H Part 2: High Efficiency Video Coding (HEVC)/ITU H.265</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Resolution: upto 4K (3840x2160)</p></li>
+<li><p>Framerate: upto 60 Hz</p></li>
+<li><p>Decoder output in semi-planar formats of YCbCr 4:2:0 (NV12)</p></li>
+<li><p>Supports 8 bit per color channel.</p></li>
+<li><p>Supports simultaneous decoding of up to 8 streams of 1080p30.</p></li>
+<li><p>Progressive support for H.264 and H.265</p></li>
+<li><p>Profiles:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>HEVC: Main, Main Intra up to Level 5.1 High Tier</p></li>
+<li><p>AVC: Baseline, Main, High up to Level 5.2</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>NOTE:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>V70 solution uses 2 instances of VDU and thus it can support upto 16 streams of 1080p30.</p></li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="specification-of-image-processing-accelerator">
+<h2>Specification of Image Processing Accelerator<a class="headerlink" href="#specification-of-image-processing-accelerator" title="Permalink to this heading">¶</a></h2>
+<p>The image processing accelerator kernel is based on the Xilinx® LogiCORE™ IP Video Multi-Scaler core. It provides functionalities of resize, color space conversion, mean subtraction and normalization. It will be used as a pre-processing block before inferencing in AI/ML use-cases.</p>
+<p>The features of image processing accelerator are as follows:</p>
+<ul class="simple">
+<li><p>Supports spatial resolutions from 64 × 64 up to 3184 × 2160</p></li>
+<li><p>Supports pixel-width (PPC) = 4</p></li>
+<li><p>Supports RGB, BGR and NV12</p></li>
+<li><p>Supports 8-bit per color component on memory interface</p></li>
+<li><p>Dynamically configurable source and destination buffer addresses</p></li>
+<li><p>Supports 2 taps in both H and V domains</p></li>
+<li><p>Supports BILINEAR Scale-mode</p></li>
+<li><p>Supports cropping</p></li>
+<li><p>Supports Pre-processing (Mean subtraction, and Mean scale)</p></li>
+</ul>
+</div>
+<div class="section" id="specification-of-deep-learning-processing-unit-dpu">
+<h2>Specification of Deep learning Processing Unit (DPU)<a class="headerlink" href="#specification-of-deep-learning-processing-unit-dpu" title="Permalink to this heading">¶</a></h2>
+<p>The Xilinx® Versal® Deep Learning Processing Unit (DPUCV2DX8G) is a configurable computation engine optimized for convolution neural networks in Versal ACAP devices with AI
+Engines. The DPUCV2DX8G is targeted specifically for Versal devices that leverage the AI Engine-ML version of the AI Engine. The degree of parallelism used in the engine is a design parameter and can be selected according to the target device and application. The DPU supports a set of highly optimized instructions, and supports most convolutional neural networks, such as VGG, ResNet, GoogLeNet, YOLO, SSD, MobileNet, FPN, and others.</p>
+<p>The DPUCV2DX8G has the following features:</p>
+<ul class="simple">
+<li><p>One AXI4-Lite slave interface for accessing configuration and status registers</p></li>
+<li><p>One AXI4 master interface for DPU instruction fetch</p></li>
+<li><p>Two configurations supporting 20 AI Engines per batch handler, supporting BATCH_N = {1,14}.</p></li>
+</ul>
+<p>The following list highlights key supported operators for the DPUCV2DX8G:</p>
+<ul class="simple">
+<li><p>Convolution and transposed convolution</p></li>
+<li><p>Depthwise convolution and depthwise transposed convolution</p></li>
+<li><p>Max pooling</p></li>
+<li><p>Average pooling</p></li>
+<li><p>ReLU, ReLU6, Leaky ReLU, Hard Sigmoid, and Hard Swish</p></li>
+<li><p>Elementwise-Sum and Elementwise-Multiply</p></li>
+<li><p>Dilation</p></li>
+<li><p>Reorg</p></li>
+<li><p>Fully connected layer</p></li>
+<li><p>Concat, Batch Normalization</p></li>
+</ul>
+<p>The DPU is driven by instructions generated by the Vitis AI compiler. When the target neural network (NN) or DPU hardware architecture is changed, the related .xmodel file that contains these instructions must be regenerated with the updated arch.json file.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started_tutorial.html" class="btn btn-neutral float-left" title="Quickstart Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="common/gstreamer_plugins/common_plugins.html" class="btn btn-neutral float-right" title="GStreamer Plug-ins" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on October 7, 2022.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

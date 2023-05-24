@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+<!-- Google Tag Manager -->
+<script type="text/plain" class="optanon-category-C0002">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5RHQV7');</script>
+<!-- End Google Tag Manager -->
+  <title>Quickstart Tutorial &mdash; Vitis Video Analytics SDK (VVAS) for Data Center 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Features and Capabilities" href="features_and_capabilities.html" />
+    <link rel="prev" title="Installation Guide" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="index.html" class="icon icon-home"> Vitis Video Analytics SDK (VVAS) for Data Center
+            <img src="_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="system_requirements.html">Software &amp; Hardware Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quickstart Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#preparing-the-sample-video-file-for-this-tutorial">Preparing the sample video file for this tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-0-starting-with-software-plugins">Step 0: Starting with software plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-hardware-accelerated-scaling-by-vvas-abr-scaler-plugin">Step 1: Hardware-accelerated Scaling by VVAS ABR Scaler Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-hardware-accelerated-decoding-by-vvas-video-decoder-plugin">Step 2: Hardware-accelerated Decoding by VVAS video decoder plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-using-inference-plugin-for-model-inference">Step 3: Using Inference plugin for Model Inference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-using-metadata-conversion-and-overlay-plugins">Step 4: Using Metadata conversion and Overlay Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-5-serving-multiple-streams">Step 5: Serving Multiple Streams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-6-deploying-multiple-models">Step 6: Deploying multiple models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-7-using-tracker">Step 7: Using Tracker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="features_and_capabilities.html">Features and Capabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VVAS GStreamer Interface</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/gstreamer_plugins/common_plugins.html">GStreamer Plug-ins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/meta_data/vvas_meta_data_structures.html">VVAS Meta Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/for_developers.html">Development Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VVAS Core API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">VVAS C API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_guide.html">VVAS C API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_examples.html">VVAS C API Samples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vvas_build.html">Build and install from the VVAS source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding_models.html">Supporting Deep Learning Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="card_management.html">Device Management &amp; Utility tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Vitis Video Analytics SDK (VVAS) for Data Center</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Quickstart Tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/getting_started_tutorial.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="quickstart-tutorial">
+<span id="getting-started-tutorial-rst"></span><h1>Quickstart Tutorial<a class="headerlink" href="#quickstart-tutorial" title="Permalink to this heading">¶</a></h1>
+<p>This tutorial introduces the VVAS Core Plugins deployable on the V70 Platform. The goal of this tutorial is to familiarize you with the foundational plugins, and their properties quickly, even without writing any code. So we will demonstrate the usage of the plugins with the GStreamer command line.</p>
+<p>The tutorial starts with a very simple video streaming pipeline without any V70-specific plugin. Then the tutorial demonstrates adding V70-specific plugins to take the advantage of the acceleration provided by the V70 platform.</p>
+<p>By the end of this tutorial, you will have a comprehensive idea of the core plugins offered in V70 platforms and how to use them. You then can integrate these core plugins into your application’s business logic either by native GStreamer APIs or VVAS Core APIs.</p>
+<p>The core plugins demonstrated in this tutorial are as below</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#label-1"><span class="std std-ref">Scaler</span></a></p></li>
+<li><p><a class="reference internal" href="#label-2"><span class="std std-ref">Decoder</span></a></p></li>
+<li><p><a class="reference internal" href="#label-3"><span class="std std-ref">Inference</span></a></p></li>
+<li><p><a class="reference internal" href="#label-4"><span class="std std-ref">Metadata conversion</span></a></p></li>
+<li><p><a class="reference internal" href="#label-4"><span class="std std-ref">Overlay</span></a></p></li>
+<li><p><a class="reference internal" href="#label-5"><span class="std std-ref">Funnel and Defunnel</span></a></p></li>
+<li><p><a class="reference internal" href="#label-6"><span class="std std-ref">Cascaded inferences</span></a></p></li>
+<li><p><a class="reference internal" href="#label-7"><span class="std std-ref">Tracker</span></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>This tutorial assumes you have already followed the <a class="reference internal" href="installation.html"><span class="doc">Installation Guide</span></a> page and prepared the docker container to build and run the V70 video analytics application.</p></li>
+<li><p>All scripts and JSON configuration files of this tutorial can be downloaded from  <a class="reference external" href="https://gitenterprise.xilinx.com/techdocs/dc-video-analytics-sdk/blob/master/sources/v1.0/tutorial_scripts">here</a></p></li>
+</ul>
+</div>
+<div class="section" id="preparing-the-sample-video-file-for-this-tutorial">
+<h2>Preparing the sample video file for this tutorial<a class="headerlink" href="#preparing-the-sample-video-file-for-this-tutorial" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Download a free video from <a class="reference external" href="https://pixabay.com/videos/cars-motorway-speed-motion-traffic-1900/">https://pixabay.com/videos/cars-motorway-speed-motion-traffic-1900/</a> in 1920x1080 format.</p></li>
+<li><p>Convert the mp4 video file to h264 file using the below command.</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>gst-launch-1.0 -v filesrc <span class="nv">location</span><span class="o">=</span>/workspace/cars-1900.mp4 ! <span class="se">\</span>
+                  qtdemux ! h264parse ! video/x-h264,stream-format<span class="o">=</span>byte-stream ! <span class="se">\</span>
+                  filesink <span class="nv">location</span><span class="o">=</span>/workspace/Cars_1900.264
+</pre></div>
+</div>
+<div class="section" id="step-0-starting-with-software-plugins">
+<h3>Step 0: Starting with software plugins<a class="headerlink" href="#step-0-starting-with-software-plugins" title="Permalink to this heading">¶</a></h3>
+<p>Let’s start with a very basic GStreamer pipeline demonstarting playing an input video. The pipeline below is utilizing native GStreamer plugins such as <code class="docutils literal notranslate"><span class="pre">decodebin</span></code>, <code class="docutils literal notranslate"><span class="pre">videoconvert</span></code> and <code class="docutils literal notranslate"><span class="pre">fpsdisplaysink</span></code>. Any v70-specific or VVAS plugin is not used.</p>
+<img alt="_images/0_stream.png" src="_images/0_stream.png" />
+<p>Run the below command to play the input video.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">0_stream.sh</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gst-launch-1.0 -v <span class="se">\</span>
+             filesrc <span class="nv">location</span><span class="o">=</span>/workspace/Cars_1900.264  ! <span class="se">\</span>
+             decodebin ! <span class="se">\</span>
+             identity <span class="nv">sync</span><span class="o">=</span><span class="m">0</span> ! <span class="se">\</span>
+             videoconvert ! <span class="se">\</span>
+             fpsdisplaysink <span class="nv">sync</span><span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="step-1-hardware-accelerated-scaling-by-vvas-abr-scaler-plugin">
+<span id="label-1"></span><h3>Step 1: Hardware-accelerated Scaling by VVAS ABR Scaler Plugin<a class="headerlink" href="#step-1-hardware-accelerated-scaling-by-vvas-abr-scaler-plugin" title="Permalink to this heading">¶</a></h3>
+<p>Now we will modify the pipeline by inserting our first VVAS plugin, <code class="docutils literal notranslate"><span class="pre">vvas_xabrscaler</span></code>, which enables hardware-accelerated scaling and color space conversion.</p>
+<p>The properties required for <code class="docutils literal notranslate"><span class="pre">vvas_xabrscaler</span></code> plugin are as below</p>
+<ul class="simple">
+<li><p>xclbin-location: Location of the XCLBIN, which is <code class="docutils literal notranslate"><span class="pre">/opt/xilinx/xclbin/v70.xclbin</span></code>, the path inside the docker container.</p></li>
+<li><p>dev-idx: For a single V70 device, <code class="docutils literal notranslate"><span class="pre">dev-idx=0</span></code>. If multiple V70 devices are attached to the host server, then <code class="docutils literal notranslate"><span class="pre">xbutil</span> <span class="pre">examine</span></code> provides the list of devices with their increasing index (0, 1, 2, and so on), which should be specified by <code class="docutils literal notranslate"><span class="pre">dev-idx</span></code>.</p></li>
+<li><p>kernel-name: The hardware accelerator performing the image processing operation. The name can be any of the following strings</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image_processing:{image_processing_1}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image_processing:{image_processing_2}</span></code></p></li>
+</ul>
+</div></blockquote>
+<img alt="_images/1_scale.png" src="_images/1_scale.png" />
+<p>Run the below command to execute the pipeline with <code class="docutils literal notranslate"><span class="pre">vvas_xabrscaler</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">1_scale.sh</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gst-launch-1.0 -v <span class="se">\</span>
+             filesrc <span class="nv">location</span><span class="o">=</span>/workspace/Cars_1900.264  ! <span class="se">\</span>
+             decodebin ! <span class="se">\</span>
+             identity <span class="nv">sync</span><span class="o">=</span><span class="m">0</span> ! <span class="se">\</span>
+             videoconvert ! <span class="se">\</span>
+             vvas_xabrscaler dev-idx<span class="o">=</span><span class="m">0</span> xclbin-location<span class="o">=</span>/opt/xilinx/xclbin/v70.xclbin kernel-name<span class="o">=</span><span class="se">\&quot;</span>image_processing:<span class="o">{</span>image_processing_1<span class="o">}</span><span class="se">\&quot;</span> ! <span class="se">\</span>
+             video/x-raw, <span class="nv">width</span><span class="o">=</span><span class="m">480</span>, <span class="nv">height</span><span class="o">=</span><span class="m">270</span>, <span class="nv">format</span><span class="o">=</span>NV12 ! <span class="se">\</span>
+             videoconvert ! <span class="se">\</span>
+             fpsdisplaysink <span class="nv">sync</span><span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+</div>
+<p>As you see the video playing, it is now scaled down to 480x270 as specified in the pipeline.</p>
+<p><strong>Note</strong> The plugin <code class="docutils literal notranslate"><span class="pre">videoconvert</span></code> is inserted between the <code class="docutils literal notranslate"><span class="pre">decodebin</span></code> and <code class="docutils literal notranslate"><span class="pre">vvas_abrscaler</span></code>. This is because <code class="docutils literal notranslate"><span class="pre">vvas_abrscaler</span></code> supports only NV12, RGB and BGR color formats, whereas <code class="docutils literal notranslate"><span class="pre">decodebin</span></code> is producing I420 format. For more details for VVAS plugin supported formats and capabilities please refer <a class="reference internal" href="features_and_capabilities.html"><span class="doc">Features and Capabilities</span></a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="step-2-hardware-accelerated-decoding-by-vvas-video-decoder-plugin">
+<span id="label-2"></span><h3>Step 2: Hardware-accelerated Decoding by VVAS video decoder plugin<a class="headerlink" href="#step-2-hardware-accelerated-decoding-by-vvas-video-decoder-plugin" title="Permalink to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">vvas_xvideodec</span></code> plugin enables hardware accelerated decoding.</p>
+<p>The properties we will be using for <code class="docutils literal notranslate"><span class="pre">vvas_xvideodec</span></code> plugin are as below</p>
+<ul class="simple">
+<li><p>xclbin-location: Location of the XCLBIN, which is <code class="docutils literal notranslate"><span class="pre">/opt/xilinx/xclbin/v70.xclbin</span></code> inside our docker container.</p></li>
+<li><p>dev-idx: For a single V70 device, <code class="docutils literal notranslate"><span class="pre">dev-idx=0</span></code>. If multiple V70 devices are attached to the host server, then <code class="docutils literal notranslate"><span class="pre">xbutil</span> <span class="pre">examine</span></code> provides the list of devices with their increasing index (0, 1, 2, and so on), which should be specified by <code class="docutils literal notranslate"><span class="pre">dev-idx</span></code>.</p></li>
+<li><p>kernel-name: The hardware accelerator performing the decode operation. Specify the kernel-name as</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">kernel_vdu_decoder:{kernel_vdu_decoder_N}</span></code> where N is any number in the range 0-15.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>instance-id: The valid values are as below</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>0 (when kernel-name is from <code class="docutils literal notranslate"><span class="pre">kernel_vdu_decoder:{kernel_vdu_decoder_0}</span></code> to <code class="docutils literal notranslate"><span class="pre">kernel_vdu_decoder:{kernel_vdu_decoder_7}</span></code>)</p></li>
+<li><p>1 (when kernel-name is from <code class="docutils literal notranslate"><span class="pre">kernel_vdu_decoder:{kernel_vdu_decoder_8}</span></code> to <code class="docutils literal notranslate"><span class="pre">kernel_vdu_decoder:{kernel_vdu_decoder_15}</span></code>)</p></li>
+</ul>
+<ul class="simple">
+<li><p>avoid-dynamic-alloc: The property setting <code class="docutils literal notranslate"><span class="pre">avoid-dynamic-alloc=0</span></code> instructs the decoder plugin to create the necessary number of output buffers dynamically to propagate decoded video data through the rest of the downstream pipeline. For our tutorial this setting is good enough, for more details how the setting <code class="docutils literal notranslate"><span class="pre">avoid-dynamic-alloc=1</span></code> setting can be used with <code class="docutils literal notranslate"><span class="pre">additional-output-buffer</span></code> property see the <code class="docutils literal notranslate"><span class="pre">vvas_xvideodec</span></code> documentation in <em>VVAS GStreamer Plugins</em> page</p></li>
+</ul>
+</div></blockquote>
+<img alt="_images/2_decode.png" src="_images/2_decode.png" />
+<p>The complete pipeline now looks like below.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">2_decode.sh</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">XCLBIN_LOCATION</span><span class="o">=</span><span class="s2">&quot;/opt/xilinx/xclbin/v70.xclbin&quot;</span>
+
+gst-launch-1.0 -v <span class="se">\</span>
+             filesrc <span class="nv">location</span><span class="o">=</span>/workspace/Cars_1900.264  ! <span class="se">\</span>
+             h264parse ! <span class="se">\</span>
+             vvas_xvideodec dev-idx<span class="o">=</span><span class="m">0</span> xclbin-location<span class="o">=</span><span class="nv">$XCLBIN_LOCATION</span> kernel-name<span class="o">=</span><span class="se">\&quot;</span>kernel_vdu_decoder:<span class="o">{</span>kernel_vdu_decoder_0<span class="o">}</span><span class="se">\&quot;</span> instance-id<span class="o">=</span><span class="m">0</span> avoid-dynamic-alloc<span class="o">=</span><span class="m">0</span> ! <span class="se">\</span>
+             identity <span class="nv">sync</span><span class="o">=</span><span class="m">0</span> ! <span class="se">\</span>
+             vvas_xabrscaler dev-idx<span class="o">=</span><span class="m">0</span> xclbin-location<span class="o">=</span><span class="nv">$XCLBIN_LOCATION</span> kernel-name<span class="o">=</span><span class="se">\&quot;</span>image_processing:<span class="o">{</span>image_processing_1<span class="o">}</span><span class="se">\&quot;</span> ! <span class="se">\</span>
+             video/x-raw, <span class="nv">width</span><span class="o">=</span><span class="m">480</span>, <span class="nv">height</span><span class="o">=</span><span class="m">270</span>, <span class="nv">format</span><span class="o">=</span>NV12 ! <span class="se">\</span>
+             videoconvert ! <span class="se">\</span>
+             fpsdisplaysink <span class="nv">sync</span><span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="step-3-using-inference-plugin-for-model-inference">
+<span id="label-3"></span><h3>Step 3: Using Inference plugin for Model Inference<a class="headerlink" href="#step-3-using-inference-plugin-for-model-inference" title="Permalink to this heading">¶</a></h3>
+<p>V70 supports many CNN-based pre-trained deep learning models for prediction. These models are precompiled and can be deployed inside your video analytics pipeline to get meaningful insights of the incoming video streams. The pre-trained models available in Vitis AI Model Zoo <a class="reference external" href="http://xilinx.github.io/Vitis-AI/docs/workflow-model-zoo.html">VITIS AI Model Zoo</a> are great vehicles to get started with your video analytics workflow. The plugin <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> is required to deploy these models.</p>
+<p>The plugin <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> has the following two properties</p>
+<ul class="simple">
+<li><p>preprocess-config: Specifies a JSON configuration file that is used to enable hardware accelerated preprocessing before inference.</p></li>
+<li><p>infer-config: Specifies a JSON configuration file containing all the properties related to the deep learning model and inference.</p></li>
+</ul>
+<img alt="_images/3_infer.png" src="_images/3_infer.png" />
+<p>You can run the below command line that will deploy the incoming video stream through an object detection model running on the AI engine processor.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">3_infer.sh</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">XCLBIN_LOCATION</span><span class="o">=</span><span class="s2">&quot;/opt/xilinx/xclbin/v70.xclbin&quot;</span>
+
+gst-launch-1.0 -v <span class="se">\</span>
+             filesrc <span class="nv">location</span><span class="o">=</span>/workspace/Cars_1900.264  ! <span class="se">\</span>
+             h264parse ! <span class="se">\</span>
+             vvas_xvideodec dev-idx<span class="o">=</span><span class="m">0</span> xclbin-location<span class="o">=</span><span class="nv">$XCLBIN_LOCATION</span> kernel-name<span class="o">=</span><span class="se">\&quot;</span>kernel_vdu_decoder:<span class="o">{</span>kernel_vdu_decoder_0<span class="o">}</span><span class="se">\&quot;</span> instance-id<span class="o">=</span><span class="m">0</span> avoid-dynamic-alloc<span class="o">=</span><span class="m">0</span> ! <span class="se">\</span>
+             identity <span class="nv">sync</span><span class="o">=</span><span class="m">0</span> ! <span class="se">\</span>
+             vvas_xinfer preprocess-config<span class="o">=</span>./preprocess.json infer-config<span class="o">=</span>./infer.json <span class="nv">name</span><span class="o">=</span>yolo_0 ! <span class="se">\</span>
+             vvas_xabrscaler dev-idx<span class="o">=</span><span class="m">0</span> xclbin-location<span class="o">=</span><span class="nv">$XCLBIN_LOCATION</span> kernel-name<span class="o">=</span><span class="se">\&quot;</span>image_processing:<span class="o">{</span>image_processing_1<span class="o">}</span><span class="se">\&quot;</span> ! <span class="se">\</span>
+             video/x-raw, <span class="nv">width</span><span class="o">=</span><span class="m">480</span>, <span class="nv">height</span><span class="o">=</span><span class="m">270</span>, <span class="nv">format</span><span class="o">=</span>NV12 ! <span class="se">\</span>
+             videoconvert ! <span class="se">\</span>
+             fpsdisplaysink <span class="nv">sync</span><span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+</div>
+<p>First, let’s review the content of the <code class="docutils literal notranslate"><span class="pre">preprocess-config</span></code> JSON file.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">preprocess.json</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;xclbin-location&quot;</span><span class="p">:</span><span class="s2">&quot;/opt/xilinx/xclbin/v70.xclbin&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;device-index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;kernel&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;kernel-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;image_processing:{image_processing_1}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="nt">&quot;ppc&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">preprocess-config</span></code> JSON file specifies the hardware accelerator for preprocessing the incoming frames.</p>
+<p>At the very beginning, we specify the XCLBIN file and device index.</p>
+<ul class="simple">
+<li><p>xclbin-location: Location of the XCLBIN, which is <code class="docutils literal notranslate"><span class="pre">/opt/xilinx/xclbin/v70.xclbin</span></code> inside our docker container.</p></li>
+<li><p>device-index: For a single V70 device, <code class="docutils literal notranslate"><span class="pre">dev-idx=0</span></code>. If multiple V70 devices are attached to the host server, then <code class="docutils literal notranslate"><span class="pre">xbutil</span> <span class="pre">examine</span></code> provides the list of devices with their increasing index (0, 1, 2, and so on), which should be specified by <code class="docutils literal notranslate"><span class="pre">dev-idx</span></code>.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">kernel</span></code> subsection inside the JSON file provides more details of the hardware accelerator</p>
+<ul class="simple">
+<li><p>kernel-name: The hardware accelerator for preprocessing the incoming image frames. Specify any of the following strings.</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image_processing:{image_processing_1}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image_processing:{image_processing_2}</span></code></p></li>
+</ul>
+</div></blockquote>
+<p>The keys inside the <code class="docutils literal notranslate"><span class="pre">kernel.config</span></code> section</p>
+<ul class="simple">
+<li><p>ppc: pixel per clock supported by the preprocessing kernel</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">infer.json</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;inference-level&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;attach-ppe-outbuf&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;kernel&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;batch-size&quot;</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;model-name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;yolov3_voc_tf&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;model-class&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOLOV3&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;model-format&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BGR&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;model-path&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/share/vitis_ai_library/models/&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;performance-test&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;vitis-ai-preprocess&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;debug-level&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;max-objects&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;filter-labels&quot;</span><span class="p">:[</span><span class="s2">&quot;car&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p>The JSON keys</p>
+<ul class="simple">
+<li><p>inference-level: As we support cascaded inferences, the <code class="docutils literal notranslate"><span class="pre">inference-level</span></code> is used to denote the pipeline stage. Here the object detector is the first model in the pipeline, hence this setting is 1.</p></li>
+<li><p>attach-ppe-outbuf: Preserve preprocessing result to avoid redoing the preprocessing if required.</p></li>
+<li><p>batch-size: For the V70 platform, the batch size is 14 to utilize all the processing power of the AI engine processor.</p></li>
+<li><p>model-name, model-class: The model name and the class of the model.</p></li>
+<li><p>model-format: Image color format required by the model.</p></li>
+<li><p>model-path: The directory path where compiled model artifacts are stored.</p></li>
+<li><p>vitis-ai-preprocess: Must set to <code class="docutils literal notranslate"><span class="pre">false</span></code> to invoke hardware accelerated preprocessing.</p></li>
+<li><p>debug-level: The key used to specify the log level</p></li>
+<li><p>max-objects: The maximum number of objects to be detected per frame</p></li>
+<li><p>filter-labels: The target label for the prediction of the object detection model.</p></li>
+</ul>
+<p class="rubric">Getting insights from the plugin by adding debug switch</p>
+<p>In the previous run, though we processed the incoming video stream through the AI engine processor that performs “car” object detection, we dont see the prediction result as we have not added any plugin related to the bounding box yet. However, <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> supports a verbose mode where we can see the prediction result. To enable this we need to do the following steps:</p>
+<ul class="simple">
+<li><p>Set the following environment variable. For more information about logging refer Logging APIs section in API reference page <a class="reference internal" href="api_reference.html"><span class="doc">VVAS C API Reference</span></a> page.</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">VVAS_CORE_LOG_FILE_PATH</span><span class="o">=</span>CONSOLE
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Change the <code class="docutils literal notranslate"><span class="pre">debug-level</span></code> switch to 2</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;debug-level&quot;</span> : <span class="m">2</span>,
+</pre></div>
+</div>
+<p>Now if you run the above command line you will see more verbose output in the stdout as now the plugin will print all the inference result frame by frame. A sample output snippet as you will see</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>vvas_yolov3.cpp run:82<span class="o">]</span> INFO: objects detected <span class="m">4</span>
+<span class="o">[</span>vvas_yolov3.cpp run:158<span class="o">]</span> INFO: RESULT: car<span class="o">(</span><span class="m">6</span><span class="o">)</span> <span class="m">257</span>.010345 <span class="m">209</span>.918701 <span class="m">413</span>.010345 <span class="m">407</span>.918701 <span class="o">(</span><span class="m">0</span>.996819<span class="o">)</span>
+<span class="o">[</span>vvas_yolov3.cpp run:158<span class="o">]</span> INFO: RESULT: car<span class="o">(</span><span class="m">6</span><span class="o">)</span> <span class="m">171</span>.959351 <span class="m">181</span>.505981 <span class="m">201</span>.959351 <span class="m">218</span>.504349 <span class="o">(</span><span class="m">0</span>.563108<span class="o">)</span>
+<span class="o">[</span>vvas_yolov3.cpp run:158<span class="o">]</span> INFO: RESULT: car<span class="o">(</span><span class="m">6</span><span class="o">)</span> <span class="m">137</span>.453629 <span class="m">190</span>.233704 <span class="m">170</span>.453629 <span class="m">219</span>.766296 <span class="o">(</span><span class="m">0</span>.374302<span class="o">)</span>
+</pre></div>
+</div>
+<p>The messages above show the number of “car” object detected and the result. Note that though 4 objects are detected only 3 results are printed as we have set <code class="docutils literal notranslate"><span class="pre">&quot;max-objects&quot;:3,</span></code> inside <code class="docutils literal notranslate"><span class="pre">infer-config</span></code> JSON file. The four numbers in the result line show the location of the object ( top-left x, top-left y, width of the bounding box, and height of the bounding box). The last number is the confidence (probability) score.</p>
+<p><strong>Software Preprocessing</strong>: In the previous run we used hardware accelerator for preprocessing for better performance. However, the VVAS framework also provide flexibility to choose software preprocessing. The following changes are required to perform inference with software preprocessing</p>
+<ol class="arabic simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code>’s parameter <code class="docutils literal notranslate"><span class="pre">preprocess-config</span></code> is no longer needed</p></li>
+<li><p>We also need to set <code class="docutils literal notranslate"><span class="pre">vitis-ai-preprocess=true</span></code> inside the <code class="docutils literal notranslate"><span class="pre">infer-config</span></code> JSON file.</p></li>
+</ol>
+<p>A changed version of the above <code class="docutils literal notranslate"><span class="pre">3_infer.sh</span></code> script performing software preprocessing is shown below. Note a changed version of the <code class="docutils literal notranslate"><span class="pre">infer-config</span></code> JSON file, <code class="docutils literal notranslate"><span class="pre">infer_nopp.json</span></code> is used with the second change mentioned above</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">XCLBIN_LOCATION</span><span class="o">=</span><span class="s2">&quot;/opt/xilinx/xclbin/v70.xclbin&quot;</span>
+
+gst-launch-1.0 -v <span class="se">\</span>
+         filesrc <span class="nv">location</span><span class="o">=</span>/workspace/Cars_1900.264  ! <span class="se">\</span>
+         h264parse ! <span class="se">\</span>
+         vvas_xvideodec dev-idx<span class="o">=</span><span class="m">0</span> xclbin-location<span class="o">=</span><span class="nv">$XCLBIN_LOCATION</span> kernel-name<span class="o">=</span><span class="se">\&quot;</span>kernel_vdu_decoder:<span class="o">{</span>kernel_vdu_decoder_0<span class="o">}</span><span class="se">\&quot;</span> instance-id<span class="o">=</span><span class="m">0</span> avoid-dynamic-alloc<span class="o">=</span><span class="m">0</span> ! <span class="se">\</span>
+         identity <span class="nv">sync</span><span class="o">=</span><span class="m">0</span> ! <span class="se">\</span>
+         videoconvert ! <span class="se">\</span>
+         vvas_xinfer infer-config<span class="o">=</span>./infer_nopp.json <span class="nv">name</span><span class="o">=</span>yolo_0 ! <span class="se">\</span>
+         vvas_xabrscaler dev-idx<span class="o">=</span><span class="m">0</span> xclbin-location<span class="o">=</span><span class="nv">$XCLBIN_LOCATION</span> kernel-name<span class="o">=</span><span class="se">\&quot;</span>image_processing:<span class="o">{</span>image_processing_1<span class="o">}</span><span class="se">\&quot;</span> ! <span class="se">\</span>
+         video/x-raw, <span class="nv">width</span><span class="o">=</span><span class="m">480</span>, <span class="nv">height</span><span class="o">=</span><span class="m">270</span>, <span class="nv">format</span><span class="o">=</span>NV12 ! <span class="se">\</span>
+         videoconvert ! <span class="se">\</span>
+         fpsdisplaysink <span class="nv">sync</span><span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="step-4-using-metadata-conversion-and-overlay-plugins">
+<span id="label-4"></span><h3>Step 4: Using Metadata conversion and Overlay Plugins<a class="headerlink" href="#step-4-using-metadata-conversion-and-overlay-plugins" title="Permalink to this heading">¶</a></h3>
+<img alt="_images/4_bb.png" src="_images/4_bb.png" />
+<p>The plugins <code class="docutils literal notranslate"><span class="pre">vvas_xmetaconvert</span></code> and <code class="docutils literal notranslate"><span class="pre">vvas_xoverlay</span></code> are used in series to display the inference result on-screen. The functionalities of these two plugins are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">vvas_xmetaconvert</span></code>: The plugin <code class="docutils literal notranslate"><span class="pre">vvas_xmetaconvert</span></code> converts incoming inference result metadata to produce overlay metadata for the <code class="docutils literal notranslate"><span class="pre">vvas_xoverlay</span></code> plugin</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vvas_xoverlay</span></code>: The plugin <code class="docutils literal notranslate"><span class="pre">vvas_xoverlay</span></code> is used for drawing bounding boxes, text, lines, arrows, circles, and polygons on frames.</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">4_intermediate.sh</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">XCLBIN_LOCATION</span><span class="o">=</span><span class="s2">&quot;/opt/xilinx/xclbin/v70.xclbin&quot;</span>
+
+gst-launch-1.0 -v <span class="se">\</span>
+             filesrc <span class="nv">location</span><span class="o">=</span>/workspace/Cars_1900.264  ! <span class="se">\</span>
+             h264parse ! <span class="se">\</span>
+             vvas_xvideodec dev-idx<span class="o">=</span><span class="m">0</span> xclbin-location<span class="o">=</span><span class="nv">$XCLBIN_LOCATION</span> kernel-name<span class="o">=</span><span class="se">\&quot;</span>kernel_vdu_decoder:<span class="o">{</span>kernel_vdu_decoder_0<span class="o">}</span><span class="se">\&quot;</span> instance-id<span class="o">=</span><span class="m">0</span> avoid-dynamic-alloc<span class="o">=</span><span class="m">0</span> ! <span class="se">\</span>
+             identity <span class="nv">sync</span><span class="o">=</span><span class="m">0</span> ! <span class="se">\</span>
+             vvas_xinfer preprocess-config<span class="o">=</span>./preprocess.json infer-config<span class="o">=</span>./infer.json <span class="nv">name</span><span class="o">=</span>yolo_0 ! <span class="se">\</span>
+             vvas_xabrscaler dev-idx<span class="o">=</span><span class="m">0</span> xclbin-location<span class="o">=</span><span class="nv">$XCLBIN_LOCATION</span> kernel-name<span class="o">=</span><span class="se">\&quot;</span>image_processing:<span class="o">{</span>image_processing_1<span class="o">}</span><span class="se">\&quot;</span> ! <span class="se">\</span>
+             video/x-raw, <span class="nv">width</span><span class="o">=</span><span class="m">480</span>, <span class="nv">height</span><span class="o">=</span><span class="m">270</span>, <span class="nv">format</span><span class="o">=</span>NV12 ! <span class="se">\</span>
+	     vvas_xmetaconvert config-location<span class="o">=</span>metaconvert.json ! <span class="se">\</span>
+             vvas_xoverlay ! <span class="se">\</span>
+             videoconvert ! <span class="se">\</span>
+             fpsdisplaysink <span class="nv">sync</span><span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+</div>
+<p>Plugin <code class="docutils literal notranslate"><span class="pre">vvas_xmetaconvert</span></code> has the property <code class="docutils literal notranslate"><span class="pre">config-location</span></code> which is used to specify a JSON file containing configuration parameters. Let’s take a look at this file</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">metaconvert.json</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;font-size&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;font&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;thickness&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;display-level&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;label-color&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;blue&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;green&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;red&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;y-offset&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;label-filter&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;class&quot;</span><span class="p">,</span><span class="s2">&quot;tracker-id&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;classes&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">           </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;car&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;blue&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">183</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;green&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;red&quot;</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="mi">183</span><span class="w"></span>
+<span class="w">           </span><span class="p">},</span><span class="w"></span>
+<span class="w">           </span><span class="p">{</span><span class="w"></span>
+<span class="w">             </span><span class="nt">&quot;name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;person&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">             </span><span class="nt">&quot;blue&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">             </span><span class="nt">&quot;green&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"></span>
+<span class="w">             </span><span class="nt">&quot;red&quot;</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">           </span><span class="p">},</span><span class="w"></span>
+<span class="w">           </span><span class="p">{</span><span class="w"></span>
+<span class="w">             </span><span class="nt">&quot;name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bus&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">             </span><span class="nt">&quot;blue&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">             </span><span class="nt">&quot;green&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">             </span><span class="nt">&quot;red&quot;</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="mi">255</span><span class="w"></span>
+<span class="w">           </span><span class="p">},</span><span class="w"></span>
+<span class="w">           </span><span class="p">{</span><span class="w"></span>
+<span class="w">             </span><span class="nt">&quot;name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bicycle&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">             </span><span class="nt">&quot;blue&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">             </span><span class="nt">&quot;green&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">             </span><span class="nt">&quot;red&quot;</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="mi">255</span><span class="w"></span>
+<span class="w">           </span><span class="p">}</span><span class="w"></span>
+<span class="w">         </span><span class="p">]</span><span class="w"></span>
+<span class="w">       </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p>Some of the configurations of the <code class="docutils literal notranslate"><span class="pre">vvas_xmetaconvert</span></code> plugin:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">font</span></code>, <code class="docutils literal notranslate"><span class="pre">fontsize</span></code>, and <code class="docutils literal notranslate"><span class="pre">thickness</span></code>: Bounding box drawing related parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">display-level</span></code>: This parameter specifies the particular inference level for which bounding box information is to be displayed. For example, <code class="docutils literal notranslate"><span class="pre">display-level=1</span></code> indicates to display of the bounding boxes with the inference result obtained from the first inference model. In the above example, <code class="docutils literal notranslate"><span class="pre">display-level=0</span></code> indicates that all inference level’s bounding box information will be displayed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label-filter</span></code>: This parameter is used to select the label string(s) to be shown with the bounding boxes. Here we have used “class” and “tracker-id” as the label-filter. Hence in our example, the class name “car” is displayed as a string with the bounding box.  We have also used “tracker-id”, which will be displayed also as the label string when we will use the tracker plugin in our pipeline (step 7).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">classes</span></code>: The bounding boxes are only drawn for the classes that are listed in this configuration and other classes are ignored. For instance, if “car”, “person”, “bicycle” is entered under “classes”, then the bounding box is only drawn for these three classes, and other classes like horse, motorbike, etc. are ignored. The color combinations to be used to draw the bounding boxes are also specified inside the respective classes. As in our pipeline example object detection model only detects cars, the bounding box will be drawn on the output video frames using the color combination specified inside the “classes” section corresponding to “car”.</p></li>
+</ul>
+<img alt="_images/4_snapshot.PNG" src="_images/4_snapshot.PNG" />
+<p><strong>Tip</strong>: As we are adding more plugins the pipeline becomes complex and the script becomes difficult to read. So it is better to use variables for different stages of the pipeline. Here you can see how we can rewrite the above pipeline command by using three variables for three stages, decode, inference, and display. Let’s consider this script as the final script for this step.</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">4_final.sh</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">XCLBIN_LOCATION</span><span class="o">=</span><span class="s2">&quot;/opt/xilinx/xclbin/v70.xclbin&quot;</span>
+
+
+<span class="nv">DECODE_PIPE</span><span class="o">=</span><span class="s2">&quot; h264parse ! \</span>
+<span class="s2">             vvas_xvideodec dev-idx=0 xclbin-location=</span><span class="nv">$XCLBIN_LOCATION</span><span class="s2"> kernel-name=\&quot;kernel_vdu_decoder:{kernel_vdu_decoder_0}\&quot; instance-id=0 avoid-dynamic-alloc=0 ! \</span>
+<span class="s2">             identity sync=0 &quot;</span>
+
+<span class="nv">INFER_PIPE</span><span class="o">=</span><span class="s2">&quot; vvas_xinfer preprocess-config=./preprocess.json infer-config=./infer.json name=yolo_0 &quot;</span>
+
+<span class="nv">DISPLAY_PIPE</span><span class="o">=</span><span class="s2">&quot; vvas_xabrscaler dev-idx=0 xclbin-location=</span><span class="nv">$XCLBIN_LOCATION</span><span class="s2"> kernel-name=\&quot;image_processing:{image_processing_1}\&quot; ! \</span>
+<span class="s2">             video/x-raw, width=480, height=270, format=NV12 ! \</span>
+<span class="s2">	     vvas_xmetaconvert config-location=metaconvert.json ! \</span>
+<span class="s2">             vvas_xoverlay ! \</span>
+<span class="s2">             videoconvert ! \</span>
+<span class="s2">             fpsdisplaysink sync=false &quot;</span>
+
+
+gst-launch-1.0 -v <span class="se">\</span>
+	     filesrc <span class="nv">location</span><span class="o">=</span>/workspace/Cars_1900.264  ! <span class="se">\</span>
+             <span class="nv">$DECODE_PIPE</span> ! <span class="se">\</span>
+	     <span class="nv">$INFER_PIPE</span> ! <span class="se">\</span>
+	     <span class="nv">$DISPLAY_PIPE</span>
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="step-5-serving-multiple-streams">
+<span id="label-5"></span><h3>Step 5: Serving Multiple Streams<a class="headerlink" href="#step-5-serving-multiple-streams" title="Permalink to this heading">¶</a></h3>
+<p>So far we have only worked with a single video stream. The current version of the V70 platform supports 16 video streams in parallel.</p>
+<img alt="_images/5_funnel.png" src="_images/5_funnel.png" />
+<p>We will now see how to add another video stream in parallel using the <code class="docutils literal notranslate"><span class="pre">vvas_xfunnel</span></code> and <code class="docutils literal notranslate"><span class="pre">vvas_xdefunnel</span></code> plugins.</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">5_multiple.sh</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">XCLBIN_LOCATION</span><span class="o">=</span><span class="s2">&quot;/opt/xilinx/xclbin/v70.xclbin&quot;</span>
+
+
+<span class="nv">DECODE_PIPE1</span><span class="o">=</span><span class="s2">&quot; h264parse ! \</span>
+<span class="s2">             vvas_xvideodec dev-idx=0 xclbin-location=</span><span class="nv">$XCLBIN_LOCATION</span><span class="s2"> kernel-name=\&quot;kernel_vdu_decoder:{kernel_vdu_decoder_0}\&quot; instance-id=0 avoid-dynamic-alloc=0 ! \</span>
+<span class="s2">             identity sync=0 &quot;</span>
+
+
+<span class="nv">DECODE_PIPE2</span><span class="o">=</span><span class="s2">&quot; h264parse ! \</span>
+<span class="s2">            vvas_xvideodec dev-idx=0 xclbin-location=</span><span class="nv">$XCLBIN_LOCATION</span><span class="s2"> kernel-name=\&quot;kernel_vdu_decoder:{kernel_vdu_decoder_1}\&quot; instance-id=0 avoid-dynamic-alloc=0 ! \</span>
+<span class="s2">             identity sync=0 &quot;</span>
+
+
+<span class="nv">INFER_PIPE</span><span class="o">=</span><span class="s2">&quot; vvas_xinfer preprocess-config=./preprocess.json infer-config=./infer.json name=yolo_0 &quot;</span>
+
+<span class="nv">DISPLAY_PIPE1</span><span class="o">=</span><span class="s2">&quot; vvas_xabrscaler dev-idx=0 xclbin-location=</span><span class="nv">$XCLBIN_LOCATION</span><span class="s2"> kernel-name=\&quot;image_processing:{image_processing_1}\&quot; ! \</span>
+<span class="s2">             video/x-raw, width=480, height=270, format=NV12 ! \</span>
+<span class="s2">	     vvas_xmetaconvert config-location=metaconvert.json ! \</span>
+<span class="s2">             vvas_xoverlay ! \</span>
+<span class="s2">             videoconvert ! \</span>
+<span class="s2">             fpsdisplaysink name=perf_0 sync=false video-sink=\&quot;ximagesink async=false\&quot; sync=false &quot;</span>
+
+<span class="nv">DISPLAY_PIPE2</span><span class="o">=</span><span class="s2">&quot; vvas_xabrscaler dev-idx=0 xclbin-location=</span><span class="nv">$XCLBIN_LOCATION</span><span class="s2"> kernel-name=\&quot;image_processing:{image_processing_1}\&quot; ! \</span>
+<span class="s2">             video/x-raw, width=480, height=270, format=NV12 ! \</span>
+<span class="s2">	     vvas_xmetaconvert config-location=metaconvert.json ! \</span>
+<span class="s2">             vvas_xoverlay ! \</span>
+<span class="s2">             videoconvert ! \</span>
+<span class="s2">             fpsdisplaysink name=perf_1 sync=false video-sink=\&quot;ximagesink async=false\&quot; sync=false &quot;</span>
+
+
+<span class="nv">CMD</span><span class="o">=</span><span class="s2">&quot;vvas_xfunnel name=funnel_in !  </span><span class="nv">$INFER_PIPE</span><span class="s2"> !  vvas_xdefunnel name=funnel_out \</span>
+<span class="s2">	     funnel_out.src_0 !  </span><span class="nv">$DISPLAY_PIPE1</span><span class="s2"> \</span>
+<span class="s2">	     funnel_out.src_1 !  </span><span class="nv">$DISPLAY_PIPE2</span><span class="s2"> \</span>
+<span class="s2">             filesrc location=/workspace/Cars_1900.264  !  </span><span class="nv">$DECODE_PIPE1</span><span class="s2"> !  funnel_in.sink_0 \</span>
+<span class="s2">             filesrc location=/workspace/Cars_1900.264  !  </span><span class="nv">$DECODE_PIPE2</span><span class="s2"> !  funnel_in.sink_1&quot;</span>
+
+<span class="nb">echo</span> <span class="nv">$CMD</span>
+
+gst-launch-1.0 -v <span class="nv">$CMD</span>
+</pre></div>
+</div>
+</div>
+<p>Notice the changes in the above pipeline</p>
+<ul class="simple">
+<li><p>We still have a single inference pipeline bin denoted by <code class="docutils literal notranslate"><span class="pre">INFER_PIPE</span></code>.</p></li>
+<li><p>The input two video streams are decoded by <code class="docutils literal notranslate"><span class="pre">DECODE_PIPE1</span></code> and <code class="docutils literal notranslate"><span class="pre">DECODE_PIPE2</span></code> bins followed by the <code class="docutils literal notranslate"><span class="pre">vvas_xfunnel</span></code> plugin that serializes the two input streams in a round-robin order.</p></li>
+<li><p>The serialized streams are then deployed for inference (through the <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> plugin inside the <code class="docutils literal notranslate"><span class="pre">INFER_PIPE</span></code> bin).</p></li>
+<li><p>The output from the <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> is then deserialized by the <code class="docutils literal notranslate"><span class="pre">vvas_xdefunnel</span></code> plugin and handled by respective DISPLAY bins, <code class="docutils literal notranslate"><span class="pre">DISPLAY_PIPE1</span></code> and <code class="docutils literal notranslate"><span class="pre">DISPLAY_PIPE2</span></code>.</p></li>
+</ul>
+<p>While running the pipeline two video stream will be displayed as below</p>
+<img alt="_images/5_snapshot.PNG" src="_images/5_snapshot.PNG" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="step-6-deploying-multiple-models">
+<span id="label-6"></span><h3>Step 6: Deploying multiple models<a class="headerlink" href="#step-6-deploying-multiple-models" title="Permalink to this heading">¶</a></h3>
+<p>The VVAS Framework supports multiple model inferences in cascade.</p>
+<p>In this section, you will see how we can run an object detection model followed by three classification models.</p>
+<img alt="_images/6_multiple_inference.png" src="_images/6_multiple_inference.png" />
+<p>We start with the final script of step 4, and just change the Inference bin to add model inference stages.</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">Snippet of 6_cascade.sh that shows updated inference bin</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">INFER_PIPE</span><span class="o">=</span><span class="s2">&quot; vvas_xinfer preprocess-config=./preprocess.json infer-config=./infer.json name=yolo_0 ! \</span>
+<span class="s2">             vvas_xinfer preprocess-config=./preprocess_resnet.json infer-config=./resnet18_vehicle_color.json name=resnet_0_0 ! \</span>
+<span class="s2">             vvas_xinfer preprocess-config=./preprocess_resnet.json infer-config=./resnet18_vehicle_make.json name=resnet_1_0 ! \</span>
+<span class="s2">             vvas_xinfer preprocess-config=./preprocess_resnet.json infer-config=./resnet18_vehicle_type.json name=resnet_2_0 &quot;</span>
+</pre></div>
+</div>
+</div>
+<p>The first model detects “car” object as before. However, now the detected objects from the first model are fed to three inference models, each classifying various attributes of the cars, such as the “color” of the car, “make” of the car, and “type” of the car.</p>
+<p>We will briefly review the new <code class="docutils literal notranslate"><span class="pre">preprocess_resnet.json</span></code> file that is used for all three classification models through the <code class="docutils literal notranslate"><span class="pre">preprocess-config</span></code> property.</p>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">preprocess_resnet.json</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;xclbin-location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/opt/xilinx/xclbin/v70.xclbin&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;device-index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;kernel&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;kernel-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;image_processing:{image_processing_1}&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;ppc&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p>As you can inspect, this <code class="docutils literal notranslate"><span class="pre">preprocess-config</span></code> is same as the preprocess config file used in object detection, as we are picking the same hardware accelerator to do the preprocessing job, and the pixel per clock setting also remains the same.</p>
+<p>Let’s review all three <code class="docutils literal notranslate"><span class="pre">infer-config</span></code> files for three image classification models.</p>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">resnet18_vehicle_color.json</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;inference-level&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;inference-max-queue&quot;</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;attach-ppe-outbuf&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;low-latency&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;kernel&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;model-name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;chen_color_resnet18_pt&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;model-class&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CLASSIFICATION&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;model-format&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BGR&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;batch-size&quot;</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;model-path&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/share/vitis_ai_library/models/&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;vitis-ai-preprocess&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;performance-test&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;debug-level&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">resnet18_vehicle_make.json</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;inference-level&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;inference-max-queue&quot;</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;attach-ppe-outbuf&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;low-latency&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;kernel&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;model-name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vehicle_make_resnet18_pt&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;model-class&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VEHICLECLASSIFICATION&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;model-format&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BGR&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;batch-size&quot;</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;model-path&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/share/vitis_ai_library/models/&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;vitis-ai-preprocess&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;performance-test&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;debug-level&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">resnet18_vehicle_type.json</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;inference-level&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;inference-max-queue&quot;</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;attach-ppe-outbuf&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;low-latency&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;kernel&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;model-name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vehicle_type_resnet18_pt&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;model-class&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VEHICLECLASSIFICATION&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;model-format&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BGR&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;batch-size&quot;</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;model-path&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/share/vitis_ai_library/models/&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;vitis-ai-preprocess&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;performance-test&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;debug-level&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p>The three <code class="docutils literal notranslate"><span class="pre">infer-config</span></code> files are almost similar with a few differences. Let’s review some of the configuration settings.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>All three models and their various attributes are specified in respective <code class="docutils literal notranslate"><span class="pre">&quot;kernel&quot;:&quot;config&quot;</span></code> sections.</p></li>
+<li><p>Note for every model, the <code class="docutils literal notranslate"><span class="pre">inference-level</span></code> setting is 2, as all these models are acting as a second model after the first object detection model in the pipeline.</p></li>
+<li><p>Note the <code class="docutils literal notranslate"><span class="pre">attach-ppe-outbuf</span></code> setting is true for one of the models but false for the rest of the two models. It is because all three models have the same preprocessing criteria. So instead of preprocessing three times, the pipeline will perform preprocessing only for one model, and skip preprocessing for the rest of the two models.</p></li>
+<li><p>The property <code class="docutils literal notranslate"><span class="pre">inference-max-queue</span></code> is set to 14 for each model. This means a maximum of 14 frames will be queued when waiting for the required batch size of 14. If the required batch size is accumulated before 14 frames the batch-size number of objects is sent to the model for classification. If the required batch size is not accumulated before 14 frames of video, then the number of frames only accumulated till the 14th consecutive frames are sent for classification, even if that number is less than the batch size. This technique helps to improve latency when the objects are detected in the long interval (for example the night time when cars are very less on the road).</p></li>
+<li><p>The property <code class="docutils literal notranslate"><span class="pre">low-latency</span></code> is set to false which helps to improve the throughput by capturing the required batch-size number of objects to be detected before sending for classification.</p></li>
+</ul>
+</div></blockquote>
+<p>While playing the above command line you will observe detected cars as well as their classifications related information.</p>
+<img alt="_images/6_snapshot.PNG" src="_images/6_snapshot.PNG" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="step-7-using-tracker">
+<span id="label-7"></span><h3>Step 7: Using Tracker<a class="headerlink" href="#step-7-using-tracker" title="Permalink to this heading">¶</a></h3>
+<p>The VVAS framework supports tracking the detected object. Instead of running object detection in every frame, a tracker can be used to track the detected objects, thus reducing DPU usage which is often compute-intensive. To use a tracker three plugins are used</p>
+<ul class="simple">
+<li><p>vvas_xskipframe : The plugin is used to skip the inference of the incoming frames.</p></li>
+<li><p>vvas_xreorderframe: The plugin is used to rearrange the frames in the correct order after receiving the incoming inferred and skip inferred frames.</p></li>
+<li><p>vvas_xtracker: The tracker plugin tracks detected objects</p></li>
+</ul>
+<img alt="_images/7_tracker_plugin.png" src="_images/7_tracker_plugin.png" />
+<p>A sample script using the tracker plugin is as below</p>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-text">7_tracker.sh</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">XCLBIN_LOCATION</span><span class="o">=</span><span class="s2">&quot;/opt/xilinx/xclbin/v70.xclbin&quot;</span>
+
+
+<span class="nv">DECODE_PIPE</span><span class="o">=</span><span class="s2">&quot; h264parse ! \</span>
+<span class="s2">             vvas_xvideodec dev-idx=0 xclbin-location=</span><span class="nv">$XCLBIN_LOCATION</span><span class="s2"> kernel-name=\&quot;kernel_vdu_decoder:{kernel_vdu_decoder_0}\&quot; instance-id=0 avoid-output-copy=true avoid-dynamic-alloc=0 ! \</span>
+<span class="s2">             identity sync=0 &quot;</span>
+
+<span class="nv">INFER_PIPE</span><span class="o">=</span><span class="s2">&quot; vvas_xskipframe name=skip_0_0 infer-interval=3 ! \</span>
+<span class="s2">	vvas_xinfer preprocess-config=./preprocess.json infer-config=infer.json name=yolo_0 ! \</span>
+<span class="s2">	vvas_xreorderframe name=reorder_0_0 ! \</span>
+<span class="s2">	vvas_xtracker min-object-width=20 max-object-width=1900 min-object-height=20 max-object-height=1000 match-search-region=1 num-frames-confidence=2 &quot;</span>
+
+<span class="nv">DISPLAY_PIPE</span><span class="o">=</span><span class="s2">&quot; vvas_xabrscaler dev-idx=0 xclbin-location=</span><span class="nv">$XCLBIN_LOCATION</span><span class="s2"> kernel-name=\&quot;image_processing:{image_processing_1}\&quot; ! \</span>
+<span class="s2">             video/x-raw, width=480, height=270, format=NV12 ! \</span>
+<span class="s2">	     vvas_xmetaconvert config-location=metaconvert.json ! \</span>
+<span class="s2">             vvas_xoverlay ! \</span>
+<span class="s2">             videoconvert ! \</span>
+<span class="s2">             fpsdisplaysink sync=false &quot;</span>
+
+<span class="nv">CMD</span><span class="o">=</span><span class="s2">&quot;vvas_xfunnel name=funnel_in ! </span><span class="nv">$INFER_PIPE</span><span class="s2"> ! vvas_xdefunnel name=funnel_out \</span>
+<span class="s2">	skip_0_0.src_1 ! \</span>
+<span class="s2">	reorder_0_0.skip_sink funnel_out. ! </span><span class="nv">$DISPLAY_PIPE</span><span class="s2"> \</span>
+<span class="s2">	filesrc location=/workspace/Cars_1900.264 ! </span><span class="nv">$DECODE_PIPE</span><span class="s2"> ! funnel_in. &quot;</span>
+
+gst-launch-1.0 -v <span class="nv">$CMD</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s review how the tracker and related plugins are used in the above command</p>
+<ul class="simple">
+<li><p>The main change is inside the inference pipeline. Along with the <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> the combination of <code class="docutils literal notranslate"><span class="pre">vvas_xskipframe</span></code>, <code class="docutils literal notranslate"><span class="pre">vvas_xreorderframe</span></code> and <code class="docutils literal notranslate"><span class="pre">vvas_xtracker</span></code> plugins are used</p></li>
+<li><p>The plugin <code class="docutils literal notranslate"><span class="pre">vvas_xskipframe</span></code> is used with the property <code class="docutils literal notranslate"><span class="pre">infer-interval=3</span></code>, which is used to send one frame in every three frames for running the inference. Two frames out of three frames are used for tracking the detected objects.</p></li>
+<li><p>The plugin <code class="docutils literal notranslate"><span class="pre">vvas_xreorderframe</span></code> is used in between <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> and <code class="docutils literal notranslate"><span class="pre">vvas_xtracker</span></code>. The <code class="docutils literal notranslate"><span class="pre">vvas_xreorderframe</span></code> takes both types of frames, the frames which are skipped from the inference, and the frames which are used for inference. The plugin <code class="docutils literal notranslate"><span class="pre">vvas_xreorderframe</span></code> arranges them in the right order before sending them to the <code class="docutils literal notranslate"><span class="pre">vvas_xtracker</span></code> plugin.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">vvas_xtracker</span></code> plugin uses the following properties</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">min-object-width</span></code> and <code class="docutils literal notranslate"><span class="pre">min-object-height</span></code>: Minimum object width and height in pixels to consider for tracking</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max-object-width</span></code> and <code class="docutils literal notranslate"><span class="pre">max-object-height</span></code>: Maximum object width and height in pixels to consider for tracking</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max-search-region</span></code>: In the above command line the tracker is using the the <strong>Intersection-Over-Union (IOU)</strong> algorithm. This algorithm is used when detector output is available for every frame. This <code class="docutils literal notranslate"><span class="pre">max-search-region</span></code> specifies the object search region during detection for IOU-based matching.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num-frames-confidence</span></code>: Specifies the number of times an object needs to be detected continuously to consider for tracking</p></li>
+</ul>
+</div></blockquote>
+<p>When running the above pipeline, notice that the tracker-id is also displayed as the bounding box labels. This is because we have set label-filter parameter to “tracker-id” as well inside the vvas_xmetaconvert plugin’s input JSON file metaconvert.json.</p>
+<img alt="_images/7_snapshot.PNG" src="_images/7_snapshot.PNG" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">¶</a></h3>
+<p>Great!! Now you are at the end of this quickstart tutorial. You should have got a basic understanding of the core VVAS plugins and how they can be connected to build the flexible pipeline. From here you can take the following paths to continue</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Review many other GStreamer based plugins and their functionalities in <a class="reference internal" href="common/gstreamer_plugins/common_plugins.html"><span class="doc">GStreamer Plug-ins</span></a> page.</p></li>
+<li><p>The core functionalities of these plugins can also be implemented without using the GStramer framework using VVAS Core APIs. Please review <a class="reference internal" href="api_guide.html"><span class="doc">VVAS C API Guide</span></a> page for more information.</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="features_and_capabilities.html" class="btn btn-neutral float-right" title="Features and Capabilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on October 7, 2022.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

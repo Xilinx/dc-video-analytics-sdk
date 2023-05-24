@@ -1,0 +1,18 @@
+{
+  "inference-level": 1,
+  "attach-ppe-outbuf": false,
+  "kernel" : {
+    "config": {
+      "batch-size":14,
+      "model-name" : "yolov3_voc_tf",
+      "model-class" : "YOLOV3",
+      "model-format" : "BGR",
+      "model-path" : "/usr/share/vitis_ai_library/models/",
+      "performance-test" : false,
+      "vitis-ai-preprocess":false,
+      "debug-level" : 0,
+      "max-objects":3,
+      "filter-labels":["car"]
+    }
+  }
+}

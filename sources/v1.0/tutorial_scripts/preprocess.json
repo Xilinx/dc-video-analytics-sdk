@@ -1,0 +1,11 @@
+{
+  "xclbin-location":"/opt/xilinx/xclbin/v70.xclbin",
+  "device-index": 0,
+  "kernel" :
+    {
+      "kernel-name": "image_processing:{image_processing_1}",
+      "config": {
+	"ppc" : 4
+      }
+    }
+}

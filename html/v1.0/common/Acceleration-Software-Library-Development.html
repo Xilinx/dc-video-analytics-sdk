@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+<!-- Google Tag Manager -->
+<script type="text/plain" class="optanon-category-C0002">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5RHQV7');</script>
+<!-- End Google Tag Manager -->
+  <title>Acceleration Software Library Development Guide &mdash; Vitis Video Analytics SDK (VVAS) for Data Center 1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="VVAS C API Reference" href="../api_reference.html" />
+    <link rel="prev" title="Development Guide" href="for_developers.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../index.html" class="icon icon-home"> Vitis Video Analytics SDK (VVAS) for Data Center
+            <img src="../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system_requirements.html">Software &amp; Hardware Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_tutorial.html">Quickstart Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features_and_capabilities.html">Features and Capabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VVAS GStreamer Interface</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gstreamer_plugins/common_plugins.html">GStreamer Plug-ins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta_data/vvas_meta_data_structures.html">VVAS Meta Data Structures</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="for_developers.html">Development Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Acceleration s/w Library Developement Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#types-of-kernels">Types of Kernels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#hard-kernel">Hard Kernel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ps-kernel">PS kernel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#software-kernel">Software Kernel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kernel-management-modes">Kernel Management Modes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#interfaces-for-acceleration-software-libraries">Interfaces for Acceleration Software Libraries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#core-api">Core API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utility-apis">Utility APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#vvas-data-structures">VVAS Data structures</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vvaskernel">VVASKernel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vvasvideoformat">VVASVideoFormat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vvasframe">VVASFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-vvas-declarations">Other VVAS Declarations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#acceleration-software-library-for-hard-kernels">Acceleration Software Library for Hard Kernels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#memory-allocation">Memory Allocation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#starting-kernel">Starting Kernel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-kernel-task-status">Checking Kernel Task Status</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#acceleration-software-library-for-the-software-kernel">Acceleration Software Library for the Software Kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#capability-negotiation-support-in-the-acceleration-software-library">Capability Negotiation Support in the Acceleration Software Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-development-of-acceleration-sw-library">Example (Development of acceleration sw library)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VVAS Core API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">VVAS C API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_guide.html">VVAS C API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_examples.html">VVAS C API Samples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vvas_build.html">Build and install from the VVAS source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adding_models.html">Supporting Deep Learning Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../card_management.html">Device Management &amp; Utility tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Vitis Video Analytics SDK (VVAS) for Data Center</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="for_developers.html">Development Guide</a> &raquo;</li>
+      <li>Acceleration Software Library Development Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/common/Acceleration-Software-Library-Development.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="acceleration-software-library-development-guide">
+<h1>Acceleration Software Library Development Guide<a class="headerlink" href="#acceleration-software-library-development-guide" title="Permalink to this heading">¶</a></h1>
+<p>One of the objectives of VVAS is to provide a framework for the advanced developers that enables them to develop their own kernel and integrate it into GStreamer-based applications. Kernel developers may not be experts in software development and there is always a learning curve to understand the frameworks like Xilinx Run Time (XRT), GStreamer etc. This framework abstracts the complexities of the XRT and GStreamer framework and provides simple and easy to understand APIs to hook their kernels developed on Xilinx FPGA into complex applications. Developers need to implement these interfaces and make them available in the form of a library, called as acceleration software library.</p>
+<p>This section covers the details about developing an acceleration software library to control the kernel from the GStreamer application. The acceleration software library manages the kernel state machine as well as provide hooks to control the kernel from the GStreamer plug-ins or an application.</p>
+<p>There are different types of acceleration kernels supported by VVAS and details about these are covered below.</p>
+<div class="section" id="types-of-kernels">
+<h2>Types of Kernels<a class="headerlink" href="#types-of-kernels" title="Permalink to this heading">¶</a></h2>
+<p>There are three types of acceleration kernels based on the implementation.</p>
+<div class="figure align-center">
+<img alt="../_images/vvas_infrastructure_arch.png" src="../_images/vvas_infrastructure_arch.png" />
+</div>
+<div class="section" id="hard-kernel">
+<h3>Hard Kernel<a class="headerlink" href="#hard-kernel" title="Permalink to this heading">¶</a></h3>
+<p>A hard kernel is made up of HLS and RTL kernels.</p>
+</div>
+<div class="section" id="ps-kernel">
+<h3>PS kernel<a class="headerlink" href="#ps-kernel" title="Permalink to this heading">¶</a></h3>
+<p>These are special kernels where actual hardware is controlled by a software running on the application processor of the device connected to the server over PCIe interface. The software that is controlling the actual hardware on the device is called as PS Kernel. This PS Kernel is receiving the commands/control information from the application running on the server. These PS Kernel are used only in PCIe based platforms, like Data Center.  These kernels are not for Embedded platforms.</p>
+<div class="figure align-center">
+<img alt="../_images/ps-kernel.png" src="../_images/ps-kernel.png" />
+</div>
+</div>
+<div class="section" id="software-kernel">
+<h3>Software Kernel<a class="headerlink" href="#software-kernel" title="Permalink to this heading">¶</a></h3>
+<p>Software kernels are software processing modules that execute fully on the host CPU. Exposing software kernel through the acceleration software library interface allows them to integrate into the GStreamer framework without an in-depth knowledge of the GStreamer framework.</p>
+</div>
+<div class="section" id="kernel-management-modes">
+<h3>Kernel Management Modes<a class="headerlink" href="#kernel-management-modes" title="Permalink to this heading">¶</a></h3>
+<p>Kernels can be managed in two different modes. In XRT managed mode, kernel execution (starting/stopping/configuration) is     managed by the underlying Xilinx Run Time (XRT). In this mode, the synchronization between different kernel instances executing simultaneously in different thread/process contexts is managed by XRT. This mode of operation is multi thread/multiprocess safe. XRT ensures that at any point, only one kernel context is given access to the actual kernel hardware resources.</p>
+<p>Second mode of operation is user managed mode. In this mode, user is responsible to start, stop and configure kernel using     register read/write APIs. This mode is allowed only if kernel object is created in <code class="docutils literal notranslate"><span class="pre">exclusive</span></code> mode. If kernel is opened in <code class="docutils literal notranslate"><span class="pre">exclusive</span></code> mode, then only one instance of kernel object can be created/opened.</p>
+<p>It is strongly recommended to use kernel in XRT managed mode by opening kernel in <code class="docutils literal notranslate"><span class="pre">shared</span></code> mode as this is multi thread/multi-process safe and easy to configure.</p>
+</div>
+</div>
+<div class="section" id="interfaces-for-acceleration-software-libraries">
+<h2>Interfaces for Acceleration Software Libraries<a class="headerlink" href="#interfaces-for-acceleration-software-libraries" title="Permalink to this heading">¶</a></h2>
+<p>VVAS has defined a simplified, easy to use interface so that developer can easily hook their Kernels into GStreamer based applications. The interface has been divided into two parts, core APIs and utility APIs. Core APIs are mandatory APIs, to be implemented by the acceleration software libraries so that these can be controlled from the GStreamer Infrastructure plug-ins as well as applications. Utility APIs are provided to abstract the Xilinx Run Time (XRT) interface from the developer and provide easy to use interface to interact with the kernel.</p>
+<div class="section" id="core-api">
+<h3>Core API<a class="headerlink" href="#core-api" title="Permalink to this heading">¶</a></h3>
+<p>Each acceleration software library must implement these Core APIs. The GStreamer VVAS infrastructure plug-ins (vvas_xfilter and vvas_xmultisrc) call these core APIs to perform operations on the kernel. The following is a list of core APIs.</p>
+<div class="figure align-default">
+<img alt="../_images/core-API-functions.png" src="../_images/core-API-functions.png" />
+</div>
+<div class="section" id="xlnx-kernel-init">
+<h4>xlnx_kernel_init<a class="headerlink" href="#xlnx-kernel-init" title="Permalink to this heading">¶</a></h4>
+<p>This API is called by the VVAS infrastructure plug-in only once at the time of plug-in initialization. Acceleration software library can perform all the one-time initialization in this function.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int32_t xlnx_kernel_init (VVASKernel * handle)
+Parameters:
+    handle - VVAS kernel handle which has kernel context
+Return:
+    0 on success or -1 on failure
+</pre></div>
+</div>
+</div>
+<div class="section" id="xlnx-kernel-start">
+<h4>xlnx_kernel_start<a class="headerlink" href="#xlnx-kernel-start" title="Permalink to this heading">¶</a></h4>
+<p>This API is called by infrastructure plug-in for each input frame/buffer it has received for further processing by the kernel.
+The acceleration software library can perform per frame operations like updating the state machine, reading/writing the registers of the IP and then instructing the kernel to process the input. Steps to start the kernel depends on the type of the kernel and are covered in detail later in this section.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int32_t xlnx_kernel_start (VVASKernel * handle, int start, VVASFrame *
+input[MAX_NUM_OBJECT], VVASFrame * output[MAX_NUM_OBJECT])
+
+Parameters:
+   handle - VVAS kernel handle which has kernel context
+    start – flag to indicate start of the kernel. Mainly useful in
+streaming kernel mode
+    input[MAX_NUM_OBJECT] – Array of input frames populated in VVASFrame
+handle
+    output[MAX_NUM_OBJECT] – Array of output frames populated in VVASFrame
+handle
+Return:
+    0 on success or -1 on failure
+
+Note:
+    1. MAX_NUM_OBJECT is 512 and same is assigned in vvas_kernel.h
+    2. Input and output of array is NULL terminated to know number of input
+&amp; output frames received to start function
+</pre></div>
+</div>
+</div>
+<div class="section" id="xlnx-kernel-done">
+<h4>xlnx_kernel_done<a class="headerlink" href="#xlnx-kernel-done" title="Permalink to this heading">¶</a></h4>
+<p>To know whether the kernel has finished processing the current frame/buffer, infrastructure plug-in or an application will call this API. The acceleration software library can implement the logic to know the status of kernel in this API.</p>
+<p>In case Kernel is being used in XRT managed mode, then developer must call <code class="docutils literal notranslate"><span class="pre">vvas_kernel_done</span></code> utility API to know if kernel has finished processing the current job. This API takes <strong>time-out</strong> svalue for the maximum amount of time this API will wait before returning from this function.</p>
+<p>In case Kernel is being used in user managed mode then developer may implement the logic where it can monitor the status of AP_DONE bit of the kernel in polling mode to know the status of the current kernel task.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int32_t xlnx_kernel_done (VVASKernel * handle)
+
+Parameters:
+    handle - VVAS kernel handle which has kernel context
+kernel.
+Return:
+    0 on success or -1 on failure
+</pre></div>
+</div>
+</div>
+<div class="section" id="xlnx-kernel-deinit">
+<h4>xlnx_kernel_deinit<a class="headerlink" href="#xlnx-kernel-deinit" title="Permalink to this heading">¶</a></h4>
+<p>This API is called by the infrastructure plug-in when plug-in is de-initializing. Acceleration software library must perform any clean-up, de-initialization tasks such as freeing private handles and internal memory allocation as part of the library initialization process.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int32_t xlnx_kernel_deinit (VVASKernel * handle)
+
+Parameters:
+    handle - VVAS kernel handle which has kernel context
+Return:
+    0 on success or -1 on failure
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="utility-apis">
+<h3>Utility APIs<a class="headerlink" href="#utility-apis" title="Permalink to this heading">¶</a></h3>
+<p>This section covers details about the utility infrastructure required to develop the kernel libraries for a new kernel and to integrate these acceleration software libraries into the GStreamer framework.</p>
+<p>The acceleration software libraries are developed using the following utility APIs.</p>
+<p>The utility API sources are hosted in the vvas-utils folder of the VVAS sources tree.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../_images/vvas-utils-hierarchy.png"><img alt="../_images/vvas-utils-hierarchy.png" src="../_images/vvas-utils-hierarchy.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="memory-management-apis">
+<h4>Memory Management APIs<a class="headerlink" href="#memory-management-apis" title="Permalink to this heading">¶</a></h4>
+<p>Hardware Kernel work on physically contiguous memory. In case acceleration software library need physically contiguous memory then the utility APIs mentioned below can be used.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>VVASFrame* vvas_alloc_buffer (VVASKernel *handle, uint32_t size,
+VVASMemoryType mem_type, VVASFrameProps *props)
+
+Parameters:
+    handle - VVAS kernel handle which has kernel context
+    size - memory size to be allocated
+    mem_type - memory can be VVAS_FRAME_MEMORY or VVAS_INTERNAL_MEMORY
+    props – required when requesting VVAS_FRAME_MEMORY
+
+Return:
+    VVASFrame handle on success or NULL on failure
+</pre></div>
+</div>
+<p>In case there is frequent memory allocation/de-allocation is required, then recommendation is to allocate from the memory pool. Developer can allocate the memory from the memory pool managed by GStreamer infrastructure plug-in. To allocate memory from memory pool managed by the GStreamer Infrastructure plug-in, developer must pass “props” parameter value as VVAS_FRAME_MEMORY. If “props” parameter value is set to VVAS_INTERNAL_MEMORY, then the memory is not allocated from a memory pool.</p>
+<p>The following API is to free the memory that is allocated using the vvas_alloc_buffer() API.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>void vvas_free_buffer (VVASKernel * handle, VVASFrame *vvas_frame)
+
+Parameters:
+    handle - VVAS kernel handle which has kernel context
+    vvas_frame – VVASFrame handle allocated using vvas_alloc_buffer() API
+
+Return:
+    None
+</pre></div>
+</div>
+</div>
+<div class="section" id="read-write-register-apis">
+<h4>Read/Write Register APIs<a class="headerlink" href="#read-write-register-apis" title="Permalink to this heading">¶</a></h4>
+<p>These APIs can be used only if kernel object is created in <code class="docutils literal notranslate"><span class="pre">exclusive</span></code> mode. Moreover, developer must ensure that “is_multiprocess” parameter is set to “false” in VVASKernel object in acceleration software library.</p>
+<p>In case developer has decided to go for the option of programing the kernel using register programming, then the only option to start a kernel is to set the “ap_start” bit by writing into the control register.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>void vvas_register_write (VVASKernel *handle, void *src, size_t size,
+size_t offset)
+Parameters:
+    handle - VVAS kernel handle which has kernel context
+    src – pointer to data to be written at offset in ERT command buffer or
+register at offset from base address of IP
+    size – size of the data pointer src
+    offset – offset at which data to be written
+
+Return:
+    None
+</pre></div>
+</div>
+<p>The following API used to read from the registers of an IP/kernel. One can use this API to read the interrupt status register to know the status of task in polling mode.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>void vvas_register_read (VVASKernel *handle, void *src, size_t size, size_t
+offset)
+
+Parameters:
+    handle - VVAS kernel handle which has kernel context
+    src – pointer to data which will be updated after read
+    size – size of the data pointer src
+    offset – offset from base address of an IP
+
+Return:
+    None
+</pre></div>
+</div>
+</div>
+<div class="section" id="execution-apis">
+<h4>Execution APIs<a class="headerlink" href="#execution-apis" title="Permalink to this heading">¶</a></h4>
+<p>These APIs must be used in case kernel is being used in XRT managed mode.
+Execution APIs are used to start kernel execution and then wait for the completion of the kernel current task. These APIs are multi-process/multi-thread safe. These APIs are only used when <cite>is_multiprocess</cite> is set to true during kernel initialization. Use the following API to start IP/kernel execution.</p>
+<div class="section" id="vvas-kernel-start">
+<h5>vvas_kernel_start<a class="headerlink" href="#vvas-kernel-start" title="Permalink to this heading">¶</a></h5>
+<p>Use this API to start the kernel. This API internally uses Xilinx Run Time (XRT) APIs to start the kernel.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int32_t vvas_kernel_start (VVASKernel * handle, const char *format, ...);
+
+Parameters:
+    handle - VVAS kernel handle which has kernel context
+    format - Variable arguments for the list of arguments that the kernel takes.
+
+Return:
+    0 on success -1 on failure
+</pre></div>
+</div>
+<p>Follow below format specifiers for kernel arguments for “format” argument</p>
+<div class="line-block">
+<div class="line">“i” : Signed int argument.</div>
+<div class="line">“u” : Unsigned int argument.</div>
+<div class="line">“f” : Float argument.</div>
+<div class="line">“F” : Double argument.</div>
+<div class="line">“c” : Char argument.</div>
+<div class="line">“C” : Unsigned char argument.</div>
+<div class="line">“S” : Short argument.</div>
+<div class="line">“U” : Unsigned short argument.</div>
+<div class="line">“l” : Unsigned long long argument.</div>
+<div class="line">“d” : Long long argument.</div>
+<div class="line">“p” : Any pointer argument.</div>
+<div class="line">“b” : Buffer Object argument.</div>
+<div class="line">“s” : If you want to skip the argument.</div>
+</div>
+<dl>
+<dt>Ex<span class="classifier">For passing 3 arguments of types int, unsigned int and a pointer,</span></dt><dd><p>then the format specifier string would be “iup”</p>
+<p>If you want to skip the middler argument in the above case, then
+the format specifier string would be “isp”</p>
+</dd>
+</dl>
+<p>Use the following API to check whether the IP or kernel has finished execution. This function internally loops for MAX_EXEC_WAIT_RETRY_CNT times until a timeout before returning an error.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int32_t vvas_kernel_done (VVASKernel * handle, int32_t timeout);
+
+Parameters:
+    handle  - VVAS kernel handle which has kernel context
+    timeout - Timeout in milliseconds
+
+Return:
+    0 on success or -1 on failure
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="vvas-data-structures">
+<h2>VVAS Data structures<a class="headerlink" href="#vvas-data-structures" title="Permalink to this heading">¶</a></h2>
+<p>;
+The following sections list the core structures and enumerations used in VVAS framework.</p>
+<div class="section" id="vvaskernel">
+<h3>VVASKernel<a class="headerlink" href="#vvaskernel" title="Permalink to this heading">¶</a></h3>
+<p>The VVASKernel is a structure to hold the kernel context and is created and passed to the core APIs by the GStreamer infrastructure plug-ins (for example: the vvas_xfilter).</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>typedef struct \_vvas_kernel VVASKernel;
+
+struct \_vvas_kernel {
+
+void \*xcl_handle; /\* XRT handle provided by GStreamer
+
+infrastructure plug-in \*/
+
+uint32_t cu_idx; /\* compute unit index of IP/soft- kernel \*/
+
+json_t \*kernel_config; /\* kernel specific config from app \*/ void
+\*kernel_priv; /\* to store kernel specific
+
+structures \*/
+json_t \*kernel_dyn_config; /\* Dynamically changed kernel configuration \*/
+xrt_buffer \*ert_cmd_buf; /\* ERT command buffer used to submit
+
+execution commands to XRT \*/
+
+size_t min_offset; size_t max_offset;
+
+VVASBufAllocCBFunc alloc_func; /\* callback function to allocate
+
+memory from GstBufferPool by GStreamer infrastructure plug-in \*/
+
+VVASBufFreeCBFunc free_func; /\* callback function to free memory
+
+allocated by alloc_func \*/ void \*cb_user_data; /\* handle to be
+passed along with
+
+alloc_func &amp; free_func callback \*/
+
+vvaspads \*padinfo; #ifdef XLNX_PCIe_PLATFORM
+
+uint32_t is_softkernel; /\* true when acceleration s/w library is for
+
+#endif
+
+soft-kernel in PCIe platforms only
+
+\*/
+
+uint8_t is_multiprocess; /\* if true, ERT command buffer will
+
+be used to start kernel. else, direct register programming will be
+used \*/
+
+uint8_t  \*name; /\* TBD \*/
+
+uint16_t in_mem_bank; /\* Memory bank to which input port of kernel is attached to \*/
+uint16_t out_mem_bank; /\* Memory bank to which output port of kernel is attached to
+
+};
+</pre></div>
+</div>
+</div>
+<div class="section" id="vvasvideoformat">
+<h3>VVASVideoFormat<a class="headerlink" href="#vvasvideoformat" title="Permalink to this heading">¶</a></h3>
+<p>The VVASVideoFormat represents the video color formats supported by the VVAS framework. The GStreamer infrastructure plug-ins supports the mapping of the following formats and corresponding GStreamer color formats.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>typedef enum {
+VVAS_VMFT_UNKNOWN = 0,
+VVAS_VFMT_RGBX8,
+VVAS_VFMT_YUVX8,
+VVAS_VFMT_YUYV8, // YUYV
+VVAS_VFMT_ABGR8,
+VVAS_VFMT_RGBX10,
+VVAS_VFMT_YUVX10,
+VVAS_VFMT_Y_UV8,
+VVAS_VFMT_Y_UV8_420, // NV12
+VVAS_VFMT_RGB8,
+VVAS_VFMT_YUVA8,
+VVAS_VFMT_YUV8,
+VVAS_VFMT_Y_UV10,
+VVAS_VFMT_Y_UV10_420,
+VVAS_VFMT_Y8,
+VVAS_VFMT_Y10,
+VVAS_VFMT_ARGB8,
+VVAS_VFMT_BGRX8,
+VVAS_VFMT_UYVY8,
+VVAS_VFMT_BGR8, // BGR
+VVAS_VFMT_RGBX12,
+VVAS_VFMT_RGB16,
+VVAS_VFMT_I420
+}  VVASVideoFormat;
+</pre></div>
+</div>
+</div>
+<div class="section" id="vvasframe">
+<h3>VVASFrame<a class="headerlink" href="#vvasframe" title="Permalink to this heading">¶</a></h3>
+<p>The VVASFrame stores information related to a video frame. The GStreamer infrastructure plug-ins allocate the VVASFrame handle for input and output video frames and sends them to the VVAS kernel processing APIs. Also, the VVASFrame can be allocated by kernel libraries for internal memory requirements (i.e., memory for filter coefficients).</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>typedef struct _vvas_frame_props VVASFrameProps;
+typedef struct _vvas_frame VVASFrame;
+
+// frame properties hold information about video frame
+struct _vvas_frame_props {
+uint32_t width;
+uint32_t height;
+uint32_t stride;
+VVASVideoFormat fmt;
+};
+struct _vvas_frame {
+uint32_t bo[VIDEO_MAX_PLANES]; // ignore: currently not used
+void \*vaddr[VIDEO_MAX_PLANES]; // virtual/user space address of
+                               //video frame memory
+uint64_t paddr[VIDEO_MAX_PLANES]; // physical address of video frame
+uint32_t size[VIDEO_MAX_PLANES];
+void \*meta_data;
+VVASFrameProps props; /* properties of video frame \*/
+/\* application&#39;s private data \*/
+void \*app_priv; /* assigned to GstBuffer by GStreamer infrastructure plugin \*/
+VVASMemoryType mem_type;
+/\*number of planes in props.fmt \*/
+uint32_t n_planes; // number of planes based on color format
+};
+</pre></div>
+</div>
+</div>
+<div class="section" id="other-vvas-declarations">
+<h3>Other VVAS Declarations<a class="headerlink" href="#other-vvas-declarations" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#define MAX_NUM_OBJECT 512 /* max number of video frames/objects
+handled by VVAS \*/
+#define MAX_EXEC_WAIT_RETRY_CNT 10 /* retry count on xclExecWait failure \*/
+#define VIDEO_MAX_PLANES 4
+#define DEFAULT_MEM_BANK 0
+
+typedef enum {
+VVAS_UNKNOWN_MEMORY,
+VVAS_FRAME_MEMORY, /* use for input and output buffers \*/
+VVAS_INTERNAL_MEMORY, /* use for internal memory of IP \*/
+} VVASMemoryType;
+
+typedef struct buffer {
+unsigned int bo; /* XRT Buffer object \*/
+void* user_ptr; /* userspace/virtual pointer \*/
+uint64_t phy_addr; /* physical address \*/
+unsigned int size; /* size of XRT memory \*/
+} xrt_buffer;
+</pre></div>
+</div>
+<p>VVAS acceleration software libraries APIs are broadly categorized into two API types, <a class="reference external" href="#_bookmark17">Core API</a> and <a class="reference external" href="#utility-api">Utility API</a>.</p>
+</div>
+</div>
+<div class="section" id="acceleration-software-library-for-hard-kernels">
+<h2>Acceleration Software Library for Hard Kernels<a class="headerlink" href="#acceleration-software-library-for-hard-kernels" title="Permalink to this heading">¶</a></h2>
+<p>This section covers the steps to develop an acceleration software library for hard kernels.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is assumed that hard kernel work only on physical address. Hence Infrastructure plugins will only provide physical address for the input/output buffers. If for any reason one wants to access the input/output buffers in s/w accel lib, then need to map the buffer and get the virtual address.</p>
+</div>
+<p>Virtual address is populated by infrastructure plugins only in case of s/w accel lib for “software only” kernels.</p>
+<div class="section" id="memory-allocation">
+<h3>Memory Allocation<a class="headerlink" href="#memory-allocation" title="Permalink to this heading">¶</a></h3>
+<p>A hard kernel works on the physically contiguous memory. Use the <code class="docutils literal notranslate"><span class="pre">vvas_alloc_buffer</span></code> API to allocate physically contiguous memory on the device (FPGA).</p>
+</div>
+<div class="section" id="starting-kernel">
+<h3>Starting Kernel<a class="headerlink" href="#starting-kernel" title="Permalink to this heading">¶</a></h3>
+<p>APIs to start a kernel depends on the mode in which kernel object is created.</p>
+<div class="section" id="xrt-managed-kernel">
+<h4>XRT Managed Kernel<a class="headerlink" href="#xrt-managed-kernel" title="Permalink to this heading">¶</a></h4>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">vvas_kernel_start</span></code> must be used to start the kernel execution. It takes all kernel parameters required to be programmed as function arguments.</p>
+</div></blockquote>
+</div>
+<div class="section" id="user-managed-mode">
+<h4>User Managed Mode<a class="headerlink" href="#user-managed-mode" title="Permalink to this heading">¶</a></h4>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">vvas_register_write</span></code> API to set the AP_START bit in kernel control register.</p>
+</div>
+</div>
+<div class="section" id="checking-kernel-task-status">
+<h3>Checking Kernel Task Status<a class="headerlink" href="#checking-kernel-task-status" title="Permalink to this heading">¶</a></h3>
+<p>Once kernel is started, next step is to check if the task is completed or not. Depending on the mode in which kernel object is created, different mechanism to be used.</p>
+<div class="section" id="id1">
+<h4>XRT Managed Kernel<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
+<p>In this mode, developer needs to call <code class="docutils literal notranslate"><span class="pre">vvas_kernel_done</span></code> API. This API will return when kernel finished processing current task. Developer can provide the “time-out” interval value indicating how long this API has to wait before it can return in case kernel has not finished processing.</p>
+</div>
+<div class="section" id="id2">
+<h4>User Managed Mode<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
+<p>In this mode, there is no callback or interrupt notification mechanism available that can be used to notify the task completion. The acceleration software library must continuously poll the kernel status register using <code class="docutils literal notranslate"><span class="pre">vvas_register_read</span></code>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="acceleration-software-library-for-the-software-kernel">
+<h2>Acceleration Software Library for the Software Kernel<a class="headerlink" href="#acceleration-software-library-for-the-software-kernel" title="Permalink to this heading">¶</a></h2>
+<p>Software kernels are software modules that run on the application processor. The acceleration software library for these processing modules do not interact with the XRT interface. The interface APIs that abstract the XRT interface are not needed. You must implement the core API in the acceleration software library for use in the GStreamer application through VVAS infrastructure plug-ins.</p>
+</div>
+<div class="section" id="capability-negotiation-support-in-the-acceleration-software-library">
+<h2>Capability Negotiation Support in the Acceleration Software Library<a class="headerlink" href="#capability-negotiation-support-in-the-acceleration-software-library" title="Permalink to this heading">¶</a></h2>
+<p>Kernel capability negotiation is an important functionality that should be accepted between the upstream element and infrastructure plug-ins to achieve an optimal solution. Because the infrastructure plug-ins are generic, the acceleration software library is responsible to populate the required kernel capability during xlnx_kernel_init(), which is negotiated between the infrastructure plug-ins and the upstream element. The infrastructure plug-in suggests a format on its sink pad and arranges the recommendation in priority order as per the kernel capability in the result from the CAPS query that is performed on the sink pad. Only the vvas_xfilter plug-in is currently supporting the kernel specific capability negotiation.</p>
+<p>The following section explains the data structures exchange between acceleration software libraries and the infrastructure plug-ins for capability negotiation.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>typedef struct caps
+{
+uint8_t range_height; /* true/false if height is specified in range */
+uint32_t lower_height; /* lower range of height supported,
+range_height=false then this value specified the fixed height supported
+*/
+uint32_t upper_height; /* upper range of height supported */
+uint8_t range_width; /* true/false if width is specified in range */
+uint32_t lower_width; /* lower range of width supported,
+range_width=false then this value specified the fixed width supported */
+uint32_t upper_width; /* upper range of width supported */
+uint8_t num_fmt; /* number of format support by kernel */
+VVASVideoFormat *fmt; /* list of formats */
+} kernelcaps;
+
+typedef struct kernelpad
+{
+uint8_t nu_caps; /* number of different caps supported */
+kernelcaps **kcaps; /* lsit of caps */
+} kernelpads;
+</pre></div>
+</div>
+<p>Below mentioned user friendly APIs are provided for kernel to set the above mentioned capabilities.</p>
+<p>API to create new caps with input parameters</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>vvas_caps_new() - Create new caps with input parameters
+range_height
+     - true  : if kernel support range of height
+     - false : if kernel support fixed height
+lower_height : lower value of height supported by kernel
+               if range_height is false, this holds the fixed value
+upper_height : higher value of hight supported by kernel
+               if range_height is false, this should be 0
+range_width : same as above
+lower_width :
+upper_width :
+
+            : variable range of format supported terminated by 0
+              make sure to add 0 at end otherwise it
+              code will take format till it get 0
+
+kernelcaps * vvas_caps_new (uint8_t range_height,
+                            uint32_t lower_height,
+                            uint32_t upper_height,
+                            uint8_t range_width,
+                            uint32_t lower_width,
+                            uint32_t upper_width, ...)
+</pre></div>
+</div>
+<p>API to  add new caps to sink pad. Only one pad is supported in this release.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>bool vvas_caps_add_to_sink (VVASKernel * handle, kernelcaps * kcaps, int sinkpad_num)
+</pre></div>
+</div>
+<p>API to add new caps to src pad. Only one pad is supported as on today.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>bool vvas_caps_add_to_src (VVASKernel * handle, kernelcaps * kcaps, int sinkpad_num)
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-development-of-acceleration-sw-library">
+<h2>Example (Development of acceleration sw library)<a class="headerlink" href="#example-development-of-acceleration-sw-library" title="Permalink to this heading">¶</a></h2>
+<p>This section shows how to develop an acceleration sw library using VVAS APIs which controls <code class="docutils literal notranslate"><span class="pre">vvas_xsample</span></code> kernel.</p>
+<p>Following is a sample structure used in the example to validate <code class="docutils literal notranslate"><span class="pre">vvas_xsample</span></code> kernel.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct  __attribute__((aligned(4))) vvas_sample_struct
+{
+ char c_value;
+ unsigned char uc_value;
+ short s_value;
+ unsigned short us_value;
+ int i_value;
+ unsigned int ui_value;
+ float f_value;
+ double d_value;
+ long long ll_value;
+ unsigned long long ul_value;
+};
+typedef struct vvas_sample_struct VvasSampleStruct;
+</pre></div>
+</div>
+<p>At the first step we have to expose the CORE APIs, so that these can be controlled from the GStreamer Infrastructure plug-ins as well as applications. Following APIs are mandatory APIs.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/*********  CORE APIs ************/
+
+int32_t xlnx_kernel_init (VVASKernel * handle);
+
+uint32_t xlnx_kernel_start (VVASKernel * handle, int start,
+    VVASFrame * input[MAX_NUM_OBJECT], VVASFrame * output[MAX_NUM_OBJECT]);
+
+int32_t xlnx_kernel_done (VVASKernel * handle);
+
+uint32_t xlnx_kernel_deinit (VVASKernel * handle);
+</pre></div>
+</div>
+<p>We have to perform all the one-time initialization in <code class="docutils literal notranslate"><span class="pre">xlnx_kernel_init</span></code> API.
+Following is the private structure to maintain/store all the initializations. It is upto the user to implement their own storage classes to maintain one-time initializations.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/*
+ * Structure to store all initializations
+ */
+
+typedef struct _kern_priv
+{
+  int log_level;                /* Debug Level of logs */
+  char c_value;                 /* variable to store char value */
+  unsigned char uc_value;       /* varaiable to store unsigned char value */
+  short s_value;                /* varable to store short value */
+  unsigned short us_value;      /* varable to store unsigned short value */
+  int i_value;                  /* varable to store int value */
+  unsigned int ui_value;        /* varable to store unsigned int value */
+  float f_value;                /* varable to store float value */
+  double d_value;               /* variable to store double value */
+  long long ll_value;           /* variable to store long long value */
+  unsigned long long ul_value;  /* variable to store unsigned long long value */
+  char overlay_image_path[MAX_LENGTH];  /* Path of the input overlay image */
+  char input_overlay_image[MAX_OVERLAY_SIZE];   /* Buffer to store input overlay image */
+  int overlay_image_height;     /* Height of the overlay image */
+  int overlay_image_width;      /* Width of the overlay image */
+  int overlay_image_xpos;       /* x-position, where to overlay image on input buffer */
+  int overlay_image_ypos;       /* y-position, where to overlay image on input buffer */
+  char input_string[MAX_LENGTH];        /* Input string to test sample kernel */
+  void *xrt_input_string;       /* Pointer to hold the address of input string&#39;s xrt::bo */
+  void *xrt_input_overlay_buffer;       /* Pointer to hold the address of the input overlay buffer&#39;s xrt::bo */
+  void *xrt_output_string;      /* Pointer to hold the address of output string&#39;s xrt::bo */
+  void *xrt_output_structure;   /* Pointer to hold the address of the output structure&#39;s xrt::bo */
+} vvasSampleKernelPriv;
+</pre></div>
+</div>
+<p>Initialize all the required variables of the vvasSampleKernelPriv structure in <code class="docutils literal notranslate"><span class="pre">xlnx_kernel_init</span></code> API.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int32_t xlnx_kernel_init (VVASKernel * handle)
+{
+  /*
+   *  kernel configuration from application
+   */
+  json_t *jconfig = handle-&gt;kernel_config;
+  json_t *val;
+  vvasSampleKernelPriv *kpriv =
+      (vvasSampleKernelPriv *) calloc (1, sizeof (vvasSampleKernelPriv));
+  if (!kpriv)
+  {
+    LOG_MESSAGE (LOG_LEVEL_ERROR, kpriv-&gt;log_level,
+        &quot;ERROR: SAMPLE_KERNEL: failed to allocate kernelprivate memory&quot;);
+    return -1;
+  }
+
+  /*
+   *  Initaializing the kernel parameters
+   *  Below values are hard coded for better understanding
+   */
+  kpriv-&gt;c_value = &#39;\0&#39;;      /* Initialize the char value */
+  kpriv-&gt;uc_value = &#39;\0&#39;;     /* Initialize the unsigned char value */
+  kpriv-&gt;s_value = -100;      /* Initialize the short value */
+  kpriv-&gt;us_value = 0;        /* Initialize the unsigned short value */
+  kpriv-&gt;i_value = -10000;    /* Initialize the int value */
+  kpriv-&gt;ui_value = 0;        /* Initialize the unsigned int value */
+  kpriv-&gt;f_value = 0.2;       /* Initialize the float value */
+  kpriv-&gt;d_value = 1000000.1; /* Initialize the double value */
+  kpriv-&gt;ll_value = 10000000; /* Initialize the long long value */
+  kpriv-&gt;ul_value = 10000000; /* Initialize the unsigned long long value */
+
+  /*
+   *  Initaializing the kernel parameters
+   *  from the configuration file passed to infrastructure plugin.
+   */
+
+  /* Set the debug level for logging purpose */
+  val = json_object_get (jconfig, &quot;debug_level&quot;);
+  if (!val || !json_is_integer (val)) {
+    kpriv-&gt;log_level = LOG_LEVEL_WARNING;
+    LOG_MESSAGE (LOG_LEVEL_WARNING, kpriv-&gt;log_level, &quot;debug_level %d&quot;,
+        kpriv-&gt;log_level);
+  } else {
+    kpriv-&gt;log_level = json_integer_value (val);
+    LOG_MESSAGE (LOG_LEVEL_INFO, kpriv-&gt;log_level, &quot;debug_level %d&quot;,
+        kpriv-&gt;log_level);
+  }
+
+  /* Get and set the input string that should be passed
+   * to sample kernel
+   */
+  val = json_object_get (jconfig, &quot;input_string&quot;);
+  if (!val || !json_is_string (val)) {
+    LOG_MESSAGE (LOG_LEVEL_WARNING, kpriv-&gt;log_level,
+        &quot;Input String not provided taking default&quot;);
+    strcpy (kpriv-&gt;input_string, &quot;HELLO SAMPLE&quot;);
+  } else {
+    strcpy (kpriv-&gt;input_string, (char *) json_string_value (val));
+    LOG_MESSAGE (LOG_LEVEL_INFO, kpriv-&gt;log_level,
+        &quot;Input String is : %s&quot;, kpriv-&gt;input_string);
+  }
+
+  /* Get and set the height of the overlay image */
+  val = json_object_get (jconfig, &quot;overlay_image_height&quot;);
+  if (!val || !json_is_integer (val)) {
+    LOG_MESSAGE (LOG_LEVEL_ERROR, kpriv-&gt;log_level,
+        &quot;Overlay image height not provided&quot;);
+    return -1;
+  } else {
+    kpriv-&gt;overlay_image_height = json_integer_value (val);
+    LOG_MESSAGE (LOG_LEVEL_INFO, kpriv-&gt;log_level,
+        &quot;Overlay image height : %d&quot;, kpriv-&gt;overlay_image_height);
+  }
+
+  /* Get and set the width of the overlay image */
+  val = json_object_get (jconfig, &quot;overlay_image_width&quot;);
+  if (!val || !json_is_integer (val)) {
+    LOG_MESSAGE (LOG_LEVEL_ERROR, kpriv-&gt;log_level,
+        &quot;Overlay image width not provided&quot;);
+    return -1;
+  } else {
+    kpriv-&gt;overlay_image_width = json_integer_value (val);
+    LOG_MESSAGE (LOG_LEVEL_INFO, kpriv-&gt;log_level,
+        &quot;Overlay image width : %d&quot;, kpriv-&gt;overlay_image_width);
+  }
+
+  /* Get and set the path/location of the overlay image */
+  val = json_object_get (jconfig, &quot;overlay_image_path&quot;);
+  if (!val || !json_is_string (val)) {
+    LOG_MESSAGE (LOG_LEVEL_ERROR, kpriv-&gt;log_level,
+        &quot;Overlay image path not provided&quot;);
+    return -1;
+  } else {
+    strcpy (kpriv-&gt;overlay_image_path, (char *) json_string_value (val));
+    LOG_MESSAGE (LOG_LEVEL_INFO, kpriv-&gt;log_level,
+        &quot;Overlay image path : %s&quot;, kpriv-&gt;overlay_image_path);
+  }
+
+  /* Get and set the x position of the overlay image
+   * to draw on input buffer
+   */
+  val = json_object_get (jconfig, &quot;overlay_image_xpos&quot;);
+  if (!val || !json_is_integer (val)) {
+    kpriv-&gt;overlay_image_xpos = DEFAULT_X_POS;
+    LOG_MESSAGE (LOG_LEVEL_WARNING, kpriv-&gt;log_level,
+        &quot;Overlay xpos is not set&quot; &quot; taking default : %d&quot;,
+        kpriv-&gt;overlay_image_xpos);
+  } else {
+    kpriv-&gt;overlay_image_xpos = json_integer_value (val);
+    LOG_MESSAGE (LOG_LEVEL_INFO, kpriv-&gt;log_level,
+        &quot;Overlay xpos is  : %d&quot;, kpriv-&gt;overlay_image_xpos);
+  }
+
+
+  /* Get and set the y position of the overlay image
+   * to draw on input buffer
+   */
+  val = json_object_get (jconfig, &quot;overlay_image_ypos&quot;);
+  if (!val || !json_is_integer (val)) {
+    kpriv-&gt;overlay_image_ypos = DEFAULT_Y_POS;
+    LOG_MESSAGE (LOG_LEVEL_WARNING, kpriv-&gt;log_level,
+        &quot;Overlay xpos is not set&quot; &quot; taking default : %d&quot;,
+        kpriv-&gt;overlay_image_ypos);
+  } else {
+    kpriv-&gt;overlay_image_ypos = json_integer_value (val);
+    LOG_MESSAGE (LOG_LEVEL_INFO, kpriv-&gt;log_level,
+        &quot;Overlay ypos is  : %d&quot;, kpriv-&gt;overlay_image_ypos);
+  }
+
+  /* Open, read and store the overlay image */
+  ifstream input_file (kpriv-&gt;overlay_image_path);
+  if (!input_file.is_open ()) {
+    LOG_MESSAGE (LOG_LEVEL_ERROR, kpriv-&gt;log_level,
+        &quot;Could not open overlay image  : %s&quot;, kpriv-&gt;overlay_image_path);
+
+    return EXIT_FAILURE;
+  }
+  input_file.read (kpriv-&gt;input_overlay_image,
+      (int) (kpriv-&gt;overlay_image_height * kpriv-&gt;overlay_image_width *
+          NV12_BYTE_SIZE));
+  input_file.close ();
+
+  LOG_MESSAGE (LOG_LEVEL_INFO, kpriv-&gt;log_level,
+      &quot;Completed reading %s &quot;, kpriv-&gt;overlay_image_path);
+
+  /* Populate the kernel private in the kernel handle */
+  handle-&gt;kernel_priv = (void *) kpriv;
+
+  /* Enable multiprocess as we are using ``vvas_kernel_start`` method */
+  handle-&gt;is_multiprocess = 1;
+
+  return 0;
+}
+</pre></div>
+</div>
+<p>After completing all the initializations in <code class="docutils literal notranslate"><span class="pre">xlnx_kernel_init</span></code> API , it is the time to execute the kernel in <code class="docutils literal notranslate"><span class="pre">xlnx_kernel_start</span></code> API. <code class="docutils literal notranslate"><span class="pre">xlnx_kernel_start</span></code> is called by infrastructure plug-in for each input frame/buffer it has received for further processing by the kernel.</p>
+<p>As the <code class="docutils literal notranslate"><span class="pre">vvas_xsample</span></code> is a hard kernel, all the arguments passed to it deals with physical addresses.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>uint32_t
+    xlnx_kernel_start (VVASKernel * handle, int start,
+    VVASFrame * input[MAX_NUM_OBJECT], VVASFrame * output[MAX_NUM_OBJECT]) {
+
+  int ret;
+  vvasSampleKernelPriv *kpriv = (vvasSampleKernelPriv *) handle-&gt;kernel_priv;
+  LOG_MESSAGE (LOG_LEVEL_INFO, kpriv-&gt;log_level, &quot;Kernel Start&quot;);
+  /* Get the physical address of the input buffer */
+  uint64_t input_buffer = (input[0]-&gt;paddr[0]);
+  /* Get the physical address of the output buffer */
+  uint64_t output_buffer = (output[0]-&gt;paddr[0]);
+  /* Get the height of the input buffer */
+  short width = input[0]-&gt;props.width;
+  /* Get the width of the input buffer */
+  short height = input[0]-&gt;props.height;
+
+  /* Fill the arguments that we are going to pass
+   * to the vvas_xsample kernel with the initialized values
+   *  in xlnx_kernel_init
+   */
+  char c_value = kpriv-&gt;c_value;      /* Fill the char argument */
+  unsigned char uc_value = kpriv-&gt;uc_value;   /* Fill the unsigned char argument */
+  short s_value = kpriv-&gt;s_value;     /* Fill the short argument */
+  unsigned short us_value = kpriv-&gt;us_value;  /* Fill the unsigned short argument */
+  int i_value = kpriv-&gt;i_value;       /* Fill the int argument */
+  unsigned int ui_value = kpriv-&gt;ui_value;    /* Fill the unsigned int argument */
+  float f_value = kpriv-&gt;f_value;     /* Fill the float argument */
+  double d_value = kpriv-&gt;d_value;    /* Fill the double argument */
+  long long ll_value = kpriv-&gt;ll_value;       /* Fill the long long argument */
+  unsigned long long ul_value = kpriv-&gt;ul_value;      /* Fill the unsigned long long argument */
+
+  /* Get the device and kernel handle to create xrt::bo s
+   * which are passed to vvas_xsample kernel
+   */
+  xrt::device * device = (xrt::device *) handle-&gt;dev_handle;
+  xrt::kernel * kernel = (xrt::kernel *) handle-&gt;kern_handle;
+
+  /* In this example, the xrt::kernel::group_id() member function is used to pass the memory bank index.
+   * This member function accept kernel argument-index and automatically
+   * detect corresponding memory bank index by inspecting XCLBIN.
+   */
+
+  /* Passing 13 to group_id indicates to create the bo on memory bank
+   * index attached to 13th argument of the kernel function
+   * which is a input_overlay_buffer argument in this example.
+   */
+
+  auto input_overlay_buffer = new xrt::bo (*device,
+      (int) (kpriv-&gt;overlay_image_height * kpriv-&gt;overlay_image_width *
+          NV12_BYTE_SIZE),
+      XRT_BO_FLAGS_NONE, kernel-&gt;group_id (13));
+
+  /* Passing 18 to group_id indicates to create the bo on memory bank
+   * index attached to 18th argument of the kernel function
+   * which is a input_string argument in this example.
+   */
+
+  auto input_string = new
+      xrt::bo (*device, strlen (kpriv-&gt;input_string) + 1, XRT_BO_FLAGS_NONE,
+      kernel-&gt;group_id (18));
+
+  /* Passing 19 to group_id indicates to create the bo on memory bank
+   * index attached to 19th argument of the kernel function
+   * which is a output_string argument in this example.
+   */
+
+  auto output_string = new
+      xrt::bo (*device, strlen (kpriv-&gt;input_string) + 1, XRT_BO_FLAGS_NONE,
+      kernel-&gt;group_id (19));
+
+  /* Passing 13 to group_id indicates to create the bo on memory bank
+   * index attached to 13th argument of the kernel function
+   * which is a output_structure in this example.
+   */
+
+  auto xrt_output_structure = new
+      xrt::bo (*device, sizeof (VvasSampleStruct), XRT_BO_FLAGS_NONE,
+      kernel-&gt;group_id (21));
+
+  /* Hold the references to validate the kernel after its functionality is done */
+  kpriv-&gt;xrt_input_string = (void *) input_string;
+  kpriv-&gt;xrt_input_overlay_buffer = (void *) input_overlay_buffer;
+  kpriv-&gt;xrt_output_string = (void *) output_string;
+  kpriv-&gt;xrt_output_structure = (void *) xrt_output_structure;
+
+  /* Reset the buffer objects */
+  memset (input_overlay_buffer-&gt;map (), 0,
+      (int) (kpriv-&gt;overlay_image_height * kpriv-&gt;overlay_image_width *
+          NV12_BYTE_SIZE));
+  memset (xrt_output_structure-&gt;map (), 0, sizeof (VvasSampleStruct));
+  memset (input_string-&gt;map (), 0, strlen (kpriv-&gt;input_string) + 1);
+  memset (output_string-&gt;map (), 0, strlen (kpriv-&gt;input_string) + 1);
+
+  /* Fill the buffer objects with Input Data */
+  memcpy (input_overlay_buffer-&gt;map (), kpriv-&gt;input_overlay_image,
+      (int) kpriv-&gt;overlay_image_height * kpriv-&gt;overlay_image_width *
+      NV12_BYTE_SIZE);
+  memcpy (input_string-&gt;map (), kpriv-&gt;input_string,
+      strlen (kpriv-&gt;input_string) + 1);
+
+  /* Check whether x-position , y-position of overlay
+   * image exceeds the boundaries of input buffer
+   */
+  if (kpriv-&gt;overlay_image_xpos + kpriv-&gt;overlay_image_width &gt; width) {
+    kpriv-&gt;overlay_image_xpos = DEFAULT_X_POS;
+    LOG_MESSAGE (LOG_LEVEL_WARNING, kpriv-&gt;log_level,
+        &quot;Overlay xpos is making the image to overlay out of bounds so&quot;
+        &quot; taking default : %d&quot;, kpriv-&gt;overlay_image_xpos);
+  }
+
+  if (kpriv-&gt;overlay_image_ypos + kpriv-&gt;overlay_image_height &gt; width) {
+    kpriv-&gt;overlay_image_ypos = DEFAULT_Y_POS;
+    LOG_MESSAGE (LOG_LEVEL_WARNING, kpriv-&gt;log_level,
+        &quot;Overlay ypos is making the image to overlay out of bounds so&quot;
+        &quot; taking default : %d&quot;, kpriv-&gt;overlay_image_ypos);
+  }
+
+  /* Use the format specifier for kernel arguments as explained in the Execution APIs section
+   *   &quot;i&quot; : Signed int argument.
+   *   &quot;u&quot; : Unsigned int argument.
+   *   &quot;f&quot; : Float argument.
+   *   &quot;F&quot; : Double argument.
+   *   &quot;c&quot; : Char argument.
+   *   &quot;C&quot; : Unsigned char argument.
+   *   &quot;S&quot; : Short argument.
+   *   &quot;U&quot; : Unsigned short argument.
+   *   &quot;l&quot; : Unsigned long long argument.
+   *   &quot;d&quot; : Long long argument.
+   *   &quot;p&quot; : Any pointer argument.
+   *   &quot;b&quot; : Buffer Object argument.
+   *   &quot;s&quot; : If you want to skip the argument.
+   *
+   *   For all the arguments passing to vvas_xsample kernel, the format specifier string looks
+   *   like &quot;iufFcCSUldpSSpSSSSppSbp&quot;
+   */
+
+
+  /* Execute the kernel using vvas_kernel_start API.
+   * This API internally uses Xilinx Run Time (XRT) APIs to start the kernel.
+   */
+
+
+  ret =
+      vvas_kernel_start (handle, &quot;iufFcCSUldpSSpSSSSppSbp&quot;, i_value, ui_value,
+      f_value, d_value, c_value, uc_value, s_value, us_value, ul_value,
+      ll_value, input_buffer, height, width, input_overlay_buffer-&gt;address (),
+      kpriv-&gt;overlay_image_height, kpriv-&gt;overlay_image_width,
+      kpriv-&gt;overlay_image_xpos, kpriv-&gt;overlay_image_ypos,
+      input_string-&gt;address (), output_string-&gt;address (),
+      strlen (kpriv-&gt;input_string), xrt_output_structure, output_buffer);
+
+  LOG_MESSAGE (LOG_LEVEL_INFO, kpriv-&gt;log_level,
+      &quot;SAMPLE KERNEL : Kernel Started&quot;);
+
+  if (ret &lt; 0) {
+    LOG_MESSAGE (LOG_LEVEL_ERROR, kpriv-&gt;log_level,
+        &quot;SAMPLE KERNEL : failed to issue execute command&quot;);
+    return ret;
+  }
+  return 0;
+}
+</pre></div>
+</div>
+<p>To know whether the kernel has finished processing the current frame/buffer, infrastructure plug-in or an application will call <code class="docutils literal notranslate"><span class="pre">xlnx_kernel_done</span></code>. We must call <code class="docutils literal notranslate"><span class="pre">vvas_kernel_done</span></code> utility API to know if kernel has finished processing the current job in <code class="docutils literal notranslate"><span class="pre">xlnx_kernel_done</span></code>. When it returns true we can validate the functionality of the kernel.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int32_t xlnx_kernel_done (VVASKernel * handle)
+{
+  int ret;
+  vvasSampleKernelPriv *kpriv = (vvasSampleKernelPriv *) handle-&gt;kernel_priv;
+
+  /* Use the vvas_kernel_done API to check whether the IP or kernel has finished execution.
+   * This function internally loops for MAX_EXEC_WAIT_RETRY_CNT times
+   * until a timeout before returning an error.
+   */
+  ret = vvas_kernel_done (handle, VVAS_SAMPLE_KERNEL_TIMEOUT);
+  if (ret &lt; 0) {
+    LOG_MESSAGE (LOG_LEVEL_ERROR, kpriv-&gt;log_level,
+        &quot;ROTATE: failed to receive response from kernel&quot;);
+    return ret;
+  }
+  LOG_MESSAGE (LOG_LEVEL_INFO, kpriv-&gt;log_level,
+      &quot;SAMPLE KERNEL : Kernel Done&quot;);
+
+  /*
+   * Validating all the parameters from the kernel
+   */
+  xrt::bo * xrt_output_string = (xrt::bo *) kpriv-&gt;xrt_output_string;
+  xrt::bo * xrt_output_structure = (xrt::bo *) kpriv-&gt;xrt_output_structure;
+
+  /* One of the functionality of the vvas_xsample hard kernel is to
+   * increment the arguments (from 1 to 10) values by 1 and
+   *  store them in xrt_output_structure
+   */
+
+  /* Get the virtual address of the xrt_output_structure bo for validating all the data types */
+  VvasSampleStruct *output_structure =
+      (VvasSampleStruct *) xrt_output_structure-&gt;map ();
+  if (output_structure-&gt;i_value == (++kpriv-&gt;i_value)) {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level, &quot;int TEST PASSED&quot;);
+  } else {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level, &quot;int TEST FAILED&quot;);
+  }
+  if (output_structure-&gt;ui_value == (++kpriv-&gt;ui_value)) {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level,
+        &quot;unsigned int TEST PASSED&quot;);
+  } else {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level,
+        &quot;unsigned int TEST FAILED&quot;);
+  }
+  if (output_structure-&gt;f_value == (++kpriv-&gt;f_value)) {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level, &quot;float TEST PASSED&quot;);
+  } else {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level, &quot;float TEST FAILED&quot;);
+  }
+  if (output_structure-&gt;d_value == (++kpriv-&gt;d_value)) {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level, &quot;double TEST PASSED&quot;);
+  } else {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level, &quot;double TEST FAILED&quot;);
+  }
+  if (output_structure-&gt;c_value == (++kpriv-&gt;c_value)) {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level, &quot;char TEST PASSED&quot;);
+  } else {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level, &quot;char TEST FAILED&quot;);
+  }
+  if (output_structure-&gt;uc_value == (++kpriv-&gt;uc_value)) {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level,
+        &quot;unsigned char TEST PASSED&quot;);
+  } else {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level,
+        &quot;unsigned char TEST FAILED&quot;);
+  }
+  if (output_structure-&gt;s_value == (++kpriv-&gt;s_value)) {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level, &quot;short TEST PASSED&quot;);
+  } else {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level, &quot;short TEST FAILED&quot;);
+  }
+  if (output_structure-&gt;us_value == (++kpriv-&gt;us_value)) {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level,
+        &quot;unsigned short TEST PASSED&quot;);
+  } else {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level,
+        &quot;unsigned short TEST FAILED&quot;);
+  }
+  if (output_structure-&gt;ul_value == (++kpriv-&gt;ul_value)) {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level,
+        &quot;unsigned long long TEST PASSED&quot;);
+  } else {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level,
+        &quot;unsigned long long TEST FAILED&quot;);
+  }
+  if (output_structure-&gt;ll_value == (++kpriv-&gt;ll_value)) {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level, &quot;long long TEST PASSED&quot;);
+  } else {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level, &quot;long long TEST FAILED&quot;);
+  }
+  LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level, &quot;output string %s\n&quot;,
+      (char *) xrt_output_string-&gt;map ());
+  if (strcmp (kpriv-&gt;input_string, (char *) xrt_output_string-&gt;map ())) {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level, &quot; void TEST FAILED&quot;);
+  } else {
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv-&gt;log_level, &quot;void TEST PASSED&quot;);
+  }
+
+  /* delete the xrt bos which are allocated in xlnx_kernel_start */
+
+  delete (xrt::bo *) kpriv-&gt;xrt_input_string;
+  kpriv-&gt;xrt_input_string = NULL;
+
+  delete (xrt::bo *) kpriv-&gt;xrt_input_overlay_buffer;
+  kpriv-&gt;xrt_input_overlay_buffer = NULL;
+
+  delete xrt_output_string;
+  kpriv-&gt;xrt_output_string = NULL;
+
+  delete xrt_output_structure;
+  kpriv-&gt;xrt_output_structure = NULL;
+
+  return 0;
+}
+</pre></div>
+</div>
+<p>We must perform any clean-up, de-initialization tasks such as freeing private handles and internal memory allocation in <code class="docutils literal notranslate"><span class="pre">xlnx_kernel_deinit</span></code> API.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>uint32_t xlnx_kernel_deinit (VVASKernel * handle)
+{
+  vvasSampleKernelPriv *kpriv = (vvasSampleKernelPriv *) handle-&gt;kernel_priv;
+
+  /* Free private handle which was created during initialization */
+  if (kpriv)
+    free (kpriv);
+  handle-&gt;kernel_priv = NULL;
+
+  return 0;
+}
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The overlay image on the input buffer need to be visually verified.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="for_developers.html" class="btn btn-neutral float-left" title="Development Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../api_reference.html" class="btn btn-neutral float-right" title="VVAS C API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on October 7, 2022.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+<!-- Google Tag Manager -->
+<script type="text/plain" class="optanon-category-C0002">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5RHQV7');</script>
+<!-- End Google Tag Manager -->
+  <title>Index &mdash; Vitis Video Analytics SDK (VVAS) for Data Center 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="index.html" class="icon icon-home"> Vitis Video Analytics SDK (VVAS) for Data Center
+            <img src="_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="system_requirements.html">Software &amp; Hardware Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_tutorial.html">Quickstart Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features_and_capabilities.html">Features and Capabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VVAS GStreamer Interface</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/gstreamer_plugins/common_plugins.html">GStreamer Plug-ins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/meta_data/vvas_meta_data_structures.html">VVAS Meta Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/for_developers.html">Development Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VVAS Core API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">VVAS C API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_guide.html">VVAS C API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_examples.html">VVAS C API Samples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vvas_build.html">Build and install from the VVAS source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding_models.html">Supporting Deep Learning Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="card_management.html">Device Management &amp; Utility tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Vitis Video Analytics SDK (VVAS) for Data Center</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Index</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#_"><strong>_</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ 
+</div>
+<h2 id="_">_</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#c._VvasHashTable">_VvasHashTable (C struct)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#c._VvasMutex">_VvasMutex (C union)</a>
+</li>
+      <li><a href="api_reference.html#c._VvasTreeNode">_VvasTreeNode (C struct)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#c.Feature">Feature (C struct)</a>, <a href="common/meta_data/vvas_infer_prediction.html#c.Feature">[1]</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#c.feature_type">feature_type (C enum)</a>, <a href="common/meta_data/vvas_infer_prediction.html#c.feature_type">[1]</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="common/meta_data/vvas_gstinference_metadata.html#c.GstInferenceClassification">GstInferenceClassification (C struct)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="common/meta_data/vvas_gstinference_metadata.html#c.GstInferenceMeta">GstInferenceMeta (C struct)</a>
+</li>
+      <li><a href="common/meta_data/vvas_gstinference_metadata.html#c.GstInferencePrediction">GstInferencePrediction (C struct)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#c.Pointf">Pointf (C struct)</a>, <a href="common/meta_data/vvas_infer_prediction.html#c.Pointf">[1]</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#c.Pose14Pt">Pose14Pt (C struct)</a>, <a href="common/meta_data/vvas_infer_prediction.html#c.Pose14Pt">[1]</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#c.Reid">Reid (C struct)</a>, <a href="common/meta_data/vvas_infer_prediction.html#c.Reid">[1]</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#c.road_line_type">road_line_type (C enum)</a>, <a href="common/meta_data/vvas_infer_prediction.html#c.road_line_type">[1]</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#c.seg_type">seg_type (C enum)</a>, <a href="common/meta_data/vvas_infer_prediction.html#c.seg_type">[1]</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#c.Segmentation">Segmentation (C struct)</a>, <a href="common/meta_data/vvas_infer_prediction.html#c.Segmentation">[1]</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#c.TensorBuf">TensorBuf (C struct)</a>, <a href="common/meta_data/vvas_infer_prediction.html#c.TensorBuf">[1]</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#c.vvas_context_create">vvas_context_create (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_context_destroy">vvas_context_destroy (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_decoder_config">vvas_decoder_config (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_decoder_create">vvas_decoder_create (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_decoder_destroy">vvas_decoder_destroy (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_decoder_get_decoded_frame">vvas_decoder_get_decoded_frame (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_decoder_submit_frames">vvas_decoder_submit_frames (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_direct_equal">vvas_direct_equal (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_direct_hash">vvas_direct_hash (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_double_equal">vvas_double_equal (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_dpuinfer_create">vvas_dpuinfer_create (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_dpuinfer_destroy">vvas_dpuinfer_destroy (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_dpuinfer_get_config">vvas_dpuinfer_get_config (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_dpuinfer_process_frames">vvas_dpuinfer_process_frames (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_hash_table_contains">vvas_hash_table_contains (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_hash_table_destroy">vvas_hash_table_destroy (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_hash_table_foreach_remove">vvas_hash_table_foreach_remove (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_hash_table_insert">vvas_hash_table_insert (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_hash_table_iter_init">vvas_hash_table_iter_init (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_hash_table_iter_next">vvas_hash_table_iter_next (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_hash_table_lookup">vvas_hash_table_lookup (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_hash_table_new">vvas_hash_table_new (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_hash_table_new_full">vvas_hash_table_new_full (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_hash_table_remove">vvas_hash_table_remove (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_hash_table_remove_all">vvas_hash_table_remove_all (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_hash_table_size">vvas_hash_table_size (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_hash_table_unref">vvas_hash_table_unref (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_inferclassification_copy">vvas_inferclassification_copy (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_inferclassification_free">vvas_inferclassification_free (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_inferclassification_new">vvas_inferclassification_new (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_inferclassification_to_string">vvas_inferclassification_to_string (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_inferprediction_append">vvas_inferprediction_append (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_inferprediction_copy">vvas_inferprediction_copy (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_inferprediction_free">vvas_inferprediction_free (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_inferprediction_get_prediction_id">vvas_inferprediction_get_prediction_id (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_inferprediction_new">vvas_inferprediction_new (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_inferprediction_node_copy">vvas_inferprediction_node_copy (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_inferprediction_to_string">vvas_inferprediction_to_string (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_int64_equal">vvas_int64_equal (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_int_equal">vvas_int_equal (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_int_hash">vvas_int_hash (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_list_append">vvas_list_append (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_list_copy_deep">vvas_list_copy_deep (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_list_copy_func">vvas_list_copy_func (C macro)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_list_find">vvas_list_find (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_list_first">vvas_list_first (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_list_foreach">vvas_list_foreach (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_list_free">vvas_list_free (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_list_free_full">vvas_list_free_full (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_list_free_notify">vvas_list_free_notify (C macro)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_list_length">vvas_list_length (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_list_nth_data">vvas_list_nth_data (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_list_remove">vvas_list_remove (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_log">vvas_log (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_memory_alloc">vvas_memory_alloc (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_memory_alloc_from_data">vvas_memory_alloc_from_data (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_memory_free">vvas_memory_free (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_memory_get_metadata">vvas_memory_get_metadata (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_memory_map">vvas_memory_map (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_memory_set_metadata">vvas_memory_set_metadata (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_memory_unmap">vvas_memory_unmap (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_metaaffixer_create">vvas_metaaffixer_create (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_metaaffixer_destroy">vvas_metaaffixer_destroy (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_metaaffixer_get_frame_meta">vvas_metaaffixer_get_frame_meta (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_metaaffixer_submit_infer_meta">vvas_metaaffixer_submit_infer_meta (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_metaconvert_create">vvas_metaconvert_create (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_metaconvert_destroy">vvas_metaconvert_destroy (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_metaconvert_prepare_overlay_metadata">vvas_metaconvert_prepare_overlay_metadata (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_mutex_clear">vvas_mutex_clear (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_mutex_init">vvas_mutex_init (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_mutex_lock">vvas_mutex_lock (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_mutex_trylock">vvas_mutex_trylock (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_mutex_unlock">vvas_mutex_unlock (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_overlay_process_frame">vvas_overlay_process_frame (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_overlay_shape_info_copy">vvas_overlay_shape_info_copy (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_overlay_shape_info_free">vvas_overlay_shape_info_free (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_overlay_shape_info_init">vvas_overlay_shape_info_init (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_parser_create">vvas_parser_create (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_parser_destroy">vvas_parser_destroy (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_parser_get_au">vvas_parser_get_au (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_postprocess_create">vvas_postprocess_create (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_postprocess_destroy">vvas_postprocess_destroy (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_postprocess_tensor">vvas_postprocess_tensor (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_queue_clear">vvas_queue_clear (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_queue_clear_full">vvas_queue_clear_full (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_queue_dequeue">vvas_queue_dequeue (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_queue_dequeue_noblock">vvas_queue_dequeue_noblock (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_queue_dequeue_timeout">vvas_queue_dequeue_timeout (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_queue_enqueue">vvas_queue_enqueue (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_queue_enqueue_noblock">vvas_queue_enqueue_noblock (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_queue_for_each">vvas_queue_for_each (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_queue_free">vvas_queue_free (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_queue_free_full">vvas_queue_free_full (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_queue_get_length">vvas_queue_get_length (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_queue_is_empty">vvas_queue_is_empty (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_queue_new">vvas_queue_new (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_scaler_channel_add">vvas_scaler_channel_add (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_scaler_create">vvas_scaler_create (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_scaler_destroy">vvas_scaler_destroy (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_scaler_process_frame">vvas_scaler_process_frame (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_scaler_prop_get">vvas_scaler_prop_get (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_scaler_prop_set">vvas_scaler_prop_set (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_scaler_set_filter_coef">vvas_scaler_set_filter_coef (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_str_equal">vvas_str_equal (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_str_hash">vvas_str_hash (C function)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#c.vvas_tracker_create">vvas_tracker_create (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_tracker_destroy">vvas_tracker_destroy (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_tracker_process">vvas_tracker_process (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_treenode_append">vvas_treenode_append (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_treenode_copy_deep">vvas_treenode_copy_deep (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_treenode_copy_func">vvas_treenode_copy_func (C macro)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_treenode_destroy">vvas_treenode_destroy (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_treenode_get_depth">vvas_treenode_get_depth (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_treenode_get_max_height">vvas_treenode_get_max_height (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_treenode_get_n_childnodes">vvas_treenode_get_n_childnodes (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_treenode_insert_before">vvas_treenode_insert_before (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_treenode_new">vvas_treenode_new (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_treenode_traverse">vvas_treenode_traverse (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_treenode_traverse_child">vvas_treenode_traverse_child (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_treenode_traverse_child_func">vvas_treenode_traverse_child_func (C macro)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_treenode_traverse_func">vvas_treenode_traverse_func (C macro)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_video_frame_alloc">vvas_video_frame_alloc (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_video_frame_alloc_from_data">vvas_video_frame_alloc_from_data (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_video_frame_free">vvas_video_frame_free (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_video_frame_get_metadata">vvas_video_frame_get_metadata (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_video_frame_get_videoinfo">vvas_video_frame_get_videoinfo (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_video_frame_map">vvas_video_frame_map (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_video_frame_set_metadata">vvas_video_frame_set_metadata (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.vvas_video_frame_unmap">vvas_video_frame_unmap (C function)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasAllocationFlags">VvasAllocationFlags (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasAllocationInfo">VvasAllocationInfo (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasAllocationType">VvasAllocationType (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasBoundingBox">VvasBoundingBox (C struct)</a>, <a href="common/meta_data/vvas_infer_prediction.html#c.VvasBoundingBox">[1]</a>
+</li>
+      <li><a href="api_reference.html#c.VvasClass">VvasClass (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasCodecType">VvasCodecType (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasColorInfo">VvasColorInfo (C struct)</a>, <a href="common/meta_data/vvas_infer_classification.html#c.VvasColorInfo">[1]</a>
+</li>
+      <li><a href="api_reference.html#c.VvasContext">VvasContext (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasDataMapFlags">VvasDataMapFlags (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasDataSyncFlags">VvasDataSyncFlags (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasDecoder">VvasDecoder (C type)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasDecoderInCfg">VvasDecoderInCfg (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasDecoderOutCfg">VvasDecoderOutCfg (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasDestroyNotify">VvasDestroyNotify (C macro)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasDpuInfer">VvasDpuInfer (C type)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasDpuInferConf">VvasDpuInferConf (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasEqualFunc">VvasEqualFunc (C macro)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasFilterObjectInfo">VvasFilterObjectInfo (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasFontType">VvasFontType (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasFrameInfo">VvasFrameInfo (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasFunc">VvasFunc (C macro)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasHashFunc">VvasHashFunc (C macro)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasHashTableIter">VvasHashTableIter (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasHRFunc">VvasHRFunc (C macro)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasInferClassification">VvasInferClassification (C struct)</a>, <a href="common/meta_data/vvas_infer_classification.html#c.VvasInferClassification">[1]</a>
+</li>
+      <li><a href="api_reference.html#c.VvasInferPrediction">VvasInferPrediction (C struct)</a>, <a href="common/meta_data/vvas_infer_prediction.html#c.VvasInferPrediction">[1]</a>
+</li>
+      <li><a href="api_reference.html#c.VvasList">VvasList (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasLogLevel">VvasLogLevel (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasMemoryDataFreeCB">VvasMemoryDataFreeCB (C macro)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasMemoryMapInfo">VvasMemoryMapInfo (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasMetaAffixerRespCode">VvasMetaAffixerRespCode (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasMetaConvertConfig">VvasMetaConvertConfig (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasMetadata">VvasMetadata (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasModelConf">VvasModelConf (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasMutex">VvasMutex (C type)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasOverlayArrowDirection">VvasOverlayArrowDirection (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasOverlayArrowParams">VvasOverlayArrowParams (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasOverlayCircleParams">VvasOverlayCircleParams (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasOverlayClockInfo">VvasOverlayClockInfo (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasOverlayColorData">VvasOverlayColorData (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasOverlayCoordinates">VvasOverlayCoordinates (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasOverlayFontData">VvasOverlayFontData (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasOverlayFrameInfo">VvasOverlayFrameInfo (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasOverlayLineParams">VvasOverlayLineParams (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasOverlayPolygonParams">VvasOverlayPolygonParams (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasOverlayRectParams">VvasOverlayRectParams (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasOverlayShapeInfo">VvasOverlayShapeInfo (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasOverlayTextParams">VvasOverlayTextParams (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasParser">VvasParser (C type)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasParserFrameInfo">VvasParserFrameInfo (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasPostProcessConf">VvasPostProcessConf (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasPostProcessor">VvasPostProcessor (C type)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasQueue">VvasQueue (C type)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasQueueDestroyNotify">VvasQueueDestroyNotify (C macro)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasQueueFunc">VvasQueueFunc (C macro)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasReturnType">VvasReturnType (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasRGBColor">VvasRGBColor (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasScaler">VvasScaler (C type)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasScalerCoefLoadType">VvasScalerCoefLoadType (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasScalerFilterCoefType">VvasScalerFilterCoefType (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasScalerFilterTaps">VvasScalerFilterTaps (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasScalerHorizontalAlign">VvasScalerHorizontalAlign (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasScalerMode">VvasScalerMode (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasScalerParam">VvasScalerParam (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasScalerPpe">VvasScalerPpe (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasScalerProp">VvasScalerProp (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasScalerRect">VvasScalerRect (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasScalerType">VvasScalerType (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasScalerVerticalAlign">VvasScalerVerticalAlign (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasTrackerAlgoType">VvasTrackerAlgoType (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasTrackerconfig">VvasTrackerconfig (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasTrackerMatchColorSpace">VvasTrackerMatchColorSpace (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasTrackerSearchScale">VvasTrackerSearchScale (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasTreeNodeTraverseFlags">VvasTreeNodeTraverseFlags (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasTreeNodeTraverseType">VvasTreeNodeTraverseType (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasVideoAlignment">VvasVideoAlignment (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasVideoFormat">VvasVideoFormat (C enum)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasVideoFrameDataFreeCB">VvasVideoFrameDataFreeCB (C macro)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasVideoFrameMapInfo">VvasVideoFrameMapInfo (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasVideoInfo">VvasVideoInfo (C struct)</a>
+</li>
+      <li><a href="api_reference.html#c.VvasVideoPlaneInfo">VvasVideoPlaneInfo (C struct)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on October 7, 2022.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

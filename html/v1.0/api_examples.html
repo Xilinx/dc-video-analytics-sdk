@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+<!-- Google Tag Manager -->
+<script type="text/plain" class="optanon-category-C0002">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5RHQV7');</script>
+<!-- End Google Tag Manager -->
+  <title>VVAS C API Samples &mdash; Vitis Video Analytics SDK (VVAS) for Data Center 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Build and install from the VVAS source" href="vvas_build.html" />
+    <link rel="prev" title="VVAS C API Guide" href="api_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="index.html" class="icon icon-home"> Vitis Video Analytics SDK (VVAS) for Data Center
+            <img src="_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="system_requirements.html">Software &amp; Hardware Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_tutorial.html">Quickstart Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features_and_capabilities.html">Features and Capabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VVAS GStreamer Interface</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/gstreamer_plugins/common_plugins.html">GStreamer Plug-ins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/meta_data/vvas_meta_data_structures.html">VVAS Meta Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/for_developers.html">Development Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VVAS Core API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">VVAS C API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_guide.html">VVAS C API Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">VVAS C API Samples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sample-video-preparation">Sample Video Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#single-stream-car-classification-pipeline-sample-application">Single Stream Car Classification Pipeline Sample Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multiple-streams-car-classification-pipeline-sample-application">Multiple Streams Car Classification Pipeline Sample Application</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vvas_build.html">Build and install from the VVAS source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding_models.html">Supporting Deep Learning Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="card_management.html">Device Management &amp; Utility tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Vitis Video Analytics SDK (VVAS) for Data Center</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>VVAS C API Samples</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api_examples.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="vvas-c-api-samples">
+<span id="api-examples-rst"></span><h1>VVAS C API Samples<a class="headerlink" href="#vvas-c-api-samples" title="Permalink to this heading">¶</a></h1>
+<p>The VVAS release package contains two sample application code demonstrating the usage of the VVAS Core APIs.</p>
+<ul class="simple">
+<li><p>Single Stream Car Classification Pipeline Sample Application</p></li>
+<li><p>Multiple Streams Car Classification Pipeline Sample Application</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These sample applications are merely used to help you to understand the VVAS Core APIs functionalities and how they can be used in code. For that purpose, the implementations such as control flow and data structures used in these applications are just for the sake of API usage demonstration, and not intended to demonstrate an ideal optimized implementation. You, as an application developer, can use your desired control-flow/data structure implementation to use the VVAS Core APIs based on your application requirements.</p>
+</div>
+<div class="section" id="sample-video-preparation">
+<h2>Sample Video Preparation<a class="headerlink" href="#sample-video-preparation" title="Permalink to this heading">¶</a></h2>
+<p>To run the sample application you need a sample video of moving cars.</p>
+<ul class="simple">
+<li><p>Download this free video from <a class="reference external" href="https://pixabay.com/videos/traffic-cars-road-street-56696/">https://pixabay.com/videos/traffic-cars-road-street-56696/</a>  in 1920x1080 format.</p></li>
+<li><p>Convert the mp4 video file to h264 file using the below command</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>gst-launch-1.0 -v filesrc <span class="nv">location</span><span class="o">=</span>/workspace/traffic-56696.mp4 ! <span class="se">\</span>
+                  qtdemux ! h264parse ! video/x-h264,stream-format<span class="o">=</span>byte-stream ! <span class="se">\</span>
+                  filesink <span class="nv">location</span><span class="o">=</span>/workspace/Test.h264
+</pre></div>
+</div>
+</div>
+<div class="section" id="single-stream-car-classification-pipeline-sample-application">
+<h2>Single Stream Car Classification Pipeline Sample Application<a class="headerlink" href="#single-stream-car-classification-pipeline-sample-application" title="Permalink to this heading">¶</a></h2>
+<p><strong>Sample application code path</strong>:</p>
+<p>The sample application code is present in the <a class="reference external" href="https://github.com/Xilinx/vvas-core/blob/master/test/app/test_cascade_yolov3_3xresnet.cpp">file test_cascade_yolov3_3xresnet.cpp at VVAS github repo.</a></p>
+<p><strong>Running the application</strong></p>
+<p>The application code is already compiled inside the docker environment. To run the application you can use the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>test_video_ml -i /workspace/Test.h264 <span class="se">\</span>
+              -j /opt/xilinx/vvas/share/cascade_yolov3_3xresnet18/cascade_yolov3_3xresnet18.json <span class="se">\</span>
+              -x /opt/xilinx/xclbin/v70.xclbin <span class="se">\</span>
+              -d <span class="m">0</span> <span class="se">\</span>
+              -n <span class="s2">&quot;kernel_vdu_decoder:{kernel_vdu_decoder_0}&quot;</span>
+</pre></div>
+</div>
+<p><strong>Standalone compilation of the sample application</strong></p>
+<p>To compile this sample application standalone you can use the following Makefile (<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">app</span></code>)</p>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">APP</span> <span class="o">=</span>  test_video_ml
+<span class="nv">APP_SOURCE_FILES</span>  <span class="o">=</span> test_cascade_yolov3_3xresnet.cpp
+
+<span class="nv">XRT_PKG_CFG</span><span class="o">=</span><span class="sb">`</span>pkg-config --cflags --libs xrt<span class="sb">`</span>
+<span class="nv">VVAS_UTILS_PKG_CFG</span><span class="o">=</span><span class="sb">`</span>pkg-config --cflags --libs vvas-utils<span class="sb">`</span>
+<span class="nv">VVAS_CORE_PKG_CFG</span><span class="o">=</span><span class="sb">`</span>pkg-config --cflags --libs vvas-core<span class="sb">`</span>
+<span class="nv">VVAS_CORE_MACROS</span><span class="o">=</span>-DVVAS_GLIB_UTILS -DXLNX_PCIe_PLATFORM -DXLNX_V70_PLATFORM
+
+<span class="nf">${APP}</span><span class="o">:</span> ${<span class="n">APP_SOURCE_FILES</span>}
+     g++ -Wall -g <span class="k">$(</span>APP_SOURCE_FILES<span class="k">)</span> <span class="k">$(</span>XRT_PKG_CFG<span class="k">)</span> <span class="k">$(</span>VVAS_UTILS_PKG_CFG<span class="k">)</span> <span class="k">$(</span>VVAS_CORE_PKG_CFG<span class="k">)</span> <span class="k">$(</span>VVAS_CORE_MACROS<span class="k">)</span> -o <span class="k">$(</span>APP<span class="k">)</span>
+
+<span class="nf">app</span><span class="o">:</span>
+     make <span class="si">${</span><span class="nv">APP</span><span class="si">}</span>
+
+<span class="nf">clean</span><span class="o">:</span>
+     rm <span class="si">${</span><span class="nv">APP</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="multiple-streams-car-classification-pipeline-sample-application">
+<h2>Multiple Streams Car Classification Pipeline Sample Application<a class="headerlink" href="#multiple-streams-car-classification-pipeline-sample-application" title="Permalink to this heading">¶</a></h2>
+<p><strong>Sample application code path</strong>:</p>
+<p>The sample application code is present in the <a class="reference external" href="https://github.com/Xilinx/vvas-core/blob/master/test/app/test_cascade_yolov3_3xresnet_mt.cpp">file test_cascade_yolov3_3xresnet_mt.cpp at VVAS github repo.</a></p>
+<p><strong>Running the application</strong>: The application code is already compiled inside the docker environment. To run the application you can use the following command:</p>
+<p>Before running the application update the <code class="docutils literal notranslate"><span class="pre">/opt/xilinx/vvas/share/cascade_yolov3_3xresnet18/cascade_yolov3_3xresnet18.json</span></code> with the path of downloaded sample video files. We will take 16 input streams with the same video.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&quot;input-streams&quot;:[
+                 &quot;/workspace/Test.h264&quot;,
+                 &quot;/workspace/Test.h264&quot;,
+                 &quot;/workspace/Test.h264&quot;,
+                 &quot;/workspace/Test.h264&quot;,
+                 &quot;/workspace/Test.h264&quot;,
+                 &quot;/workspace/Test.h264&quot;,
+                 &quot;/workspace/Test.h264&quot;,
+                 &quot;/workspace/Test.h264&quot;,
+                 &quot;/workspace/Test.h264&quot;,
+                 &quot;/workspace/Test.h264&quot;,
+                 &quot;/workspace/Test.h264&quot;,
+                 &quot;/workspace/Test.h264&quot;,
+                 &quot;/workspace/Test.h264&quot;,
+                 &quot;/workspace/Test.h264&quot;,
+                 &quot;/workspace/Test.h264&quot;,
+                 &quot;/workspace/Test.h264&quot;
+              ]
+</pre></div>
+</div>
+<p>Run the application using the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>test_video_ml_mt -j /opt/xilinx/vvas/share/cascade_yolov3_3xresnet18/cascade_yolov3_3xresnet18.json
+</pre></div>
+</div>
+<p><strong>Standalone compilation of the sample application</strong></p>
+<p>To compile this sample application standalone you can use the following Makefile (<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">app</span></code>)</p>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">APP</span> <span class="o">=</span>  test_video_ml_mt
+<span class="nv">APP_SOURCE_FILES</span>  <span class="o">=</span> test_cascade_yolov3_3xresnet_mt.cpp
+
+<span class="nv">XRT_PKG_CFG</span><span class="o">=</span><span class="sb">`</span>pkg-config --cflags --libs xrt<span class="sb">`</span>
+<span class="nv">VVAS_UTILS_PKG_CFG</span><span class="o">=</span><span class="sb">`</span>pkg-config --cflags --libs vvas-utils<span class="sb">`</span>
+<span class="nv">VVAS_CORE_PKG_CFG</span><span class="o">=</span><span class="sb">`</span>pkg-config --cflags --libs vvas-core<span class="sb">`</span>
+<span class="nv">VVAS_CORE_MACROS</span><span class="o">=</span>-DVVAS_GLIB_UTILS -DXLNX_PCIe_PLATFORM -DXLNX_V70_PLATFORM
+
+<span class="nf">${APP}</span><span class="o">:</span> ${<span class="n">APP_SOURCE_FILES</span>}
+       g++ -Wall -g <span class="k">$(</span>APP_SOURCE_FILES<span class="k">)</span> <span class="k">$(</span>XRT_PKG_CFG<span class="k">)</span> <span class="k">$(</span>VVAS_UTILS_PKG_CFG<span class="k">)</span> <span class="k">$(</span>VVAS_CORE_PKG_CFG<span class="k">)</span> <span class="k">$(</span>VVAS_CORE_MACROS<span class="k">)</span> -o <span class="k">$(</span>APP<span class="k">)</span> -pthread -lvvascore_pool-1.0
+
+<span class="nf">app</span><span class="o">:</span>
+       make <span class="si">${</span><span class="nv">APP</span><span class="si">}</span>
+
+<span class="nf">clean</span><span class="o">:</span>
+       rm <span class="si">${</span><span class="nv">APP</span><span class="si">}</span>
+</pre></div>
+</div>
+<p><strong>Description of the sample application</strong></p>
+<p>This sample application constructs a car classification pipeline for 16 streams, where 4 streams are fed to each funnel. This application will show car classification data in Car Color, Make and Type order.</p>
+<p>Application displays performance in frames per second (FPS) like the GStreamer pipeline.</p>
+<p>Below is a sample FPS log.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="m">0</span>:00:34.009185754 <span class="o">[</span>Sink_2.0<span class="o">]</span> rendered: <span class="m">162</span>, current FPS: <span class="m">16</span>.79, average FPS: <span class="m">16</span>.79
+<span class="m">0</span>:00:34.009219157 <span class="o">[</span>Sink_2.1<span class="o">]</span> rendered: <span class="m">144</span>, current FPS: <span class="m">16</span>.32, average FPS: <span class="m">16</span>.32
+<span class="m">0</span>:00:34.009236560 <span class="o">[</span>Sink_2.2<span class="o">]</span> rendered: <span class="m">158</span>, current FPS: <span class="m">16</span>.37, average FPS: <span class="m">16</span>.37
+<span class="m">0</span>:00:34.009247114 <span class="o">[</span>Sink_2.3<span class="o">]</span> rendered: <span class="m">152</span>, current FPS: <span class="m">15</span>.89, average FPS: <span class="m">15</span>.89
+<span class="m">0</span>:00:34.021963566 <span class="o">[</span>Sink_3.0<span class="o">]</span> rendered: <span class="m">158</span>, current FPS: <span class="m">16</span>.49, average FPS: <span class="m">16</span>.49
+<span class="m">0</span>:00:34.022015281 <span class="o">[</span>Sink_3.1<span class="o">]</span> rendered: <span class="m">166</span>, current FPS: <span class="m">17</span>.21, average FPS: <span class="m">17</span>.21
+<span class="m">0</span>:00:34.022030713 <span class="o">[</span>Sink_3.2<span class="o">]</span> rendered: <span class="m">147</span>, current FPS: <span class="m">15</span>.55, average FPS: <span class="m">15</span>.55
+<span class="m">0</span>:00:34.022044064 <span class="o">[</span>Sink_3.3<span class="o">]</span> rendered: <span class="m">146</span>, current FPS: <span class="m">15</span>.44, average FPS: <span class="m">15</span>.44
+<span class="m">0</span>:00:34.000343033 <span class="o">[</span>Sink_0.0<span class="o">]</span> rendered: <span class="m">154</span>, current FPS: <span class="m">16</span>.22, average FPS: <span class="m">16</span>.22
+<span class="m">0</span>:00:34.000447190 <span class="o">[</span>Sink_0.1<span class="o">]</span> rendered: <span class="m">144</span>, current FPS: <span class="m">16</span>.08, average FPS: <span class="m">16</span>.08
+<span class="m">0</span>:00:34.000478190 <span class="o">[</span>Sink_0.2<span class="o">]</span> rendered: <span class="m">165</span>, current FPS: <span class="m">17</span>.13, average FPS: <span class="m">17</span>.13
+<span class="m">0</span>:00:34.000499755 <span class="o">[</span>Sink_0.3<span class="o">]</span> rendered: <span class="m">162</span>, current FPS: <span class="m">16</span>.82, average FPS: <span class="m">16</span>.82
+</pre></div>
+</div>
+<p>Considering the last line of the above log,</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0:00:34.000499755</span></code> : This number shows the relative time since the application is started</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Sink_0.3</span></code>: Shows the sink number. The first number (<code class="docutils literal notranslate"><span class="pre">0</span></code>) shows the funnel number and 2nd number (<code class="docutils literal notranslate"><span class="pre">3</span></code>) shows the sink in that funnel.</p></li>
+</ul>
+<p>Unlike GStreamer pipeline, this application does not have limitation that all streams should have same caps. Users can have streams with different resolution, framerate, and different video codec format as well.</p>
+<p>This sample application supports following video file name extensions</p>
+<ul class="simple">
+<li><p>For H.264: <code class="docutils literal notranslate"><span class="pre">.h264</span></code>, <code class="docutils literal notranslate"><span class="pre">.264</span></code>, <code class="docutils literal notranslate"><span class="pre">.avc</span></code></p></li>
+<li><p>For H.265: <code class="docutils literal notranslate"><span class="pre">.h265</span></code>, <code class="docutils literal notranslate"><span class="pre">.265</span></code>, <code class="docutils literal notranslate"><span class="pre">.hevc</span></code></p></li>
+</ul>
+<p>The input argument <code class="docutils literal notranslate"><span class="pre">cascade_yolov3_3xresnet18.json</span></code> is the master json file, it has all the configuration needed to run this application. The JSON file content is as below</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+&quot;yolov3-config-path&quot;:&quot;/opt/xilinx/vvas/share/cascade_yolov3_3xresnet18/yolov3_voc_tf.json&quot;,
+&quot;resnet18-carmake-config-path&quot;:&quot;/opt/xilinx/vvas/share/cascade_yolov3_3xresnet18/resnet18_vehicle_make.json&quot;,
+&quot;resnet18-cartype-config-path&quot;:&quot;/opt/xilinx/vvas/share/cascade_yolov3_3xresnet18/resnet18_vehicle_type.json&quot;,
+&quot;resnet18-carcolor-config-path&quot;:&quot;/opt/xilinx/vvas/share/cascade_yolov3_3xresnet18/resnet18_vehicle_color.json&quot;,
+&quot;metaconvert-config-path&quot;:&quot;/opt/xilinx/vvas/share/cascade_yolov3_3xresnet18/metaconvert_config.json&quot;,
+&quot;xclbin-location&quot;:&quot;/opt/xilinx/xclbin/v70.xclbin&quot;,
+&quot;dev-idx&quot; : 0,
+&quot;additional-decoder-buffers&quot;: 14,
+&quot;batch-timeout&quot;: 400,
+&quot;fps-display-interval&quot;: 5,
+&quot;repeat-count&quot;:1,
+&quot;sink-type&quot;:0,
+&quot;log-level&quot;:0,
+&quot;input-streams&quot;:[
+   &quot;/workspace/Test.h264&quot;,
+   &quot;/workspace/Test.h264&quot;,
+   &quot;/workspace/Test.h264&quot;,
+   &quot;/workspace/Test.h264&quot;,
+   &quot;/workspace/Test.h264&quot;,
+   &quot;/workspace/Test.h264&quot;,
+   &quot;/workspace/Test.h264&quot;,
+   &quot;/workspace/Test.h264&quot;,
+   &quot;/workspace/Test.h264&quot;,
+   &quot;/workspace/Test.h264&quot;,
+   &quot;/workspace/Test.h264&quot;,
+   &quot;/workspace/Test.h264&quot;,
+   &quot;/workspace/Test.h264&quot;,
+   &quot;/workspace/Test.h264&quot;,
+   &quot;/workspace/Test.h264&quot;,
+   &quot;/workspace/Test.h264&quot;
+]
+}
+</pre></div>
+</div>
+<p>Parameters in the master JSON file passed to the sample application</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">yolov3-config-path</span></code>: Yolov3 inference configuration file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resnet18-carmake-config-path</span></code>: Car Make inference configuration file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resnet18-cartype-config-path</span></code>: Car Type inference configuration file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resnet18-carcolor-config-path</span></code>: Car Color inference configuration file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">metaconvert-config-path</span></code>: Meta convert configuration file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xclbin-location</span></code>: XCLBIN location.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dev-idx</span></code>: Device index</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">additional-decoder-buffers</span></code>: Additional decoder output buffers to allocate to run pipeline efficiently. Refer section Calculating Decoder output buffers for more details. The default value in the JSON is calculated for playing 4 streams in one funnel.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">batch-timeout</span></code>: Maximum time (in milliseconds) to wait for inference batch to be formed before submitting the batch for inference. The default value is calculated based on batch size of 14 and 30 FPS video.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repeat-count</span></code>: Number of times each stream should be repeated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fps-display-interval</span></code>: FPS display interval in seconds (Minimum 1 sec), Default 5 seconds</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sink-type</span></code>: Sink type, 0 - Fake sink, 1 – File sink</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">log-level</span></code>: Logging level 0 -3 (0 – Error, 1 – Warning, 2 – Info, 3 – Debug)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input-streams</span></code>: An array of input streams. Update default strings in above configuration file with the available H264/H265 files.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api_guide.html" class="btn btn-neutral float-left" title="VVAS C API Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vvas_build.html" class="btn btn-neutral float-right" title="Build and install from the VVAS source" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on October 7, 2022.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

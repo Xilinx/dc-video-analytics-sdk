@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+<!-- Google Tag Manager -->
+<script type="text/plain" class="optanon-category-C0002">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5RHQV7');</script>
+<!-- End Google Tag Manager -->
+  <title>Vitis Video Analytics SDK (VVAS) for Data Center &mdash; Vitis Video Analytics SDK (VVAS) for Data Center 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Software &amp; Hardware Requirements" href="system_requirements.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="#" class="icon icon-home"> Vitis Video Analytics SDK (VVAS) for Data Center
+            <img src="_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="system_requirements.html">Software &amp; Hardware Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_tutorial.html">Quickstart Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features_and_capabilities.html">Features and Capabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VVAS GStreamer Interface</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/gstreamer_plugins/common_plugins.html">GStreamer Plug-ins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/meta_data/vvas_meta_data_structures.html">VVAS Meta Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/for_developers.html">Development Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VVAS Core API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">VVAS C API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_guide.html">VVAS C API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_examples.html">VVAS C API Samples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vvas_build.html">Build and install from the VVAS source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding_models.html">Supporting Deep Learning Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="card_management.html">Device Management &amp; Utility tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Vitis Video Analytics SDK (VVAS) for Data Center</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>Vitis Video Analytics SDK (VVAS) for Data Center</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="vitis-video-analytics-sdk-vvas-for-data-center">
+<h1>Vitis Video Analytics SDK (VVAS) for Data Center<a class="headerlink" href="#vitis-video-analytics-sdk-vvas-for-data-center" title="Permalink to this heading">¶</a></h1>
+<p>The Vitis Video Analytics SDK for Data Center (also known as VVAS for Data Center) is a complete software toolkit providing a fast and easy way to develop AI-powered video analytics applications targeting AMD platforms such as the Alveo™ V70 accelerator card. It is an ideal choice for applications such as traffic analysis and pedestrians recognition in smart cities, health and safety monitoring in hospitals, self-checkout, retail analytics, defect detection, and many others.</p>
+<p>With the Vitis Video Analytics SDK for Data Center, developers can use GStreamer or C APIs to create streaming pipelines integrating neural networks trained in TensorFlow or PyTorch and compiled with the Vitis™ AI development platform.</p>
+<img alt="_images/vvas_landing.PNG" src="_images/vvas_landing.PNG" />
+<p>The Vitis Video Analytics SDK provides GStreamer plug-ins and C APIs to very easily interact with optimized hardware accelerators for tasks such as video decoding, resizing, color space conversion, and AI inferencing.</p>
+<p>By performing all the compute-heavy operations of the streaming pipeline in optimized hardware accelerators, the Vitis Video Analytics SDK delivers best-in-class performance for video analytics applications.</p>
+<div class="section" id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="getting-started">
+<h3>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>System &amp; Hardware Requirements</strong>: Refer to <a class="reference internal" href="system_requirements.html"><span class="doc">Software &amp; Hardware Requirements</span></a> page to ensure your host system compatibility to use current VVAS Data Center solution.</p></li>
+<li><p><strong>Installation Guide</strong>: Refer to <a class="reference internal" href="installation.html"><span class="doc">Installation Guide</span></a> to follow step-by-step directions to install device, runtime, and VVAS related packages.</p></li>
+<li><p><strong>Quickstart tutorial</strong>: Refer to <a class="reference internal" href="getting_started_tutorial.html"><span class="doc">Quickstart Tutorial</span></a> page to learn the core VVAS GStreamer plug-ins and their usability to built video analytics pipeline.</p></li>
+<li><p><strong>Features and Capabilities</strong>: V70 Versal ACAP offers best-in-class hardware for efficient video analytic task. To know the details spec, features of VDU, ABR Scaler, AI engine processor and its supported models (for deep learning inference) please refer <a class="reference internal" href="features_and_capabilities.html"><span class="doc">Features and Capabilities</span></a> page.</p></li>
+</ul>
+</div>
+<div class="section" id="vvas-gstreamer-interface">
+<h3>VVAS GStreamer Interface<a class="headerlink" href="#vvas-gstreamer-interface" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>GStreamer Plug-ins</strong>: For complete refernce of VVAS GStreamer plugins, their parameters, capabiltiies refer <a class="reference internal" href="common/gstreamer_plugins/common_plugins.html"><span class="doc">GStreamer Plug-ins</span></a> page.</p></li>
+<li><p><strong>VVAS Meta Data Structures</strong>: Refer to the <a class="reference internal" href="common/meta_data/vvas_meta_data_structures.html"><span class="doc">VVAS Meta Data Structures</span></a> page to understand various GStreamer metadata structures defined by VVAS infrastructure.</p></li>
+</ul>
+</div>
+<div class="section" id="vvas-core-api">
+<h3>VVAS Core API<a class="headerlink" href="#vvas-core-api" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>VVAS C API Reference</strong>: For VVAS C API Reference manual, refer <a class="reference internal" href="api_reference.html"><span class="doc">VVAS C API Reference</span></a> page.</p></li>
+<li><p><strong>VVAS C API Guide</strong>: For VVAS C API general usage guideline for application development, refer <a class="reference internal" href="api_guide.html"><span class="doc">VVAS C API Guide</span></a> page.</p></li>
+<li><p><strong>VVAS C API Samples</strong>: For VVAS C API based sample applications refer <a class="reference internal" href="api_examples.html"><span class="doc">VVAS C API Samples</span></a> page.</p></li>
+</ul>
+</div>
+<div class="section" id="additional-information">
+<h3>Additional Information<a class="headerlink" href="#additional-information" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Building and Installing from the VVAS source</strong>: To download, build and install from the VVAS source code for your specific development, refer <a class="reference internal" href="vvas_build.html"><span class="doc">Build and install from the VVAS source</span></a></p></li>
+<li><p><strong>Supporting Deep Learning Models</strong>: To understand the current model support and bring different deep learning models, refer <a class="reference internal" href="adding_models.html"><span class="doc">Supporting Deep Learning Models</span></a></p></li>
+<li><p><strong>Device Management &amp; Utility tools</strong>: To know how to use device specific management and utiliy tools refer <a class="reference internal" href="card_management.html"><span class="doc">Device Management &amp; Utility tool</span></a> page.</p></li>
+<li><p><strong>Debugging</strong>: Refer to the <a class="reference internal" href="debugging.html"><span class="doc">Debugging</span></a> page for some debugging tips when using VVAS.</p></li>
+<li><p><strong>FAQ</strong>: Refer to the <a class="reference internal" href="faq.html"><span class="doc">FAQ</span></a> page for frequently asked questions and answers.</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="system_requirements.html" class="btn btn-neutral float-right" title="Software &amp; Hardware Requirements" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on October 7, 2022.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

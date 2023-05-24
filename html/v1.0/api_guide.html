@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+<!-- Google Tag Manager -->
+<script type="text/plain" class="optanon-category-C0002">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5RHQV7');</script>
+<!-- End Google Tag Manager -->
+  <title>VVAS C API Guide &mdash; Vitis Video Analytics SDK (VVAS) for Data Center 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="VVAS C API Samples" href="api_examples.html" />
+    <link rel="prev" title="VVAS C API Reference" href="api_reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="index.html" class="icon icon-home"> Vitis Video Analytics SDK (VVAS) for Data Center
+            <img src="_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="system_requirements.html">Software &amp; Hardware Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_tutorial.html">Quickstart Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features_and_capabilities.html">Features and Capabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VVAS GStreamer Interface</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/gstreamer_plugins/common_plugins.html">GStreamer Plug-ins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/meta_data/vvas_meta_data_structures.html">VVAS Meta Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/for_developers.html">Development Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VVAS Core API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">VVAS C API Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">VVAS C API Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-vvas-context">Creating VVAS Context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-vvas-memory">Using VVAS Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-vvas-video-frame">Using VVAS Video Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parsing-h-264-h-265-streams">Parsing H.264/H.265 Streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decoding-h-264-h-265-streams">Decoding H.264/H.265 Streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scaling-cropping-pre-processing-video-frames">Scaling/Cropping/Pre-Processing Video Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inferencing-on-video-frames">Inferencing on Video Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#drawing-bounding-box-classification-information-on-video-frames">Drawing Bounding Box/Classification Information on Video Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sink">Sink</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api_examples.html">VVAS C API Samples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vvas_build.html">Build and install from the VVAS source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding_models.html">Supporting Deep Learning Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="card_management.html">Device Management &amp; Utility tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Vitis Video Analytics SDK (VVAS) for Data Center</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>VVAS C API Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api_guide.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="vvas-c-api-guide">
+<span id="api-guide-rst"></span><h1>VVAS C API Guide<a class="headerlink" href="#vvas-c-api-guide" title="Permalink to this heading">¶</a></h1>
+<p>This document describes general guideline of using VVAS core API for video analytics application development. Refer to the <a class="reference internal" href="api_reference.html"><span class="doc">VVAS C API Reference</span></a> document page to review VVAS core API signature/parameters in details.</p>
+<p>We will use the sample video pipeline depicted below to illustrate how to use the VVAS Core APIs.</p>
+<div class="figure align-default" id="id1">
+<img alt="_images/App_Development.png" src="_images/App_Development.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 1: A sample Video Pipeline consisting core VVAS modules</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>Here are the algorithmic steps for building the above pipeline</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Create intances of the VVAS core modules (Parser, Decoder, Scaler, Infer, MetaConvert, etc)</p></li>
+<li><p>Read encoded data from the file and parse it using Parser, if EOS goto #11</p></li>
+<li><p>Feed the parsed data to the decoder and get the decoded data</p></li>
+<li><p>Do scaling and pre-processing on decoded buffer using Scaler and keep the decoded buffer as it is.</p></li>
+<li><p>Do inferencing on scaled and pre-processed buffer using DPU.</p></li>
+<li><p>Free scaled and pre-processed buffer and upscale the inference bounding box to the resolution of decoded buffer.</p></li>
+<li><p>Convert DPU inference data to Overlay data using MetaConvert.</p></li>
+<li><p>Draw inference data on decoded buffer</p></li>
+<li><p>Consume this buffer (display, file dump, etc.) and then release it for further re-use (in case application is maintaining a pool of free buffers, then return this buffer to the buffer pool).</p></li>
+<li><p>Go to #2</p></li>
+<li><p>Destroy all instances of VVAS core modules.</p></li>
+<li><p>Exit</p></li>
+</ol>
+</div></blockquote>
+<p>Also note the following guidelines of VVAS Core API usage.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>The VVAS Core APIs are not thread-safe. User must not call Core APIs of same instance of Core module from different thread. A thread should create its own context (<a class="reference internal" href="api_reference.html#c.VvasContext" title="VvasContext"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasContext</span></code></a>) to manage the core modules (Parser, decoder, etc) used in that thread.</p></li>
+<li><p>VVAS Core API provides API to allocate and deallocate the buffers. However, the users should create their own pool of buffers to manage/reuse the buffers in the pipeline.</p></li>
+<li><p>The VVAS Core Parser can parse only H264 and H265 elementary stream, containerized streams are not supported.</p></li>
+</ol>
+</div>
+<div class="section" id="creating-vvas-context">
+<h2>Creating VVAS Context<a class="headerlink" href="#creating-vvas-context" title="Permalink to this heading">¶</a></h2>
+<p>Any application using the VVAS Core APIs should first create a VVAS context using the <a class="reference internal" href="api_reference.html#c.vvas_context_create" title="vvas_context_create"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_context_create()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasContext</span><span class="o">*</span><span class="w"> </span><span class="n">vvas_context_create</span><span class="w"> </span><span class="p">(</span><span class="kt">int32_t</span><span class="w"> </span><span class="n">dev_idx</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">xclbin_loc</span><span class="p">,</span><span class="w"> </span><span class="n">VvasLogLevel</span><span class="w"> </span><span class="n">log_level</span><span class="p">,</span><span class="w"> </span><span class="n">VvasReturnType</span><span class="w"> </span><span class="o">*</span><span class="n">vret</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To create a VVAS context you need to specifiy the xclbin file and the device index. For debug purposes, a log level (such as <code class="xref c c-macro docutils literal notranslate"><span class="pre">LOG_LEVEL_DEBUG</span></code>, <code class="xref c c-macro docutils literal notranslate"><span class="pre">LOG_LEVEL_INFO</span></code>, etc) can also be specified.</p></li>
+<li><p>It is recommended to create a VVAS context for each component separately if each module will be running in different thread.</p></li>
+<li><p>When creating VVAS contexts, the xclbin file name is needed for Scaler and Decoder modules only, as they are the only modules using hardware accelerators.</p></li>
+<li><p>When creating VVAS contexts to use the Parser, MetaConvert or Overlay modules, the xclbin file name can passed as NULL and device index as -1.</p></li>
+</ul>
+</div>
+<div class="section" id="using-vvas-memory">
+<h2>Using VVAS Memory<a class="headerlink" href="#using-vvas-memory" title="Permalink to this heading">¶</a></h2>
+<p><strong>Memory allocation</strong>: The VVAS Memory is allocated using the <a class="reference internal" href="api_reference.html#c.vvas_memory_alloc" title="vvas_memory_alloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_memory_alloc()</span></code></a> API. Application code allocate VVAS Memory that is used as a buffer for the elementary stream from the video input. The elementary stream buffer is used as the input of the parser module to genereate encoded access-unit frame.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasMemory</span><span class="o">*</span><span class="w"> </span><span class="n">vvas_memory_alloc</span><span class="w"> </span><span class="p">(</span><span class="n">VvasContext</span><span class="w"> </span><span class="o">*</span><span class="n">vvas_ctx</span><span class="p">,</span><span class="w"></span>
+<span class="w">                               </span><span class="n">VvasAllocationType</span><span class="w"> </span><span class="n">mem_type</span><span class="p">,</span><span class="w"></span>
+<span class="w">                               </span><span class="n">VvasAllocationFlags</span><span class="w"> </span><span class="n">mem_flags</span><span class="p">,</span><span class="w"></span>
+<span class="w">                               </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">mbank_idx</span><span class="p">,</span><span class="w"></span>
+<span class="w">                               </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"></span>
+<span class="w">                               </span><span class="n">VvasReturnType</span><span class="w"> </span><span class="o">*</span><span class="n">ret</span><span class="p">).</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Few notes regarding the arguments of <a class="reference internal" href="api_reference.html#c.vvas_memory_alloc" title="vvas_memory_alloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_memory_alloc()</span></code></a> API</p>
+<ul class="simple">
+<li><p>Argument <a class="reference internal" href="api_reference.html#c.VvasAllocationType" title="VvasAllocationType"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasAllocationType</span></code></a>: The memory allocated to propagate the elementary stream the allocation type is <code class="xref c c-macro docutils literal notranslate"><span class="pre">VVAS_ALLOC_TYPE_NON_CMA</span></code></p></li>
+<li><p><a class="reference internal" href="api_reference.html#c.VvasAllocationFlags" title="VvasAllocationFlags"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasAllocationFlags</span></code></a>: Currently supported allocation flag is <code class="xref c c-macro docutils literal notranslate"><span class="pre">VVAS_ALLOC_FLAG_NONE</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">mbank_idx</span></code> is the index of the memory bank where the memory is allocated. For currently supported platform the memory bank index is 0.</p></li>
+<li><p>The size of the memory, generally 4K or multiple of 4K bytes.</p></li>
+</ul>
+<p><strong>Memory map</strong>: To read/write from/to a <code class="xref c c-type docutils literal notranslate"><span class="pre">VvasMemory</span></code>, it first needs to be mapped using the <a class="reference internal" href="api_reference.html#c.vvas_memory_map" title="vvas_memory_map"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_memory_map()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasReturnType</span><span class="w"> </span><span class="n">vvas_memory_map</span><span class="w"> </span><span class="p">(</span><span class="n">VvasMemory</span><span class="o">*</span><span class="w"> </span><span class="n">vvas_mem</span><span class="p">,</span><span class="w"> </span><span class="n">VvasDataMapFlags</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span><span class="w"> </span><span class="n">VvasMemoryMapInfo</span><span class="w"> </span><span class="o">*</span><span class="n">info</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="api_reference.html#c.VvasDataMapFlags" title="VvasDataMapFlags"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasDataMapFlags</span></code></a> argument specifies whether the memory should be mapped for reading (<code class="xref c c-macro docutils literal notranslate"><span class="pre">VVAS_DATA_MAP_READ</span></code>) or writing (<code class="xref c c-macro docutils literal notranslate"><span class="pre">VVAS_DATA_MAP_WRITE</span></code>)</p></li>
+<li><p>The <a class="reference internal" href="api_reference.html#c.VvasMemoryMapInfo" title="VvasMemoryMapInfo"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasMemoryMapInfo</span></code></a> struct contains the virtual pointer and size of <code class="xref c c-type docutils literal notranslate"><span class="pre">VvasMemory</span></code>.</p></li>
+</ul>
+<p><strong>Memory unmap</strong>: After reading or writing a <code class="xref c c-type docutils literal notranslate"><span class="pre">VvasMemory</span></code>, it must be unmapped using the <a class="reference internal" href="api_reference.html#c.vvas_memory_unmap" title="vvas_memory_unmap"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_memory_unmap()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasReturnType</span><span class="w"> </span><span class="n">vvas_memory_unmap</span><span class="w"> </span><span class="p">(</span><span class="n">VvasMemory</span><span class="o">*</span><span class="w"> </span><span class="n">vvas_mem</span><span class="p">,</span><span class="w"> </span><span class="n">VvasMemoryMapInfo</span><span class="w"> </span><span class="o">*</span><span class="n">info</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Memory deallocation</strong>: When a <code class="xref c c-type docutils literal notranslate"><span class="pre">VvasMemory</span></code> is no longer needed, it must be freed using the <a class="reference internal" href="api_reference.html#c.vvas_memory_free" title="vvas_memory_free"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_memory_free()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">vvas_memory_free</span><span class="w"> </span><span class="p">(</span><span class="n">VvasMemory</span><span class="o">*</span><span class="w"> </span><span class="n">vvas_mem</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-vvas-video-frame">
+<h2>Using VVAS Video Frame<a class="headerlink" href="#using-vvas-video-frame" title="Permalink to this heading">¶</a></h2>
+<p><strong>Video frame allocation</strong>: VVAS Video Frame can be created using the <a class="reference internal" href="api_reference.html#c.vvas_video_frame_alloc" title="vvas_video_frame_alloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_video_frame_alloc()</span></code></a> API. The video frames are used for internal pipeline stages. For example, the application can allocate decoder or scaler output video frames to propagate the output from the decoder or scaler module.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasVideoFrame</span><span class="o">*</span><span class="w"> </span><span class="n">vvas_video_frame_alloc</span><span class="w"> </span><span class="p">(</span><span class="n">VvasContext</span><span class="w"> </span><span class="o">*</span><span class="n">vvas_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">VvasAllocationType</span><span class="w"> </span><span class="n">alloc_type</span><span class="p">,</span><span class="w"> </span><span class="n">VvasAllocationFlags</span><span class="w"> </span><span class="n">alloc_flags</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">mbank_idx</span><span class="p">,</span><span class="w"> </span><span class="n">VvasVideoInfo</span><span class="w"> </span><span class="o">*</span><span class="n">vinfo</span><span class="p">,</span><span class="w"> </span><span class="n">VvasReturnType</span><span class="w"> </span><span class="o">*</span><span class="n">ret</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Argument <a class="reference internal" href="api_reference.html#c.VvasAllocationType" title="VvasAllocationType"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasAllocationType</span></code></a>:  The video frames allocated to propagate output from decoder/scaler the allocation type must be <code class="xref c c-macro docutils literal notranslate"><span class="pre">VVAS_ALLOC_TYPE_CMA</span></code></p></li>
+<li><p>Argument <a class="reference internal" href="api_reference.html#c.VvasAllocationFlags" title="VvasAllocationFlags"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasAllocationFlags</span></code></a>:  Currently supported allocation flag is <code class="xref c c-macro docutils literal notranslate"><span class="pre">VVAS_ALLOC_FLAG_NONE</span></code>.</p></li>
+<li><p>Argument <code class="docutils literal notranslate"><span class="pre">mbank_idx</span></code>: For decoder output video frames the memory bank index could be obtained for decoder output configuration. For currently supported platform the memory bank index is 0.</p></li>
+</ul>
+<p><strong>Video frame map</strong>: In order to read or write a <code class="xref c c-type docutils literal notranslate"><span class="pre">VvasVideoFrame</span></code>, it first needs to be mapped using the <a class="reference internal" href="api_reference.html#c.vvas_video_frame_map" title="vvas_video_frame_map"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_video_frame_map()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasReturnType</span><span class="w"> </span><span class="n">vvas_video_frame_map</span><span class="p">(</span><span class="n">VvasVideoFrame</span><span class="w"> </span><span class="o">*</span><span class="n">vvas_vframe</span><span class="p">,</span><span class="w"> </span><span class="n">VvasDataMapFlags</span><span class="w"> </span><span class="n">map_flags</span><span class="p">,</span><span class="w"> </span><span class="n">VvasVideoFrameMapInfo</span><span class="w"> </span><span class="o">*</span><span class="n">info</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="api_reference.html#c.VvasDataMapFlags" title="VvasDataMapFlags"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasDataMapFlags</span></code></a> argument specifies whether the video frame should be mapped for reading (<code class="xref c c-macro docutils literal notranslate"><span class="pre">VVAS_DATA_MAP_READ</span></code>) or writing (<code class="xref c c-macro docutils literal notranslate"><span class="pre">VVAS_DATA_MAP_WRITE</span></code>)</p></li>
+<li><p>When mapping video frame buffers to be used with a Decoder or a Scaler component, the <a class="reference internal" href="api_reference.html#c.VvasAllocationType" title="VvasAllocationType"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasAllocationType</span></code></a> and <a class="reference internal" href="api_reference.html#c.VvasAllocationFlags" title="VvasAllocationFlags"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasAllocationFlags</span></code></a> must be set to <code class="xref c c-macro docutils literal notranslate"><span class="pre">VVAS_ALLOC_TYPE_CMA</span></code> and <code class="xref c c-macro docutils literal notranslate"><span class="pre">VVAS_ALLOC_FLAG_NONE</span></code> respectively.</p></li>
+</ul>
+<p><strong>Video frame unmap</strong>: After reading or writing a <code class="xref c c-type docutils literal notranslate"><span class="pre">VvasVideoFrame</span></code>, it must be unmapped using the <a class="reference internal" href="api_reference.html#c.vvas_video_frame_unmap" title="vvas_video_frame_unmap"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_video_frame_unmap()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasReturnType</span><span class="w"> </span><span class="n">vvas_video_frame_unmap</span><span class="w"> </span><span class="p">(</span><span class="n">VvasVideoFrame</span><span class="o">*</span><span class="w"> </span><span class="n">vvas_vframe</span><span class="p">,</span><span class="w"> </span><span class="n">VvasVideoFrameMapInfo</span><span class="w"> </span><span class="o">*</span><span class="n">info</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Video frame deallocation</strong>: When a <code class="xref c c-type docutils literal notranslate"><span class="pre">VvasVideoFrame</span></code> is no longer needed, it must be freed using the <a class="reference internal" href="api_reference.html#c.vvas_video_frame_free" title="vvas_video_frame_free"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_video_frame_free()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">vvas_video_frame_free</span><span class="w"> </span><span class="p">(</span><span class="n">VvasVideoFrame</span><span class="o">*</span><span class="w"> </span><span class="n">vvas_vframe</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parsing-h-264-h-265-streams">
+<h2>Parsing H.264/H.265 Streams<a class="headerlink" href="#parsing-h-264-h-265-streams" title="Permalink to this heading">¶</a></h2>
+<p>Parser is one of the core module that parse the elementary stream buffer and extract access-units/frames for the downstream pipeline.</p>
+<p><strong>Parser instantiation</strong>:  Once VVAS context is created, we can create the Parser module using the <a class="reference internal" href="api_reference.html#c.vvas_parser_create" title="vvas_parser_create"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_parser_create()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasParser</span><span class="o">*</span><span class="w"> </span><span class="n">vvas_parser_create</span><span class="w"> </span><span class="p">(</span><span class="n">VvasContext</span><span class="o">*</span><span class="w"> </span><span class="n">vvas_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">VvasCodecType</span><span class="w"> </span><span class="n">codec_type</span><span class="p">,</span><span class="w"> </span><span class="n">VvasLogLevel</span><span class="w"> </span><span class="n">log_level</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Extracting the access-units/frames</strong>: For the parser input, we allocate <code class="xref c c-type docutils literal notranslate"><span class="pre">VvasMemory</span></code> and copy the encoded elementary stream buffer into it. From the parser output we obtain access-units and the decoder’s input configuration.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasReturnType</span><span class="w"> </span><span class="n">vvas_parser_get_au</span><span class="w"> </span><span class="p">(</span><span class="n">VvasParser</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">VvasMemory</span><span class="w"> </span><span class="o">*</span><span class="n">inbuf</span><span class="p">,</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">valid_insize</span><span class="p">,</span><span class="w"> </span><span class="n">VvasMemory</span><span class="w"> </span><span class="o">**</span><span class="n">outbuf</span><span class="p">,</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="o">*</span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="n">VvasDecoderInCfg</span><span class="w"> </span><span class="o">**</span><span class="n">dec_cfg</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">islast</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<ul>
+<li><p>If return value from above API is <code class="xref c c-macro docutils literal notranslate"><span class="pre">VVAS_RET_NEED_MOREDATA</span></code>, it means that the encoded buffer which you fed to not sufficient for the parser and it need more data.</p></li>
+<li><p>While feeding above API you need to be careful of offset value, this is both in and out parameter for the API</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>As input it should be pointing to the offset in input encoded buffer, and when this API returns it will contain the offset till which parser consumed the encoded buffer, hence while feeding this API again you should feed the remaining data if parser was not able to parse the complete data given to it.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Above API will also return the stream parameters into dec_cfg, this configuration is generated whenever parser finds any change in the stream parameter or if it is the very first encoded frame.  This dec_cfg will be used to configure the decoder, you must free it after you use it.</p></li>
+<li><p>On <code class="xref c c-macro docutils literal notranslate"><span class="pre">VVAS_RET_SUCCESS</span></code> from the API would get the parsed AU frame in outbuf.  This outbuf can be now fed to the decoder. This outbuf is allocated inside parser module, hence must be freed by the use after use.</p></li>
+</ul>
+</div>
+<div class="section" id="decoding-h-264-h-265-streams">
+<h2>Decoding H.264/H.265 Streams<a class="headerlink" href="#decoding-h-264-h-265-streams" title="Permalink to this heading">¶</a></h2>
+<p>Decoder is the core module to decode the encoded access-units/frames.</p>
+<p><strong>Decoder instantiation</strong>: Once the <a class="reference internal" href="api_reference.html#c.VvasContext" title="VvasContext"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasContext</span></code></a> is created, we can create the decoder instance using the <a class="reference internal" href="api_reference.html#c.vvas_decoder_create" title="vvas_decoder_create"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_decoder_create()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasDecoder</span><span class="o">*</span><span class="w"> </span><span class="n">vvas_decoder_create</span><span class="w"> </span><span class="p">(</span><span class="n">VvasContext</span><span class="w"> </span><span class="o">*</span><span class="n">vvas_ctx</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">dec_name</span><span class="p">,</span><span class="w"> </span><span class="n">VvasCodecType</span><span class="w"> </span><span class="n">dec_type</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">hw_instance_id</span><span class="p">,</span><span class="w"> </span><span class="n">VvasLogLevel</span><span class="w"> </span><span class="n">log_level</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<ul>
+<li><p>For the current platform, the <code class="docutils literal notranslate"><span class="pre">dec_name</span></code> (Decoder name) is <code class="docutils literal notranslate"><span class="pre">kernel_vdu_decoder:{kernel_vdu_decoder_xx}</span></code> where xx can be from 0 – 15, and each index represents one unique instance of the decoder.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hw_instance_id</span></code> is the instance id of the decoder,</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>hw_instance_id = 0, when dec_name (decoder name) is <code class="docutils literal notranslate"><span class="pre">kernel_vdu_decoder:{kernel_vdu_decoder_xx1}</span></code>, where xx1 is any number from 0 to 7</p></li>
+<li><p>hw_instance_id = 1, when dec_name (decoder name) is <code class="docutils literal notranslate"><span class="pre">kernel_vdu_decoder:{kernel_vdu_decoder_xx2}</span></code>, where xx2 is any number from 8 to 15</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p><strong>Decoder configuration</strong>: Once the decoder instance is created, we need to configure it first using the <a class="reference internal" href="api_reference.html#c.vvas_decoder_config" title="vvas_decoder_config"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_decoder_config()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasReturnType</span><span class="w"> </span><span class="n">vvas_decoder_config</span><span class="w"> </span><span class="p">(</span><span class="n">VvasDecoder</span><span class="o">*</span><span class="w"> </span><span class="n">dec_handle</span><span class="p">,</span><span class="w"> </span><span class="n">VvasDecoderInCfg</span><span class="o">*</span><span class="w"> </span><span class="n">icfg</span><span class="p">,</span><span class="w"> </span><span class="n">VvasDecoderOutCfg</span><span class="o">*</span><span class="w"> </span><span class="n">ocfg</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The decoder input configuration or <a class="reference internal" href="api_reference.html#c.VvasDecoderInCfg" title="VvasDecoderInCfg"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasDecoderInCfg</span></code></a> is obtained from the parser (or if you are using an external parser then this needs to be filled with correct values). For detail of the parser API generating decoder input configuration please refer <a class="reference internal" href="api_reference.html#c.vvas_parser_get_au" title="vvas_parser_get_au"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_parser_get_au()</span></code></a></p></li>
+<li><p>On the other hand the decoder output configuration or <a class="reference internal" href="api_reference.html#c.VvasDecoderOutCfg" title="VvasDecoderOutCfg"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasDecoderOutCfg</span></code></a> is obtained as output from the <a class="reference internal" href="api_reference.html#c.vvas_parser_get_au" title="vvas_parser_get_au"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_parser_get_au</span></code></a> API.</p></li>
+</ul>
+<p>The decoder output configuration tells us the following information</p>
+<ul class="simple">
+<li><p>How many minimum buffers we must allocate and feed to the decoder</p></li>
+<li><p>The memory bank index where these buffers must be allocated.</p></li>
+<li><p>The <a class="reference internal" href="api_reference.html#c.VvasVideoInfo" title="VvasVideoInfo"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasVideoInfo</span></code></a> of the video frames required by the decoder output</p></li>
+</ul>
+<p>If the incoming video stream’s property does not change, we need to configure the decoder only once for that video stream.</p>
+<p><strong>Decoder algorithm</strong></p>
+<p>The core decoder operation is performed by using two APIs, <a class="reference internal" href="api_reference.html#c.vvas_decoder_submit_frames" title="vvas_decoder_submit_frames"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_decoder_submit_frames()</span></code></a> and <a class="reference internal" href="api_reference.html#c.vvas_decoder_get_decoded_frame" title="vvas_decoder_get_decoded_frame"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_decoder_get_decoded_frame()</span></code></a></p>
+<p>API <a class="reference internal" href="api_reference.html#c.vvas_decoder_submit_frames" title="vvas_decoder_submit_frames"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_decoder_submit_frames()</span></code></a> is used to submit encoded access units/frames to the decoder.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasReturnType</span><span class="w"> </span><span class="n">vvas_decoder_submit_frames</span><span class="w"> </span><span class="p">(</span><span class="n">VvasDecoder</span><span class="o">*</span><span class="w"> </span><span class="n">dec_handle</span><span class="p">,</span><span class="w"> </span><span class="n">VvasMemory</span><span class="w"> </span><span class="o">*</span><span class="n">au_frame</span><span class="p">,</span><span class="w"> </span><span class="n">VvasList</span><span class="w"> </span><span class="o">*</span><span class="n">loutframes</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>If the above API returns <code class="xref c c-macro docutils literal notranslate"><span class="pre">VVAS_RET_SEND_AGAIN</span></code>, this means the decoder didn’t consume the current access unit frame and we need to feed it again. One possible reason for this return value could be there is no room for decoded buffer.</p></li>
+<li><p>If the above API returns <code class="xref c c-macro docutils literal notranslate"><span class="pre">VVAS_RET_SUCCESS</span></code>, this means the decoder successfully consumed the access unit frame and we can now free the <code class="docutils literal notranslate"><span class="pre">au_frame</span></code>.</p></li>
+</ul>
+<p>API <a class="reference internal" href="api_reference.html#c.vvas_decoder_get_decoded_frame" title="vvas_decoder_get_decoded_frame"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_decoder_get_decoded_frame()</span></code></a> is used to get the decoded frame from the decoder.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasReturnType</span><span class="w"> </span><span class="n">vvas_decoder_get_decoded_frame</span><span class="w"> </span><span class="p">(</span><span class="n">VvasDecoder</span><span class="o">*</span><span class="w"> </span><span class="n">dec_handle</span><span class="p">,</span><span class="w"> </span><span class="n">VvasVideoFrame</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="n">output</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>If the above API returns <code class="xref c c-macro docutils literal notranslate"><span class="pre">VVAS_RET_NEED_MOREDATA</span></code>, this means the decoder doesn’t have any decoded buffer yet, we need to feed more data to the decoder using <a class="reference internal" href="api_reference.html#c.vvas_decoder_submit_frames" title="vvas_decoder_submit_frames"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_decoder_submit_frames()</span></code></a> API and call this API again.</p></li>
+<li><p>If the above API returns <code class="xref c c-macro docutils literal notranslate"><span class="pre">VVAS_RET_EOS</span></code>, this means that there are no more decoded frames from the decoder.</p></li>
+<li><p>If the above API return <code class="xref c c-macro docutils literal notranslate"><span class="pre">VVAS_RET_SUCCESS</span></code>, this means that the decoder has returned a decoded buffer into output, note that this output buffer is not allocated by the decoder, it is one of the buffers which you have fed to the decoder using <a class="reference internal" href="api_reference.html#c.vvas_decoder_submit_frames" title="vvas_decoder_submit_frames"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_decoder_submit_frames()</span></code></a></p></li>
+</ul>
+<p>Now let’s understand the decoder algorithm in detail</p>
+<p>The API <a class="reference internal" href="api_reference.html#c.vvas_decoder_config" title="vvas_decoder_config"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_config</span></code></a> is used to configure the decoder.</p>
+<ul class="simple">
+<li><p>Configuration information for the decoder is retrieved from the parser API <a class="reference internal" href="api_reference.html#c.vvas_parser_get_au" title="vvas_parser_get_au"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_parser_get_au</span></code></a>. When this parser API is called for the first time with encoded data, the parser will return <code class="docutils literal notranslate"><span class="pre">dec_cfg</span></code> parameter as an output. For details, refer to :c:type`vvas_parser_get_au`.</p></li>
+<li><p>If the incoming video stream’s property does not change, we need to configure the decoder only once for that video stream.</p></li>
+</ul>
+<p>The next two APIs <a class="reference internal" href="api_reference.html#c.vvas_decoder_submit_frames" title="vvas_decoder_submit_frames"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_submit_frames</span></code></a> and <a class="reference internal" href="api_reference.html#c.vvas_decoder_get_decoded_frame" title="vvas_decoder_get_decoded_frame"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_get_decoded_frame</span></code></a> are asynchronous to each other. The API <a class="reference internal" href="api_reference.html#c.vvas_decoder_submit_frames" title="vvas_decoder_submit_frames"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_submit_frames</span></code></a> is only for submitting access-units (encoded frames) for decoding, and this API is asynchronous (that means it submits access-unit frame for the decoding and does not wait for the actual decoding process to complete). It is very much possible when we are submitting an access-unit frame through API <a class="reference internal" href="api_reference.html#c.vvas_decoder_submit_frames" title="vvas_decoder_submit_frames"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_submit_frames</span></code></a>, the decoder finished decoding a previously submitted access-unit/frames. To get decoded frame from the decoder, we have to call <a class="reference internal" href="api_reference.html#c.vvas_decoder_get_decoded_frame" title="vvas_decoder_get_decoded_frame"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_get_decoded_frame</span></code></a> API. This API will return one decoded frame that is the oldest in display order. This API can be called multiple times as long as the decoder is returning the decoded frames.</p>
+<p>With this understanding above, let’s review the steps for the complete decoder operation</p>
+<ol class="arabic">
+<li><p>Create Decoder instance (API <a class="reference internal" href="api_reference.html#c.vvas_decoder_create" title="vvas_decoder_create"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_create</span></code></a>)</p></li>
+<li><p>Obtain input configuration for the decoder from the parser output (API <a class="reference internal" href="api_reference.html#c.vvas_parser_get_au" title="vvas_parser_get_au"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_parser_get_au</span></code></a>)</p></li>
+<li><p>Configure the decoder and get the decoder output configuration (API <a class="reference internal" href="api_reference.html#c.vvas_decoder_config" title="vvas_decoder_config"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_config</span></code></a>)</p></li>
+<li><p>From the obtained decoder output configuration, we know what is the minimum number of output decoded video-frame buffers to be allocated. This number of decoder output video frames (also called the “decoder output buffers” ) is minimally required for the smooth pipeline flow. However, often we need to allocate more decoder output video frames depending on the downstream video pipeline. For example, if the downstream inference stage requires a batch of 14 frames, we should allocate these extra decoder output video frames (or decoder output buffers) for the decoder output pipeline. Hence we calculate the required number of decoder output video frames (or decoder output buffers) as below</p>
+<p><strong>The number of decoder output video frame buffers = VvasDecoderOutCfg.min_out_buf + Additional video frames (buffers) depending on the downstream pipeline</strong></p>
+</li>
+<li><p>Now we allocate the calculated number (from the previous step) of decoder output video frames by API <a class="reference internal" href="api_reference.html#c.vvas_video_frame_alloc" title="vvas_video_frame_alloc"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_video_frame_alloc</span></code></a> for the decoder output. We also create a list, <a class="reference internal" href="api_reference.html#c.VvasList" title="VvasList"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasList</span></code></a>, containing those output video frames. This list will be used for subsequent API calls. For the rest of the discussion, let’s refer this list as <em>available_video_frame_list</em></p></li>
+<li><p>Now we submit the current encoded access-unit/frame (obtained from parser output) to the decoder through API <a class="reference internal" href="api_reference.html#c.vvas_decoder_submit_frames" title="vvas_decoder_submit_frames"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_submit_frames</span></code></a>.</p></li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>If the API <a class="reference internal" href="api_reference.html#c.vvas_decoder_submit_frames" title="vvas_decoder_submit_frames"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_submit_frames</span></code></a> returns <code class="docutils literal notranslate"><span class="pre">VVAS_RET_SUCCESS</span></code>, then we know the current input access-unit/frame is submitted successfully. So we can re-use the buffer containing this access-unit/frame as this access unit/frame has been copied into the internal buffer of the decoder. We need to make sure to call parser API <a class="reference internal" href="api_reference.html#c.vvas_parser_get_au" title="vvas_parser_get_au"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_parser_get_au</span></code></a> with more encoded data to obtain the next access-unit/frame before the next time we call <a class="reference internal" href="api_reference.html#c.vvas_decoder_submit_frames" title="vvas_decoder_submit_frames"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_submit_frames</span></code></a>).</p></li>
+<li><p>On the other hand, if the API <a class="reference internal" href="api_reference.html#c.vvas_decoder_submit_frames" title="vvas_decoder_submit_frames"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_submit_frames</span></code></a> returns <code class="docutils literal notranslate"><span class="pre">VVAS_RET_SEND_AGAIN</span></code>, then this indicates the submission of the current access-unit frame is not completed. One of the reasons could be all the previously allocated (in step 5) decoder output video frames (or decoder output buffers) are now consumed by the decoder and there is no free buffer available to store the decoded frame corresponding to the current encoded access unit/frame. Hence we need to wait until the downstream pipeline finishes using the output buffers and then frees that buffer so that this buffer is added back to the list of available free output buffers. Once the free buffers are available, send these free buffers to the decoder along with the encoded access-unit frame again. For example, let’s assume we are doing a single-stage inference that requires a batch size of 14. Hence after the inference and post-processing stage when we have inference output, we can easily add those 14 video frames back to our list of available video frames, i.e. to <em>available_video_frame_list</em>.</p></li>
+</ol>
+</div></blockquote>
+<ol class="arabic simple" start="7">
+<li><p>Irrespective of what we get from the output of <a class="reference internal" href="api_reference.html#c.vvas_decoder_submit_frames" title="vvas_decoder_submit_frames"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_submit_frames</span></code></a>, we should free the list of video frames, <em>available_video_frame_list</em>, because the content of the list, i.e. decoder output buffers, or decoder output video frames are already submitted to the decoder.</p></li>
+<li><p>Now we try to obtain the decoder output by calling API <a class="reference internal" href="api_reference.html#c.vvas_decoder_get_decoded_frame" title="vvas_decoder_get_decoded_frame"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_get_decoded_frame</span></code></a></p></li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>If <a class="reference internal" href="api_reference.html#c.vvas_decoder_get_decoded_frame" title="vvas_decoder_get_decoded_frame"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_get_decoded_frame</span></code></a> returns <code class="docutils literal notranslate"><span class="pre">VVAS_RET_SUCCESS</span></code> that means we have exactly one decoded frame returned by the decoder. We can now send this decoded frame (available in the output video frame buffer) through the rest of the pipeline (i.e. for subsequent pre-processing, inference, post-processing, etc). Once the frame has been processed and is no more needed then we have to put this video frame buffer back into our list of free video-frame buffers (<em>available_video_frame_list</em>) so that we can submit these free video frame buffers to the decoder through <a class="reference internal" href="api_reference.html#c.vvas_decoder_submit_frames" title="vvas_decoder_submit_frames"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_submit_frames</span></code></a> API in Step 6</p></li>
+<li><p>If <a class="reference internal" href="api_reference.html#c.vvas_decoder_get_decoded_frame" title="vvas_decoder_get_decoded_frame"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_get_decoded_frame</span></code></a>  returns <code class="docutils literal notranslate"><span class="pre">VVAS_RET_NEED_MOREDATA</span></code>, this means the decoder is not able to generate any decoded frame, and it requires more encoded access Unit/frame data to be submitted to the decoder through the API <a class="reference internal" href="api_reference.html#c.vvas_decoder_submit_frames" title="vvas_decoder_submit_frames"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_submit_frames</span></code></a>.</p></li>
+<li><p>If <a class="reference internal" href="api_reference.html#c.vvas_decoder_get_decoded_frame" title="vvas_decoder_get_decoded_frame"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_get_decoded_frame</span></code></a> returns <code class="docutils literal notranslate"><span class="pre">VVAS_RET_EOS</span></code>, then this means the decoder has processed all the data user has given to it and the user can exit the loop and destroy the decoder instance. Decoder will return <code class="docutils literal notranslate"><span class="pre">VVAS_RET_EOS</span></code> only when the user has initiated flushing of the decoder by sending NULL input buffer in <a class="reference internal" href="api_reference.html#c.vvas_decoder_submit_frames" title="vvas_decoder_submit_frames"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_submit_frames</span></code></a>, indicating that there will be no more new input data available to submit to the decoder and decoder shall finish processing of all the data that has been submitted till now.</p></li>
+<li><p>In case there is no more input data to submit to the decoder and the user has initiated decoder flush, as mentioned in step 8c above, and <a class="reference internal" href="api_reference.html#c.vvas_decoder_get_decoded_frame" title="vvas_decoder_get_decoded_frame"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_get_decoded_frame</span></code></a> has not returned <code class="docutils literal notranslate"><span class="pre">VVAS_RET_EOS</span></code>, this means decoder still has some data to process and some more output buffers are available. In this case, the loop goes back to step 6 and calls the <a class="reference internal" href="api_reference.html#c.vvas_decoder_get_decoded_frame" title="vvas_decoder_get_decoded_frame"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_decoder_get_decoded_frame</span></code></a> until decoder returns <code class="docutils literal notranslate"><span class="pre">VVAS_RET_EOS</span></code>.</p></li>
+</ol>
+</div></blockquote>
+<ol class="arabic simple" start="9">
+<li><p>If not exiting the loop in step 8c, the loop goes back to step 6 and submits an access-unit frame with vvas_decoder_submit_frames  API
+a. The frame can be a next access-unit frame (if the current access-unit frame was sucessfully submitted, as discussed in Step 6a
+b. Or the frame is the same current frame (if the current access-unit frame was not sucessfully submitted as discussed in Step 6b</p></li>
+</ol>
+</div>
+<div class="section" id="scaling-cropping-pre-processing-video-frames">
+<h2>Scaling/Cropping/Pre-Processing Video Frames<a class="headerlink" href="#scaling-cropping-pre-processing-video-frames" title="Permalink to this heading">¶</a></h2>
+<p><strong>Scaler instantiation</strong>: A Scaler instance can be created using the <a class="reference internal" href="api_reference.html#c.vvas_scaler_create" title="vvas_scaler_create"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_scaler_create()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasScaler</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">vvas_scaler_create</span><span class="w"> </span><span class="p">(</span><span class="n">VvasContext</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ctx</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">kernel_name</span><span class="p">,</span><span class="w"> </span><span class="n">VvasLogLevel</span><span class="w"> </span><span class="n">log_level</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Kernel name for V70 is <code class="docutils literal notranslate"><span class="pre">image_processing:{image_processing_1}</span></code> or <code class="docutils literal notranslate"><span class="pre">image_processing:{image_processing_2}</span></code></p></li>
+</ul>
+<p><strong>Adding channels for scaler processing</strong>: For processing any data using scaler we need to add them as processing channels using the <a class="reference internal" href="api_reference.html#c.vvas_scaler_channel_add" title="vvas_scaler_channel_add"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_scaler_channel_add()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasReturnType</span><span class="w"> </span><span class="n">vvas_scaler_channel_add</span><span class="w"> </span><span class="p">(</span><span class="n">VvasScaler</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">hndl</span><span class="p">,</span><span class="w"> </span><span class="n">VvasScalerRect</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">src_rect</span><span class="p">,</span><span class="w"> </span><span class="n">VvasScalerRect</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dst_rect</span><span class="p">,</span><span class="w"> </span><span class="n">VvasScalerPpe</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ppe</span><span class="p">,</span><span class="w"> </span><span class="n">VvasScalerParam</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Information about the scaler inputs and outputs are provided using <a class="reference internal" href="api_reference.html#c.VvasScalerRect" title="VvasScalerRect"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasScalerRect</span></code></a> data structures. These data structures include a pointer to the <code class="xref c c-type docutils literal notranslate"><span class="pre">VvasVideoFrame</span></code>, the width and height of the region of interest as well as its x and y coordinates.</p></li>
+<li><p>The src_rect and dst_rect information should always be provided to the scaler</p></li>
+<li><p>For scaling, the x and y of src_rect must be zero, and the width and height must be the width and height of the input frame. Additional scaling parameters can be set using the <a class="reference internal" href="api_reference.html#c.VvasScalerParam" title="VvasScalerParam"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasScalerParam</span></code></a> data structure.</p></li>
+<li><p>For cropping, set x, y, width and height of src_rect as per the crop requirement.</p></li>
+<li><p>For pre-processing, pass the desired alpha/mean and beta/scale parameters in a <a class="reference internal" href="api_reference.html#c.VvasScalerPpe" title="VvasScalerPpe"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasScalerPpe</span></code></a> data structure, otherwise set <code class="docutils literal notranslate"><span class="pre">ppe</span></code> to NULL.</p></li>
+</ul>
+<p class="rubric">Example 1</p>
+<p>Scaling the input frame down from 1920x1080 to 640x480</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Src_rect</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">Src_rext</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">Src_rect</span><span class="p">.</span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1920</span><span class="p">;</span><span class="w"></span>
+<span class="n">Src_rect</span><span class="p">.</span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1080</span><span class="p">;</span><span class="w"></span>
+<span class="n">Src_rect</span><span class="p">.</span><span class="n">frame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_frame</span><span class="p">;</span><span class="w"></span>
+<span class="n">Dst_rect</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">Dst_rect</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">Dst_rect</span><span class="p">.</span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">640</span><span class="p">;</span><span class="w"></span>
+<span class="n">Dst_rect</span><span class="p">.</span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">480</span><span class="p">;</span><span class="w"></span>
+<span class="n">Dst_rect</span><span class="p">.</span><span class="n">frame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">output_frame</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p class="rubric">Example 2</p>
+<p>Cropping a 278x590 section at x=300, y=350 in the input frame, and scaling this cropped section to 224x224</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Src_rect</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">300</span><span class="p">;</span><span class="w"></span>
+<span class="n">Src_rect</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">350</span><span class="p">;</span><span class="w"></span>
+<span class="n">Src_rect</span><span class="p">.</span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">278</span><span class="p">;</span><span class="w"></span>
+<span class="n">Src_rect</span><span class="p">.</span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">590</span><span class="p">;</span><span class="w"></span>
+<span class="n">Src_rect</span><span class="p">.</span><span class="n">frame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_frame</span><span class="p">;</span><span class="w"></span>
+<span class="n">Dst_rect</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">Dst_rect</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">Dst_rect</span><span class="p">.</span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">224</span><span class="p">;</span><span class="w"></span>
+<span class="n">Dst_rect</span><span class="p">.</span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">224</span><span class="p">;</span><span class="w"></span>
+<span class="n">Dst_rect</span><span class="p">.</span><span class="n">frame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">output_frame</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Scaler Processing</strong>: Once channels are added to the scaler, we can process all of them in one go using the <a class="reference internal" href="api_reference.html#c.vvas_scaler_process_frame" title="vvas_scaler_process_frame"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_scaler_process_frame()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasReturnType</span><span class="w"> </span><span class="n">vvas_scaler_process_frame</span><span class="w"> </span><span class="p">(</span><span class="n">VvasScaler</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">hndl</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Deallocating scaler instance</strong>:  One done with scaler; we need to destroy this scaler instance using the <a class="reference internal" href="api_reference.html#c.vvas_scaler_destroy" title="vvas_scaler_destroy"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_scaler_destroy()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasReturnType</span><span class="w"> </span><span class="n">vvas_scaler_destroy</span><span class="w"> </span><span class="p">(</span><span class="n">VvasScaler</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">hndl</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inferencing-on-video-frames">
+<h2>Inferencing on Video Frames<a class="headerlink" href="#inferencing-on-video-frames" title="Permalink to this heading">¶</a></h2>
+<p><strong>DPU instantiation</strong>:</p>
+<p>To perform inferencing on video frames first we need to create the DPU instance using the <a class="reference internal" href="api_reference.html#c.vvas_dpuinfer_create" title="vvas_dpuinfer_create"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_dpuinfer_create()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasDpuInfer</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">vvas_dpuinfer_create</span><span class="w"> </span><span class="p">(</span><span class="n">VvasDpuInferConf</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dpu_conf</span><span class="p">,</span><span class="w"> </span><span class="n">VvasLogLevel</span><span class="w"> </span><span class="n">log_level</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The parameter <a class="reference internal" href="api_reference.html#c.VvasDpuInferConf" title="VvasDpuInferConf"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasDpuInferConf</span></code></a> is used to provide the model information (such as compiled model artifacts path, model name, model class, etc) for the DPU instance. The parameter is also used to provide a few more inference specific information such as desired batch size, the maximum number of object detection per frame (for object detection models), etc.</p>
+<p><strong>Obtaining DPU configuration</strong>:</p>
+<p>Every DPU model has its requirements, such as input height and width, pre-processing parameters such as mean subtraction and scaling factor for all the channels, and batch size. These requirements can be queried from the DPU using the <a class="reference internal" href="api_reference.html#c.vvas_dpuinfer_get_config" title="vvas_dpuinfer_get_config"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_dpuinfer_get_config()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasReturnType</span><span class="w"> </span><span class="n">vvas_dpuinfer_get_config</span><span class="w"> </span><span class="p">(</span><span class="n">VvasDpuInfer</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dpu_handle</span><span class="p">,</span><span class="w"> </span><span class="n">VvasModelConf</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">model_conf</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Preprocessing</strong>:</p>
+<p>The preprocessing can be done in software (using the Vitis-AI library) or using the hardware accelerator.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Software-based scaling occurs if the input frames being submitted are not of the same resolution as DPU is expecting.</p></li>
+<li><p>Software-based pre-processing can be enabled explicitly by setting <code class="xref c c-type docutils literal notranslate"><span class="pre">VvasDpuInferConf.need_preprocess</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>However, the software-based preprocessing can potentially impact performance, hence the user can use a hardware accelerator for doing pre-processing and scaling in one operation. This can be done by instantiating the Scaler module discussed in the previous section.</p>
+<p><strong>Inference</strong>:</p>
+<p>DPU supports batching mode, the number of frames that DPU can process in one batch is called batch size. The batch size can be queried using <a class="reference internal" href="api_reference.html#c.vvas_dpuinfer_get_config" title="vvas_dpuinfer_get_config"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_dpuinfer_get_config</span></code></a> API. For better performance, it is advised to call <a class="reference internal" href="api_reference.html#c.vvas_dpuinfer_process_frames" title="vvas_dpuinfer_process_frames"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_dpuinfer_process_frames</span></code></a> after batching multiple frames as inputs for object detection. For classification cases, we can also batch multiple images (images of the detected objects from the object detection stage) and send all of them together for classification.</p>
+<p>The <a class="reference internal" href="api_reference.html#c.vvas_dpuinfer_process_frames" title="vvas_dpuinfer_process_frames"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_dpuinfer_process_frames()</span></code></a> API is used for inferencing on input frame(s)/image(s).</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasReturnType</span><span class="w"> </span><span class="n">vvas_dpuinfer_process_frames</span><span class="w"> </span><span class="p">(</span><span class="n">VvasDpuInfer</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dpu_handle</span><span class="p">,</span><span class="w"> </span><span class="n">VvasVideoFrame</span><span class="w"> </span><span class="o">*</span><span class="n">inputs</span><span class="p">[</span><span class="n">MAX_NUM_OBJECT</span><span class="p">],</span><span class="w"> </span><span class="n">VvasInferPrediction</span><span class="w"> </span><span class="o">*</span><span class="n">predictions</span><span class="p">[</span><span class="n">MAX_NUM_OBJECT</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">batch_size</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Upon completion of the above API, for each of the DPU inputs (<code class="docutils literal notranslate"><span class="pre">VvasVideoFrame</span> <span class="pre">*inputs[MAX_NUM_OBJECT]</span></code>), the argument <code class="docutils literal notranslate"><span class="pre">VvasInferPrediction</span> <span class="pre">*predictions[MAX_NUM_OBJECT]</span></code> points to the tree structures containing prediction results from the inference.</p>
+<p>Now we will take a closer look prediction result tree(s) obtained from the above API.</p>
+<p><strong>Prediction Result Tree</strong></p>
+<p>While calling API <a class="reference internal" href="api_reference.html#c.vvas_dpuinfer_process_frames" title="vvas_dpuinfer_process_frames"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_dpuinfer_process_frames</span></code></a>, if passed <code class="docutils literal notranslate"><span class="pre">predictions[x]</span></code> is NULL, then DPU will create a tree structure consisting of <a class="reference internal" href="api_reference.html#c.VvasInferPrediction" title="VvasInferPrediction"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasInferPrediction</span></code></a> nodes and return it when there is any detection/classification. If <code class="docutils literal notranslate"><span class="pre">predictions[x]</span></code> is not NULL then <a class="reference internal" href="api_reference.html#c.VvasInferPrediction" title="VvasInferPrediction"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasInferPrediction</span></code></a> is appended as children to the passed <a class="reference internal" href="api_reference.html#c.VvasInferPrediction" title="VvasInferPrediction"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasInferPrediction</span></code></a> node.</p>
+<div class="figure align-default" id="id2">
+<img alt="_images/prt.PNG" src="_images/prt.PNG" />
+<p class="caption"><span class="caption-text"><strong>Figure 2: A visual representation of prediction result trees obtained from inference</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>As shown in the above diagram <code class="docutils literal notranslate"><span class="pre">predictions[x]</span></code> points to the “prediction result tree” of the Xth frame (for object detection case) or Xth image (for classification case).</p>
+<p>It is the user’s responsibility to free these trees (VvasInferPrediction nodes) after use. The API <a class="reference internal" href="api_reference.html#c.vvas_inferprediction_free" title="vvas_inferprediction_free"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_inferprediction_free</span></code></a> can be used for this purpose.</p>
+<p><strong>Prediction result tree from Object detection</strong>: Now let’s understand the structure of an individual prediction result tree for an object detection case.</p>
+<div class="figure align-default" id="id3">
+<img alt="_images/prt_d.png" src="_images/prt_d.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 3: Example of a prediction result tree for objects detection</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>The above diagram shows an example of a prediction tree for a particular frame. As the diagram shows for this frame, 3 objects are detected.</p>
+<ul class="simple">
+<li><p>The structure <a class="reference internal" href="api_reference.html#c.VvasInferPrediction" title="VvasInferPrediction"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasInferPrediction</span></code></a> contains <code class="docutils literal notranslate"><span class="pre">VvasTreeNode</span> <span class="pre">*node</span></code>, which is used by <code class="docutils literal notranslate"><span class="pre">prediction[x]</span></code> to point to the prediction result tree of the Xth Frame.</p></li>
+<li><p>The tree root node has three child nodes capturing the results of three detected objects</p></li>
+<li><p>The data part ( <code class="docutils literal notranslate"><span class="pre">node-&gt;data</span></code> ) of the tree root node points to its <a class="reference internal" href="api_reference.html#c.VvasInferPrediction" title="VvasInferPrediction"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasInferPrediction</span></code></a> node containing resolution data for the DPU input frames</p></li>
+<li><p>The data part of the child nodes points to corresponding <a class="reference internal" href="api_reference.html#c.VvasInferPrediction" title="VvasInferPrediction"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasInferPrediction</span></code></a> nodes containing the resolution of the bounding boxes of the detected object.</p></li>
+<li><p>The resolution of the bounding boxes of the detected objects is relative to the resolution of the DPU input frame. Typically during the preprocessing stage, the decoder output video frames are resized (scaled down) as per DPU’s requirement. Hence the resolution metadata for each detected object needs to be scaled up when referring to the original video frames.</p></li>
+<li><p>The prediction result tree can be traversed by the VVAS tree utility traversal API <a class="reference internal" href="api_reference.html#c.vvas_treenode_traverse" title="vvas_treenode_traverse"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_treenode_traverse</span></code></a>, which provides the facility for a user-defined callback function to be called for each node.</p></li>
+<li><p>Note that the root node’s depth is 1, and each child node’s depth is 2. This depth can be checked at any node by VVAS tree utility API <a class="reference internal" href="api_reference.html#c.vvas_treenode_get_depth" title="vvas_treenode_get_depth"><code class="xref c c-type docutils literal notranslate"><span class="pre">vvas_treenode_get_depth</span></code></a></p></li>
+</ul>
+<p><strong>Prediction result tree from image classification</strong>: VVAS supports running multiple classification models for the detected object from the object detection stage. Here we can pass the prediction result tree obtained from the previous inference call (i.e. vvas_dpuinfer_process_frames  API call)  to the subsequent inference calls. In this case, the new prediction results will be added as children to the passed tree.</p>
+<p>For example, in the below example code, we are showing running three classification models.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasDpuInfer</span><span class="w"> </span><span class="o">*</span><span class="n">resnet18_car_make_handle</span><span class="p">;</span><span class="w">  </span><span class="c1">// Dpu instance of Resnet car make inference</span>
+<span class="n">VvasDpuInfer</span><span class="w"> </span><span class="o">*</span><span class="n">resnet18_car_type_handle</span><span class="p">;</span><span class="w">  </span><span class="c1">// DPU instance of Resnet car model inference</span>
+<span class="n">VvasDpuInfer</span><span class="w"> </span><span class="o">*</span><span class="n">resnet18_car_color_handle</span><span class="p">;</span><span class="w"> </span><span class="c1">// DPU instance of Resnet car color inference</span>
+
+
+<span class="c1">// For brevity we are not showing the code of creating the above DPU instances</span>
+
+
+<span class="n">VvasInferPrediction</span><span class="w"> </span><span class="o">*</span><span class="n">resnet18_pred</span><span class="p">[</span><span class="n">DPU_BATCH_SIZE</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+
+<span class="c1">// For brevity we are not showing error checking after each inference call below</span>
+<span class="n">vret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vvas_dpuinfer_process_frames</span><span class="w"> </span><span class="p">(</span><span class="n">resnet18_car_make_handle</span><span class="p">,</span><span class="w"> </span><span class="n">resnet18_dpu_inputs</span><span class="p">,</span><span class="w"> </span><span class="n">resnet18_pred</span><span class="p">,</span><span class="w"> </span><span class="n">cur_batch_size</span><span class="p">);</span><span class="w"></span>
+<span class="n">vret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vvas_dpuinfer_process_frames</span><span class="w"> </span><span class="p">(</span><span class="n">resnet18_car_type_handle</span><span class="p">,</span><span class="w"> </span><span class="n">resnet18_dpu_inputs</span><span class="p">,</span><span class="w"> </span><span class="n">resnet18_pred</span><span class="p">,</span><span class="w"> </span><span class="n">cur_batch_size</span><span class="p">);</span><span class="w"></span>
+<span class="n">vret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vvas_dpuinfer_process_frames</span><span class="w"> </span><span class="p">(</span><span class="n">resnet18_car_color_handle</span><span class="p">,</span><span class="w"> </span><span class="n">resnet18_dpu_inputs</span><span class="p">,</span><span class="w"> </span><span class="n">resnet18_pred</span><span class="p">,</span><span class="w"> </span><span class="n">cur_batch_size</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In the above simple code example, we are calling three inferences for three types of classifications ( car make classifier, car color classifier, and car type classifier). We are passing the same resnet18_pred in each inference call. Hence prediction result tree will be grown after each inference call, so at the end, the final prediction result tree will contain all three classification results.</p>
+<p>We also can use the prediction result tree from the object detection stage to the classifications stage. Considering the example we have shown above, each of the three VvasInferPrediction nodes at the depth two (node containing object detection result) can be passed to the classifiers. Towards that end, we will obtain a tree with depth three, where the treenodes at the depth three contain classification results of each detected object.</p>
+<div class="figure align-default" id="id4">
+<img alt="_images/prt_dc.png" src="_images/prt_dc.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 4: Example of a prediction result tree for objects detection and classification</strong></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<p>As shown in the above diagram, when passing the <a class="reference internal" href="api_reference.html#c.VvasInferPrediction" title="VvasInferPrediction"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasInferPrediction</span></code></a> node of object detection results (from depth two) to the classifiers, the classifier results are populated to the new tree nodes at depth three. Towards that end, the user can then traverse the combined detection and classification result tree for each frame to extract the metadata for further processing into their business logic.</p>
+<p><strong>Deallocating DPU instance</strong>: Once done with the inferencing of all frames, we need to destroy the DPU instance using the <a class="reference internal" href="api_reference.html#c.vvas_dpuinfer_destroy" title="vvas_dpuinfer_destroy"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_dpuinfer_destroy()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasReturnType</span><span class="w"> </span><span class="n">vvas_dpuinfer_destroy</span><span class="w"> </span><span class="p">(</span><span class="n">VvasDpuInfer</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dpu_handle</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="drawing-bounding-box-classification-information-on-video-frames">
+<h2>Drawing Bounding Box/Classification Information on Video Frames<a class="headerlink" href="#drawing-bounding-box-classification-information-on-video-frames" title="Permalink to this heading">¶</a></h2>
+<p>For drawing bounding box/classification data onto the video frame we can use the Overlay module. But this Overlay module doesn’t directly accept data generated from the DPUInfer module. Hence we need to convert DPUInfer output data formats to the format which the Overlay module accepts using the MetaConvert module.</p>
+<p><strong>Metaconvert instantiation</strong>: MetaConvert module’s instance can be created using the <a class="reference internal" href="api_reference.html#c.vvas_metaconvert_create" title="vvas_metaconvert_create"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_metaconvert_create()</span></code></a> API</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasMetaConvert</span><span class="w"> </span><span class="o">*</span><span class="n">vvas_metaconvert_create</span><span class="w"> </span><span class="p">(</span><span class="n">VvasContext</span><span class="w"> </span><span class="o">*</span><span class="n">vvas_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">VvasMetaConvertConfig</span><span class="w"> </span><span class="o">*</span><span class="n">cfg</span><span class="p">,</span><span class="n">VvasLogLevel</span><span class="w"> </span><span class="n">log_level</span><span class="p">,</span><span class="w"> </span><span class="n">VvasReturnType</span><span class="w"> </span><span class="o">*</span><span class="n">ret</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>While creating a metaconvert module instance, the argument <a class="reference internal" href="api_reference.html#c.VvasMetaConvertConfig" title="VvasMetaConvertConfig"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasMetaConvertConfig</span></code></a> is used to configure the metaconvert module. Here we can do a lot of customization by selecting many details about the desired bounding box, such as font type, font size, line thickness, selecting specific labels, annotating probabilities and many others. For details please review the structure <a class="reference internal" href="api_reference.html#c.VvasMetaConvertConfig" title="VvasMetaConvertConfig"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasMetaConvertConfig</span></code></a>.</p>
+<p><strong>Using Metaconvert</strong>: Once MetaConvert instance is created we can use it to convert <a class="reference internal" href="api_reference.html#c.VvasInferPrediction" title="VvasInferPrediction"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasInferPrediction</span></code></a> to <a class="reference internal" href="api_reference.html#c.VvasOverlayShapeInfo" title="VvasOverlayShapeInfo"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasOverlayShapeInfo</span></code></a>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasReturnType</span><span class="w"> </span><span class="n">vvas_metaconvert_prepare_overlay_metadata</span><span class="w"> </span><span class="p">(</span><span class="n">VvasMetaConvert</span><span class="w"> </span><span class="o">*</span><span class="n">meta_convert</span><span class="p">,</span><span class="w"> </span><span class="n">VvasTreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="n">VvasOverlayShapeInfo</span><span class="w"> </span><span class="o">*</span><span class="n">shape_info</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The argument <code class="docutils literal notranslate"><span class="pre">VvasTreeNode</span> <span class="pre">*parent</span></code> is a treenode of the inference prediction result tree. From our example of the prediction result tree above, we can pass each treenode at depth one which is a parent node of the nodes (at depth two) containing detection results of all the frames.</p></li>
+<li><p>The argument <code class="docutils literal notranslate"><span class="pre">VvasOverlayShapeInfo</span> <span class="pre">*shape_info</span></code> is the output that we obtain after the API call, containing all the information required for the subsequent Overlay module. The <a class="reference internal" href="api_reference.html#c.VvasOverlayShapeInfo" title="VvasOverlayShapeInfo"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasOverlayShapeInfo</span></code></a> contains all the converted metadata such as rectangles, text, lines, arrows, etc.</p></li>
+</ul>
+<p><strong>Using Overlay module</strong>: To use the overlay module we need to pass the video frame (<code class="xref c c-type docutils literal notranslate"><span class="pre">VvasVideoFrame</span></code>), overlay shape info (<a class="reference internal" href="api_reference.html#c.VvasOverlayShapeInfo" title="VvasOverlayShapeInfo"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasOverlayShapeInfo</span></code></a>) obtained from the metaconvert module, and overlay clock information (<a class="reference internal" href="api_reference.html#c.VvasOverlayClockInfo" title="VvasOverlayClockInfo"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasOverlayClockInfo</span></code></a>). The argument of type <a class="reference internal" href="api_reference.html#c.VvasOverlayFrameInfo" title="VvasOverlayFrameInfo"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasOverlayFrameInfo</span></code></a> is constructed with this information and ready to be passed to the Overlay module.</p>
+<p>We can use the Overlay module to draw the inference data using the <a class="reference internal" href="api_reference.html#c.vvas_overlay_process_frame" title="vvas_overlay_process_frame"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_overlay_process_frame()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasReturnType</span><span class="w"> </span><span class="n">vvas_overlay_process_frame</span><span class="w"> </span><span class="p">(</span><span class="n">VvasOverlayFrameInfo</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pFrameInfo</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Deallocating Metaconvert instance</strong>: Once done with the Metaconvert instance, destroy it using the <a class="reference internal" href="api_reference.html#c.vvas_metaconvert_destroy" title="vvas_metaconvert_destroy"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_metaconvert_destroy()</span></code></a> API.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">vvas_metaconvert_destroy</span><span class="w"> </span><span class="p">(</span><span class="n">VvasMetaConvert</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">meta_convert</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sink">
+<h2>Sink<a class="headerlink" href="#sink" title="Permalink to this heading">¶</a></h2>
+<p>After the overlay operation as inference data is rendered over the original decoded data, we can consume this video-frame/buffer; either dump it into a file or display it or do whatever it is needed to do. Once this video-frame/buffer is consumed, we can re-feed it to the decoder for reusing it.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api_reference.html" class="btn btn-neutral float-left" title="VVAS C API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api_examples.html" class="btn btn-neutral float-right" title="VVAS C API Samples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on October 7, 2022.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

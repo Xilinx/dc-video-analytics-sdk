@@ -1,33 +1,84 @@
-# AMD Video Analytics SDK (Data Center) Docs
+.. _VVAS Dpu Infer Common APIs:
 
-Documentation is developed on the master branch. Currently, this is documentation for **v1.0**. 
+**VVAS Dpu Infer Common APIs**
 
-All the source files (``.rst`` files) for documentation are developed inside ``sources/v1.0`` directory. 
-
-All the html files are placed inside ``html/v1.0`` directory. 
-
-**Current steps for creating HTML files**
-
-- Ensure ``sphinx-build`` version
-
-```
->>sphinx-build --version
-sphinx-build 5.3.0
-```
-
-- Generate HTML files
-
-```
->>cd sources/v1.0/
->>rm -rf v1.0
->>sphinx-build -a . v1.0
->>rm -rf ../../html/v1.0
->>mv v1.0 ../../html/.
-```
-
----------------------------------------------------------------------------------
+This file contains common structures for inference classes.
 
 
+
+.. c:enum:: VvasClass
+
+   enum to define all supported model classes
+
+**Constants**
+
+``VVAS_XCLASS_YOLOV3``
+  YOLOV3
+
+``VVAS_XCLASS_FACEDETECT``
+  FACEDETECT
+
+``VVAS_XCLASS_CLASSIFICATION``
+  CLASSIFICATION
+
+``VVAS_XCLASS_VEHICLECLASSIFICATION``
+  VEHICLECLASSIFICATION
+
+``VVAS_XCLASS_SSD``
+  SSD
+
+``VVAS_XCLASS_REID``
+  REID
+
+``VVAS_XCLASS_REFINEDET``
+  REFINEDET
+
+``VVAS_XCLASS_TFSSD``
+  TFSSD
+
+``VVAS_XCLASS_YOLOV2``
+  YOLOV2
+
+``VVAS_XCLASS_SEGMENTATION``
+  SEGMENTATION
+
+``VVAS_XCLASS_PLATEDETECT``
+  PLATEDETECT
+
+``VVAS_XCLASS_PLATENUM``
+  PLATENUM
+
+``VVAS_XCLASS_POSEDETECT``
+  POSEDETECT
+
+``VVAS_XCLASS_BCC``
+  BCC
+
+``VVAS_XCLASS_EFFICIENTDETD2``
+  EFFICIENTDETD2
+
+``VVAS_XCLASS_FACEFEATURE``
+  FACEFEATURE
+
+``VVAS_XCLASS_FACELANDMARK``
+  FACELANDMARK
+
+``VVAS_XCLASS_ROADLINE``
+  ROADLINE
+
+``VVAS_XCLASS_ULTRAFAST``
+  ULTRAFAST
+
+``VVAS_XCLASS_RAWTENSOR``
+  RAWTENSOR
+
+``VVAS_XCLASS_NOTFOUND``
+  UNKNOWN
+
+
+
+..
+  ------------
   MIT License
 
   Copyright (c) 2023 Advanced Micro Devices, Inc.
@@ -37,6 +88,3 @@ sphinx-build 5.3.0
   The above copyright notice and this permission notice (including the next paragraph) shall be included in all copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-

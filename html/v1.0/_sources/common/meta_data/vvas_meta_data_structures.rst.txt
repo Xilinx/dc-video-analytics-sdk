@@ -1,33 +1,42 @@
-# AMD Video Analytics SDK (Data Center) Docs
+..
+   Copyright 2021 Xilinx, Inc.
 
-Documentation is developed on the master branch. Currently, this is documentation for **v1.0**. 
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
 
-All the source files (``.rst`` files) for documentation are developed inside ``sources/v1.0`` directory. 
+       http://www.apache.org/licenses/LICENSE-2.0
 
-All the html files are placed inside ``html/v1.0`` directory. 
-
-**Current steps for creating HTML files**
-
-- Ensure ``sphinx-build`` version
-
-```
->>sphinx-build --version
-sphinx-build 5.3.0
-```
-
-- Generate HTML files
-
-```
->>cd sources/v1.0/
->>rm -rf v1.0
->>sphinx-build -a . v1.0
->>rm -rf ../../html/v1.0
->>mv v1.0 ../../html/.
-```
-
----------------------------------------------------------------------------------
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
 
 
+############################
+VVAS Meta Data Structures
+############################
+
+This section covers details about various Meta Data structures defined by VVAS.
+
+.. toctree::
+   :maxdepth: 1
+
+   VVAS Inference Metadata <./vvas_inference_metadata>
+
+.. toctree::
+   :maxdepth: 1
+
+   VVAS Overlay Metadata <./vvas_overlay_metadata>
+
+.. toctree::
+   :maxdepth: 1 
+
+   VVAS OpticleFlow Metadata <./vvas_optflow_metadata>
+
+..
+  ------------
   MIT License
 
   Copyright (c) 2023 Advanced Micro Devices, Inc.
@@ -37,6 +46,3 @@ sphinx-build 5.3.0
   The above copyright notice and this permission notice (including the next paragraph) shall be included in all copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-

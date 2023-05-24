@@ -1,33 +1,32 @@
-# AMD Video Analytics SDK (Data Center) Docs
-
-Documentation is developed on the master branch. Currently, this is documentation for **v1.0**. 
-
-All the source files (``.rst`` files) for documentation are developed inside ``sources/v1.0`` directory. 
-
-All the html files are placed inside ``html/v1.0`` directory. 
-
-**Current steps for creating HTML files**
-
-- Ensure ``sphinx-build`` version
-
-```
->>sphinx-build --version
-sphinx-build 5.3.0
-```
-
-- Generate HTML files
-
-```
->>cd sources/v1.0/
->>rm -rf v1.0
->>sphinx-build -a . v1.0
->>rm -rf ../../html/v1.0
->>mv v1.0 ../../html/.
-```
-
----------------------------------------------------------------------------------
+.. _vvas_build.rst:
 
 
+Build and install from the VVAS source
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The VVAS Source code is open-sourced. You can download the VVAS source code inside the docker container for your specific development or enhancement need. 
+
+
+Here are the steps to download, build, and install instructions of the VVAS library. 
+
+- Inside the docker workspace, Clone from the VVAS github repo 
+
+.. code-block:: 
+
+   git clone https://github.com/Xilinx/VVAS.git  --recurse-submodules
+
+- Build the source code and install  using the following command 
+
+.. code-block::
+
+   cd vvas
+   
+   ./build_install_vvas.sh TARGET=PCIe PLATFORM=V70 ENABLE_XRM=0 
+
+
+
+..
+  ------------
   MIT License
 
   Copyright (c) 2023 Advanced Micro Devices, Inc.
@@ -37,6 +36,3 @@ sphinx-build 5.3.0
   The above copyright notice and this permission notice (including the next paragraph) shall be included in all copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-

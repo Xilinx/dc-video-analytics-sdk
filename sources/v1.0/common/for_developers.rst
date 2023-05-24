@@ -1,33 +1,30 @@
-# AMD Video Analytics SDK (Data Center) Docs
+#####################
+Development Guide
+#####################
 
-Documentation is developed on the master branch. Currently, this is documentation for **v1.0**. 
-
-All the source files (``.rst`` files) for documentation are developed inside ``sources/v1.0`` directory. 
-
-All the html files are placed inside ``html/v1.0`` directory. 
-
-**Current steps for creating HTML files**
-
-- Ensure ``sphinx-build`` version
-
-```
->>sphinx-build --version
-sphinx-build 5.3.0
-```
-
-- Generate HTML files
-
-```
->>cd sources/v1.0/
->>rm -rf v1.0
->>sphinx-build -a . v1.0
->>rm -rf ../../html/v1.0
->>mv v1.0 ../../html/.
-```
-
----------------------------------------------------------------------------------
+For advanced developers who wants to develop their Kernel or VVAS acceleration s/w library for their Kernel, this section covers detailed description and steps to achieve that.  Acceleration s/w library implements the logic to control the kernel. Each acceleration s/w lib must implement four APIs that are then called by VVAS Infrastructure plugins to interact with the kernel.
 
 
+
+.. toctree::
+   :maxdepth: 3
+   :caption: For Advanced Developers
+   :hidden:
+
+   Acceleration s/w Library Developement Guide <Acceleration-Software-Library-Development>
+
+.. list-table:: 
+   :widths: 20 80
+   :header-rows: 1
+   
+   * - Title
+     - Description
+	 
+   * - :doc:`Acceleration s/w Library Developement Guide <Acceleration-Software-Library-Development>`
+     - This section covers the intefaces exposed by VVAS framework to develop the aceleration s/w library. It also covers various types of Kernels supported and how to develop acceleration s/w lib for each type of kernels.
+
+..
+  ------------
   MIT License
 
   Copyright (c) 2023 Advanced Micro Devices, Inc.
@@ -37,6 +34,3 @@ sphinx-build 5.3.0
   The above copyright notice and this permission notice (including the next paragraph) shall be included in all copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-

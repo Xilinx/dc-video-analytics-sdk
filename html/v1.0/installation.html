@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+<!-- Google Tag Manager -->
+<script type="text/plain" class="optanon-category-C0002">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5RHQV7');</script>
+<!-- End Google Tag Manager -->
+  <title>Installation Guide &mdash; Vitis Video Analytics SDK (VVAS) for Data Center 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quickstart Tutorial" href="getting_started_tutorial.html" />
+    <link rel="prev" title="Software &amp; Hardware Requirements" href="system_requirements.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="index.html" class="icon icon-home"> Vitis Video Analytics SDK (VVAS) for Data Center
+            <img src="_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="system_requirements.html">Software &amp; Hardware Requirements</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#system-requirements">System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker-installation">Docker Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-procedure">Installation Procedure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-the-system">Configuring the System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-the-vvas-video-analytics-sdk-docker-image">Installing the VVAS Video-Analytics SDK Docker Image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#running-the-vvas-video-analytics-sdk">Running the VVAS Video-Analytics SDK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-docker-image">1. Run the Docker image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-up-the-environment">2. Set up the environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-a-sample-application">3. Run a sample application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_tutorial.html">Quickstart Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features_and_capabilities.html">Features and Capabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VVAS GStreamer Interface</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/gstreamer_plugins/common_plugins.html">GStreamer Plug-ins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/meta_data/vvas_meta_data_structures.html">VVAS Meta Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/for_developers.html">Development Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VVAS Core API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">VVAS C API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_guide.html">VVAS C API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_examples.html">VVAS C API Samples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vvas_build.html">Build and install from the VVAS source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding_models.html">Supporting Deep Learning Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="card_management.html">Device Management &amp; Utility tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Vitis Video Analytics SDK (VVAS) for Data Center</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Installation Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="installation-guide">
+<span id="installation-rst"></span><h1>Installation Guide<a class="headerlink" href="#installation-guide" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="system-requirements">
+<h3>System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>A V70 card is installed in the PCIe slot of the host system.</p></li>
+<li><p>At least <strong>100GB</strong> of free space in the target partition.</p></li>
+</ul>
+</div>
+<div class="section" id="docker-installation">
+<span id="id1"></span><h3>Docker Installation<a class="headerlink" href="#docker-installation" title="Permalink to this heading">¶</a></h3>
+<p>Make sure that the Docker engine is installed according to the official Docker <a class="reference external" href="https://docs.docker.com/engine/install/">documentation</a> to install the Docker engine. The Docker daemon always runs as the root user. Non-root users must be <a class="reference external" href="https://docs.docker.com/engine/install/linux-postinstall/">added</a> to the docker group.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt update
+sudo apt install make build-essential nfs-kernel-server docker docker.io
+sudo apt install containerd
+sudo docker run hello-world
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+sudo systemctl restart docker
+</pre></div>
+</div>
+<p>Perform a quick and simple test of your Docker installation by executing the following command.  This command will download a test image from Docker Hub and run it in a container. When the container runs successfully, it prints a “Hello World” message and exits.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>docker run hello-world
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="installation-procedure">
+<h2>Installation Procedure<a class="headerlink" href="#installation-procedure" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="configuring-the-system">
+<h3>Configuring the System<a class="headerlink" href="#configuring-the-system" title="Permalink to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Download the following files required for installation process:</p></li>
+</ol>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wget -O v70_install_host_pkgs.sh https://www.xilinx.com/bin/public/openDownload?filename=v70_install_host_pkgs.sh
+wget -O v70_docker_prompt.txt  https://www.xilinx.com/bin/public/openDownload?filename=v70_docker_prompt.txt
+wget -O v70_docker_run.sh https://www.xilinx.com/bin/public/openDownload?filename=v70_docker_run.sh
+</pre></div>
+</div>
+<p>The three files downloaded are</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>v70_install_host_pkgs.sh</strong>: Script to install Platform, XRT and APU packages on host machine</p></li>
+<li><p><strong>v70_docker_run.sh</strong> : Script to start and enter the docker</p></li>
+<li><p><strong>v70_docker_prompt.txt</strong> : Text file that prompts user to accept the license agreements of different software packages installed in the docker</p></li>
+</ul>
+</div></blockquote>
+<p>Make sure all the above three files in the same directory from where you are running the installation process</p>
+<ol class="arabic">
+<li><p>Ensure the V70 card is detected:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>lspci -vd 10ee:
+....
+....
+03:00.0 Processing accelerators: Xilinx Corporation Device 5094
+    Subsystem: Xilinx Corporation Device 000e
+    Flags: bus master, fast devsel, latency 0, NUMA node 0
+    Memory at c0000000 (64-bit, prefetchable) [size=256M]
+    Memory at d8080000 (64-bit, prefetchable) [size=128K]
+    Capabilities: &lt;access denied&gt;
+    Kernel driver in use: xclmgmt
+    Kernel modules: xclmgmt
+
+03:00.1 Processing accelerators: Xilinx Corporation Device 5095
+    Subsystem: Xilinx Corporation Device 000e
+    Flags: bus master, fast devsel, latency 0, NUMA node 0
+    Memory at d8000000 (64-bit, prefetchable) [size=512K]
+    Memory at d0000000 (64-bit, prefetchable) [size=128M]
+    Capabilities: &lt;access denied&gt;
+    Kernel driver in use: xocl
+    Kernel modules: xocl
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Make a note of Bus device function (BDF) numbers for XRT mgmtpf (03:00.0) and userpf (03:00.1) functions. These numbers should be given as argument to –device switch of XRT commands if in case there are more than one Alveo card is connected</p>
+<ol class="arabic">
+<li><p>Install the drivers, runtime library and firmware packages and program the V70 cards:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./v70_install_host_pkgs.sh &lt;BDF of XRT mgmtpf of the V70 device&gt;
+</pre></div>
+</div>
+</li>
+<li><p>Cold reboot the system.</p></li>
+<li><p>After the cold boot is complete, check that the cards are configured and that all the devices are ready:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>source /opt/xilinx/xrt/setup.sh
+xbutil examine
+
+
+....
+....
+Devices present
+BDF             :  Shell                          Platform UUID                         Device ID       Device Ready*
+-----------------------------------------------------------------------------------------------------------------------
+[0000:03:00.1]  :  xilinx_v70_gen5x8_qdma_base_2  C56DE598-76F3-467D-2D82-0328EBA1C95A  user(inst=128)  Yes
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="installing-the-vvas-video-analytics-sdk-docker-image">
+<h3>Installing the VVAS Video-Analytics SDK Docker Image<a class="headerlink" href="#installing-the-vvas-video-analytics-sdk-docker-image" title="Permalink to this heading">¶</a></h3>
+<ol class="arabic">
+<li><p>Ensure <a class="reference internal" href="#docker-installation"><span class="std std-ref">docker is installed</span></a> and running. If not restart docker:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo systemctl restart docker
+</pre></div>
+</div>
+</li>
+<li><p>Ensure you have the required space for loading data from docker image. The standard data directory used by docker is /var/lib/docker, and since this directory will store all your images, volumes, etc. it can become quite large in a relative small amount of time. In that case create docker daemon configuration /etc/docker/daemon.json as shown below. The path provided to data-root should have minimum 100GB space. After creating this file it requires restarting the docker again as per the command in the previous step</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo cat /etc/docker/daemon.json
+{
+    &quot;data-root&quot;: &quot;/scratch/docker-data&quot;
+}
+</pre></div>
+</div>
+</li>
+<li><p>Get the docker images from the docker hub</p>
+<blockquote>
+<div><p>For Tensorflow 2.x supported docker:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>docker pull xilinx/v70-video-analytics-tf2-cpu:ubuntu2004-1.0.0
+</pre></div>
+</div>
+<p>For Tensorflow 1.x supported docker:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>docker pull xilinx/v70-video-analytics-tf-cpu:ubuntu2004-1.0.0
+</pre></div>
+</div>
+<p>For Pytorch supported docker:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>docker pull xilinx/v70-video-analytics-pytorch-cpu:ubuntu2004-1.0.0
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Verify that the docker image is correctly installed and is in the list of available images:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>docker images
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="running-the-vvas-video-analytics-sdk">
+<h2>Running the VVAS Video-Analytics SDK<a class="headerlink" href="#running-the-vvas-video-analytics-sdk" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="run-the-docker-image">
+<h3>1. Run the Docker image<a class="headerlink" href="#run-the-docker-image" title="Permalink to this heading">¶</a></h3>
+<p>If working on a remote server, ensure X11 forwarding is enabled (<code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-X</span></code>). Before running docker, ensure the DISPLAY is working on your terminal. Try any native GUI application (for example gedit or galculator) to see if the display works correctly.</p>
+<p>Load the TF2 docker image:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./v70_docker_run.sh v70-video-analytics-tf2-cpu:ubuntu2004-v1.0.0
+</pre></div>
+</div>
+<p>Upon successful loading you will get banner indicating you are inside the container at /workspace directory:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>==========================================
+
+__      ___ _   _                   _____
+\ \    / (_) | (_)            /\   |_   _|
+ \ \  / / _| |_ _ ___ ______ /  \    | |
+  \ \/ / | | __| / __|______/ /\ \   | |
+   \  /  | | |_| \__ \     / ____ \ _| |_
+    \/   |_|\__|_|___/    /_/    \_\_____|
+
+==========================================
+
+Docker Image Version: latest   (CPU)
+Vitis AI Git Hash: xxxxx
+Build Date: xxxx-yy-zz
+WorkFlow: tf2
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-up-the-environment">
+<h3>2. Set up the environment<a class="headerlink" href="#set-up-the-environment" title="Permalink to this heading">¶</a></h3>
+<p>Set up the environmt in running container:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>source /opt/xilinx/docker_env_setup.sh
+</pre></div>
+</div>
+<p>Note: By default, the <code class="docutils literal notranslate"><span class="pre">/opt/xilinx/docker_env_setup.sh</span></code> setup script will configure the system to work with the V70 device identified with index 0. If there are multiple devices are attached to the host then make sure the <code class="docutils literal notranslate"><span class="pre">XLNX_ENABLE_DEVICES</span></code> variable is set to the desired device index in the <code class="docutils literal notranslate"><span class="pre">docker_env.sh</span></code> script. The list of available devices can be obtained with <code class="docutils literal notranslate"><span class="pre">xbutil</span> <span class="pre">examine</span></code> command. If the host server has only one V70 device, no change is required.</p>
+</div>
+<div class="section" id="run-a-sample-application">
+<h3>3. Run a sample application<a class="headerlink" href="#run-a-sample-application" title="Permalink to this heading">¶</a></h3>
+<p>Run the provided sample application to ensure the card is ready and video analytics pipeline is running. Make sure to run the scripts on the host machine directly with X11 enabled. Once the user is inside the docker container terminal, set the DISPLAY environment variable appropriately.</p>
+<ol class="arabic simple">
+<li><p>Download sample mp4 video file (selecting 1920x1080 resolution) from below url and copy to the path accessible inside the docker to run the car classification example</p></li>
+</ol>
+<blockquote>
+<div><p><a class="reference external" href="https://pixabay.com/videos/traffic-cars-road-street-56696/">https://pixabay.com/videos/traffic-cars-road-street-56696/</a></p>
+</div></blockquote>
+<p><strong>Car Classification Application - Example 1</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /opt/xilinx/examples/run_scripts
+./car_classification_16streams_ximagesink_mp4.sh &lt;path to sample mp4 video file&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>This script runs sixteen video streams for Car classification use case in parallel and show the results on sixteen separate Xwindows</p></li>
+<li><p>The sixteen output video streams will show the detected Car objects and their characteristics (Color/Make/Type)</p></li>
+</ul>
+<p><strong>Car Classification Application - Example 2</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /opt/xilinx/examples/run_scripts
+./car_classification_16streams_fakesink_mp4.sh &lt;path to sample mp4 video file&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>This script is used to run the above use case using Gstreamer fakesink plugin instead of ximagesink. This script can be used to measure the performance of the solution</p></li>
+</ul>
+<p>To kill the running application, you can do a CTRL+C in the terminal.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="system_requirements.html" class="btn btn-neutral float-left" title="Software &amp; Hardware Requirements" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="getting_started_tutorial.html" class="btn btn-neutral float-right" title="Quickstart Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on October 7, 2022.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
