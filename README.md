@@ -1,29 +1,7 @@
-# AMD Video Analytics SDK (Data Center) Docs
+# AMD Vitis Video Analytics SDK (Data Center) Docs
 
-Documentation is developed on the master branch. Currently, this is documentation for **v1.0**. 
+The repo contains source RST files for VVAS Documentation (Data Center). The documentation is developed on the master branch. Currently, this is documentation for **v1.0**. 
 
-All the source files (``.rst`` files) for documentation are developed inside ``sources/v1.0`` directory. 
-
-All the html files are placed inside ``html/v1.0`` directory. 
-
-**Current steps for creating HTML files**
-
-- Ensure ``sphinx-build`` version
-
-```
->>sphinx-build --version
-sphinx-build 5.3.0
-```
-
-- Generate HTML files
-
-```
->>cd sources/v1.0/
->>rm -rf v1.0
->>sphinx-build -a . v1.0
->>rm -rf ../../html/v1.0
->>mv v1.0 ../../html/.
-```
 
 ---------------------------------------------------------------------------------
 
