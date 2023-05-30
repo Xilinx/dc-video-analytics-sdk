@@ -2,6 +2,7 @@
 
 The repo contains source RST files for VVAS Documentation (Data Center). The documentation is developed on the master branch. Currently, this is documentation for **v1.0**. 
 
+See the HTML hosted here: https://xilinx.github.io/dc-video-analytics-sdk/html/v1.0/index.html
 
 ---------------------------------------------------------------------------------
 
