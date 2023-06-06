@@ -158,7 +158,7 @@ If working on a remote server, ensure X11 forwarding is enabled (``ssh -X``). Be
 
 Load the TF2 docker image::
 
-   ./v70_docker_run.sh v70-video-analytics-tf2-cpu:ubuntu2004-v1.0.0
+   ./v70_docker_run.sh xilinx/v70-video-analytics-tf2-cpu:ubuntu2004-v1.0.0
    
 
 Upon successful loading you will get banner indicating you are inside the container at /workspace directory::
