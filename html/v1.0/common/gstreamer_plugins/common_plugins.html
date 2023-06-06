@@ -31,9 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -121,7 +119,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
            <div itemprop="articleBody">
              
   <div class="section" id="gstreamer-plug-ins">
-<span id="gstreamer-plugins"></span><h1>GStreamer Plug-ins<a class="headerlink" href="#gstreamer-plug-ins" title="Permalink to this heading">¶</a></h1>
+<span id="gstreamer-plugins"></span><h1>GStreamer Plug-ins<a class="headerlink" href="#gstreamer-plug-ins" title="Permalink to this headline">¶</a></h1>
 <p>The VVAS framework supports GStreamer, and this section provides an overview of the VVAS GStreamer plug-ins, including their input, output, and control parameters. The source code for these plug-ins can be found in the <code class="docutils literal notranslate"><span class="pre">vvas-gst-plugins</span></code> directory of the VVAS source tree. There are two types of VVAS GStreamer plug-ins: custom plug-ins and infrastructure plug-ins.</p>
 <p>Infrastructure plug-ins are designed to simplify the integration of kernels into GStreamer-based applications, allowing developers to incorporate their kernel without needing to have a deep understanding of the GStreamer framework. These plug-ins handle basic features/requirements of GStreamer plug-ins such as memory management, kernel configuration, caps negotiation, and other similar functions. The same infrastructure plug-ins can be used to integrate different kernels to achieve various functionalities.</p>
 <p>On the other hand, custom plug-ins are developed to implement specific functionalities such as encoding, decoding, overlay, and so on, that cannot be efficiently implemented using infrastructure plug-ins.</p>

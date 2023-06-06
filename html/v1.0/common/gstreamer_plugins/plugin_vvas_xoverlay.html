@@ -31,9 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -145,7 +143,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
            <div itemprop="articleBody">
              
   <div class="section" id="vvas-xoverlay">
-<span id="id1"></span><h1>vvas_xoverlay<a class="headerlink" href="#vvas-xoverlay" title="Permalink to this heading">¶</a></h1>
+<span id="id1"></span><h1>vvas_xoverlay<a class="headerlink" href="#vvas-xoverlay" title="Permalink to this headline">¶</a></h1>
 <p>The Overlay plug-in is utilized to draw shapes like bounding boxes, lines, arrows, circles, and polygons on a given frame or image. Users can display a clock on any part of the frame by using the display-clock property. This plug-in employs the <code class="docutils literal notranslate"><span class="pre">VVAS</span> <span class="pre">Core</span> <span class="pre">Overlay</span></code> library to produce different shapes, text, and clocks.</p>
 <p>The overlay metadata structure, <code class="docutils literal notranslate"><span class="pre">GstVvasOverlayMeta</span></code>, must be used to provide the information about the objects like, bounding boxes, lines, and arrows to be drawn. This metadata must be attached to the input buffer. For more details about this overlay metadata structure, please refer <a class="reference internal" href="../meta_data/vvas_overlay_metadata.html#vvas-overlay-metadata"><span class="std std-ref">VVAS Overlay Metadata</span></a> section.</p>
 <p>To convert metadata generated from an upstream plug-in such as <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code>, <code class="docutils literal notranslate"><span class="pre">vvas_xoptflow</span></code>, or segmentation into <code class="docutils literal notranslate"><span class="pre">GstVvasOverlayMeta</span></code>, an intermediate plug-in called <a class="reference internal" href="plugin_vvas_xmetaconvert.html#vvas-xmetaconvert"><span class="std std-ref">vvas_xmetaconvert</span></a> is provided and this can be used before the <code class="docutils literal notranslate"><span class="pre">vvas_xoverlay</span></code> plug-in in gstreamer pipeline.</p>
@@ -154,7 +152,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <a class="reference internal image-reference" href="../../_images/vvas_overlay_blockdiagram.png"><img alt="../../_images/vvas_overlay_blockdiagram.png" src="../../_images/vvas_overlay_blockdiagram.png" style="width: 576.0px; height: 289.6px;" /></a>
 </div>
 <div class="section" id="supported-features">
-<h2>Supported features<a class="headerlink" href="#supported-features" title="Permalink to this heading">¶</a></h2>
+<h2>Supported features<a class="headerlink" href="#supported-features" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 13%" />
@@ -189,11 +187,11 @@ in OpenCv (SIMPLEX, PLAIN, DUPLEX, COMPLEX, TRIPLEX).</p></td>
 </table>
 </div>
 <div class="section" id="input-and-output">
-<h2>Input and Output<a class="headerlink" href="#input-and-output" title="Permalink to this heading">¶</a></h2>
+<h2>Input and Output<a class="headerlink" href="#input-and-output" title="Permalink to this headline">¶</a></h2>
 <p>Supported input video formats are RGB, BGR, NV12 and Grayscale. Required metadata in gstvvasoverlaymeta type for drawing.</p>
 </div>
 <div class="section" id="example-pipelines">
-<h2>Example Pipelines<a class="headerlink" href="#example-pipelines" title="Permalink to this heading">¶</a></h2>
+<h2>Example Pipelines<a class="headerlink" href="#example-pipelines" title="Permalink to this headline">¶</a></h2>
 <p>The following example demonstrates use of <code class="docutils literal notranslate"><span class="pre">vvas_xoverlay</span></code> plug-in with <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> and <code class="docutils literal notranslate"><span class="pre">vvas_xmetaconvert</span></code> plug-ins for drawing bounding boxes. <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> plug-in produces inference result and stores in <code class="docutils literal notranslate"><span class="pre">GstInferenceMeta</span></code> structure. This metadata is parsed and translated into <code class="docutils literal notranslate"><span class="pre">GstVvasOverlayMeta</span></code> structure that is understood by <code class="docutils literal notranslate"><span class="pre">vvas_xoverlay</span></code> plug-in to draw the bounding box. This translation of meta data is done by <code class="docutils literal notranslate"><span class="pre">vvas_xmetaconvert</span></code> plug-in.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gst-launch-1.0 filesrc location=&quot;&lt;PATH&gt;/001.bgr&quot; blocksize=519168 numbuffers=1
 ! videoparse width=416 height=416 framerate=30/1 format=16

@@ -31,9 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -145,7 +143,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
            <div itemprop="articleBody">
              
   <div class="section" id="vvas-xtracker">
-<span id="id1"></span><h1>vvas_xtracker<a class="headerlink" href="#vvas-xtracker" title="Permalink to this heading">¶</a></h1>
+<span id="id1"></span><h1>vvas_xtracker<a class="headerlink" href="#vvas-xtracker" title="Permalink to this headline">¶</a></h1>
 <p>The tracker plug-in follows detected objects across a sequence of video frames. Since tracking is simpler than detection, tracking algorithms require fewer computational resources than running an object detector on every frame, which makes it useful in many applications.</p>
 <p>For each object in the frame, a unique ID is assigned and it is initialized with the coordinates of the object detected by the ML block. The object is extracted from the frame and used as a template. The tracker element then updates its filter every time the object is detected, adapting to any possible changes the object may undergo during the video.</p>
 <p>The tracker plug-in provides three types of object tracking algorithms: Intersection-Over-Union <strong>(IOU)</strong>, Kernelized Correlation Filters <strong>(KCF)</strong>, and Minimum Output Sum of Squared Error <strong>(MOSSE)</strong>. The IOU algorithm is used when detection output is available for every frame, while the KCF and MOSSE algorithms are implemented in software and optimized for the host processor.</p>
@@ -163,11 +161,11 @@ Metaaffixer scales and updates the Inference metadata to original video resoluti
 Downstream plugins read the bounding box information of the objects from inference metadata attached to the GstBuffer and does further processing.</p>
 <p>The <a class="reference internal" href="plugin_vvas_xskipframe.html#vvas-xskipframe"><span class="std std-ref">vvas_xskipframe</span></a>, <a class="reference internal" href="plugin_vvas_xreorderframe.html#vvas-xreorderframe"><span class="std std-ref">vvas_xreorderframe</span></a> and <a class="reference internal" href="#vvas-xtracker"><span class="std std-ref">vvas_xtracker</span></a> are multi-stream aware and supports buffers of multiple streams on their sink and source GstPads.</p>
 <div class="section" id="input-and-output">
-<h2>Input and Output<a class="headerlink" href="#input-and-output" title="Permalink to this heading">¶</a></h2>
+<h2>Input and Output<a class="headerlink" href="#input-and-output" title="Permalink to this headline">¶</a></h2>
 <p>Accepts buffers with NV12 color formats on sink and source pads.</p>
 </div>
 <div class="section" id="control-parameters-and-plugin-properties">
-<h2>Control Parameters and Plugin Properties<a class="headerlink" href="#control-parameters-and-plugin-properties" title="Permalink to this heading">¶</a></h2>
+<h2>Control Parameters and Plugin Properties<a class="headerlink" href="#control-parameters-and-plugin-properties" title="Permalink to this headline">¶</a></h2>
 <p>The following table lists the GStreamer plugin properties supported by the vvas_xtracker plugin.</p>
 <p>Table 8: vvas_xtracker plugin properties</p>
 <table class="docutils align-default">
@@ -417,7 +415,7 @@ downstream plugins</p>
 </table>
 </div>
 <div class="section" id="example-pipeline">
-<h2>Example Pipeline<a class="headerlink" href="#example-pipeline" title="Permalink to this heading">¶</a></h2>
+<h2>Example Pipeline<a class="headerlink" href="#example-pipeline" title="Permalink to this headline">¶</a></h2>
 <p>The following is an example pipeline to demonstrate usage of vvas_xtracker plugin with inference performed every 6th frame.
 The entry ‘label-filter’ in configuration file - ‘/opt/xilinx/examples/jsons/hw_imgproc/metaconvert.json’ can be changed from
 “label-filter” : [ “class”] to “label-filter” : [ “class”, “tracker-id” ] so that tracked id of the detected object can be seen

@@ -31,9 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -128,7 +126,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
            <div itemprop="articleBody">
              
   <div class="section" id="vvas-c-api-guide">
-<span id="api-guide-rst"></span><h1>VVAS C API Guide<a class="headerlink" href="#vvas-c-api-guide" title="Permalink to this heading">¶</a></h1>
+<span id="api-guide-rst"></span><h1>VVAS C API Guide<a class="headerlink" href="#vvas-c-api-guide" title="Permalink to this headline">¶</a></h1>
 <p>This document describes general guideline of using VVAS core API for video analytics application development. Refer to the <a class="reference internal" href="api_reference.html"><span class="doc">VVAS C API Reference</span></a> document page to review VVAS core API signature/parameters in details.</p>
 <p>We will use the sample video pipeline depicted below to illustrate how to use the VVAS Core APIs.</p>
 <div class="figure align-default" id="id1">
@@ -162,7 +160,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ol>
 </div>
 <div class="section" id="creating-vvas-context">
-<h2>Creating VVAS Context<a class="headerlink" href="#creating-vvas-context" title="Permalink to this heading">¶</a></h2>
+<h2>Creating VVAS Context<a class="headerlink" href="#creating-vvas-context" title="Permalink to this headline">¶</a></h2>
 <p>Any application using the VVAS Core APIs should first create a VVAS context using the <a class="reference internal" href="api_reference.html#c.vvas_context_create" title="vvas_context_create"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_context_create()</span></code></a> API.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasContext</span><span class="o">*</span><span class="w"> </span><span class="n">vvas_context_create</span><span class="w"> </span><span class="p">(</span><span class="kt">int32_t</span><span class="w"> </span><span class="n">dev_idx</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">xclbin_loc</span><span class="p">,</span><span class="w"> </span><span class="n">VvasLogLevel</span><span class="w"> </span><span class="n">log_level</span><span class="p">,</span><span class="w"> </span><span class="n">VvasReturnType</span><span class="w"> </span><span class="o">*</span><span class="n">vret</span><span class="p">)</span><span class="w"></span>
 </pre></div>
@@ -175,7 +173,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 </div>
 <div class="section" id="using-vvas-memory">
-<h2>Using VVAS Memory<a class="headerlink" href="#using-vvas-memory" title="Permalink to this heading">¶</a></h2>
+<h2>Using VVAS Memory<a class="headerlink" href="#using-vvas-memory" title="Permalink to this headline">¶</a></h2>
 <p><strong>Memory allocation</strong>: The VVAS Memory is allocated using the <a class="reference internal" href="api_reference.html#c.vvas_memory_alloc" title="vvas_memory_alloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_memory_alloc()</span></code></a> API. Application code allocate VVAS Memory that is used as a buffer for the elementary stream from the video input. The elementary stream buffer is used as the input of the parser module to genereate encoded access-unit frame.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasMemory</span><span class="o">*</span><span class="w"> </span><span class="n">vvas_memory_alloc</span><span class="w"> </span><span class="p">(</span><span class="n">VvasContext</span><span class="w"> </span><span class="o">*</span><span class="n">vvas_ctx</span><span class="p">,</span><span class="w"></span>
 <span class="w">                               </span><span class="n">VvasAllocationType</span><span class="w"> </span><span class="n">mem_type</span><span class="p">,</span><span class="w"></span>
@@ -210,7 +208,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </div>
 <div class="section" id="using-vvas-video-frame">
-<h2>Using VVAS Video Frame<a class="headerlink" href="#using-vvas-video-frame" title="Permalink to this heading">¶</a></h2>
+<h2>Using VVAS Video Frame<a class="headerlink" href="#using-vvas-video-frame" title="Permalink to this headline">¶</a></h2>
 <p><strong>Video frame allocation</strong>: VVAS Video Frame can be created using the <a class="reference internal" href="api_reference.html#c.vvas_video_frame_alloc" title="vvas_video_frame_alloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_video_frame_alloc()</span></code></a> API. The video frames are used for internal pipeline stages. For example, the application can allocate decoder or scaler output video frames to propagate the output from the decoder or scaler module.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasVideoFrame</span><span class="o">*</span><span class="w"> </span><span class="n">vvas_video_frame_alloc</span><span class="w"> </span><span class="p">(</span><span class="n">VvasContext</span><span class="w"> </span><span class="o">*</span><span class="n">vvas_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">VvasAllocationType</span><span class="w"> </span><span class="n">alloc_type</span><span class="p">,</span><span class="w"> </span><span class="n">VvasAllocationFlags</span><span class="w"> </span><span class="n">alloc_flags</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">mbank_idx</span><span class="p">,</span><span class="w"> </span><span class="n">VvasVideoInfo</span><span class="w"> </span><span class="o">*</span><span class="n">vinfo</span><span class="p">,</span><span class="w"> </span><span class="n">VvasReturnType</span><span class="w"> </span><span class="o">*</span><span class="n">ret</span><span class="p">)</span><span class="w"></span>
 </pre></div>
@@ -238,7 +236,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </div>
 <div class="section" id="parsing-h-264-h-265-streams">
-<h2>Parsing H.264/H.265 Streams<a class="headerlink" href="#parsing-h-264-h-265-streams" title="Permalink to this heading">¶</a></h2>
+<h2>Parsing H.264/H.265 Streams<a class="headerlink" href="#parsing-h-264-h-265-streams" title="Permalink to this headline">¶</a></h2>
 <p>Parser is one of the core module that parse the elementary stream buffer and extract access-units/frames for the downstream pipeline.</p>
 <p><strong>Parser instantiation</strong>:  Once VVAS context is created, we can create the Parser module using the <a class="reference internal" href="api_reference.html#c.vvas_parser_create" title="vvas_parser_create"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_parser_create()</span></code></a> API.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasParser</span><span class="o">*</span><span class="w"> </span><span class="n">vvas_parser_create</span><span class="w"> </span><span class="p">(</span><span class="n">VvasContext</span><span class="o">*</span><span class="w"> </span><span class="n">vvas_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">VvasCodecType</span><span class="w"> </span><span class="n">codec_type</span><span class="p">,</span><span class="w"> </span><span class="n">VvasLogLevel</span><span class="w"> </span><span class="n">log_level</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
@@ -262,7 +260,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 </div>
 <div class="section" id="decoding-h-264-h-265-streams">
-<h2>Decoding H.264/H.265 Streams<a class="headerlink" href="#decoding-h-264-h-265-streams" title="Permalink to this heading">¶</a></h2>
+<h2>Decoding H.264/H.265 Streams<a class="headerlink" href="#decoding-h-264-h-265-streams" title="Permalink to this headline">¶</a></h2>
 <p>Decoder is the core module to decode the encoded access-units/frames.</p>
 <p><strong>Decoder instantiation</strong>: Once the <a class="reference internal" href="api_reference.html#c.VvasContext" title="VvasContext"><code class="xref c c-type docutils literal notranslate"><span class="pre">VvasContext</span></code></a> is created, we can create the decoder instance using the <a class="reference internal" href="api_reference.html#c.vvas_decoder_create" title="vvas_decoder_create"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_decoder_create()</span></code></a> API.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasDecoder</span><span class="o">*</span><span class="w"> </span><span class="n">vvas_decoder_create</span><span class="w"> </span><span class="p">(</span><span class="n">VvasContext</span><span class="w"> </span><span class="o">*</span><span class="n">vvas_ctx</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">dec_name</span><span class="p">,</span><span class="w"> </span><span class="n">VvasCodecType</span><span class="w"> </span><span class="n">dec_type</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">hw_instance_id</span><span class="p">,</span><span class="w"> </span><span class="n">VvasLogLevel</span><span class="w"> </span><span class="n">log_level</span><span class="p">)</span><span class="w"></span>
@@ -356,7 +354,7 @@ b. Or the frame is the same current frame (if the current access-unit frame was 
 </ol>
 </div>
 <div class="section" id="scaling-cropping-pre-processing-video-frames">
-<h2>Scaling/Cropping/Pre-Processing Video Frames<a class="headerlink" href="#scaling-cropping-pre-processing-video-frames" title="Permalink to this heading">¶</a></h2>
+<h2>Scaling/Cropping/Pre-Processing Video Frames<a class="headerlink" href="#scaling-cropping-pre-processing-video-frames" title="Permalink to this headline">¶</a></h2>
 <p><strong>Scaler instantiation</strong>: A Scaler instance can be created using the <a class="reference internal" href="api_reference.html#c.vvas_scaler_create" title="vvas_scaler_create"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_scaler_create()</span></code></a> API.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasScaler</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">vvas_scaler_create</span><span class="w"> </span><span class="p">(</span><span class="n">VvasContext</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ctx</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">kernel_name</span><span class="p">,</span><span class="w"> </span><span class="n">VvasLogLevel</span><span class="w"> </span><span class="n">log_level</span><span class="p">)</span><span class="w"></span>
 </pre></div>
@@ -413,7 +411,7 @@ b. Or the frame is the same current frame (if the current access-unit frame was 
 </div>
 </div>
 <div class="section" id="inferencing-on-video-frames">
-<h2>Inferencing on Video Frames<a class="headerlink" href="#inferencing-on-video-frames" title="Permalink to this heading">¶</a></h2>
+<h2>Inferencing on Video Frames<a class="headerlink" href="#inferencing-on-video-frames" title="Permalink to this headline">¶</a></h2>
 <p><strong>DPU instantiation</strong>:</p>
 <p>To perform inferencing on video frames first we need to create the DPU instance using the <a class="reference internal" href="api_reference.html#c.vvas_dpuinfer_create" title="vvas_dpuinfer_create"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_dpuinfer_create()</span></code></a> API.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasDpuInfer</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">vvas_dpuinfer_create</span><span class="w"> </span><span class="p">(</span><span class="n">VvasDpuInferConf</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dpu_conf</span><span class="p">,</span><span class="w"> </span><span class="n">VvasLogLevel</span><span class="w"> </span><span class="n">log_level</span><span class="p">)</span><span class="w"></span>
@@ -496,7 +494,7 @@ b. Or the frame is the same current frame (if the current access-unit frame was 
 </div>
 </div>
 <div class="section" id="drawing-bounding-box-classification-information-on-video-frames">
-<h2>Drawing Bounding Box/Classification Information on Video Frames<a class="headerlink" href="#drawing-bounding-box-classification-information-on-video-frames" title="Permalink to this heading">¶</a></h2>
+<h2>Drawing Bounding Box/Classification Information on Video Frames<a class="headerlink" href="#drawing-bounding-box-classification-information-on-video-frames" title="Permalink to this headline">¶</a></h2>
 <p>For drawing bounding box/classification data onto the video frame we can use the Overlay module. But this Overlay module doesn’t directly accept data generated from the DPUInfer module. Hence we need to convert DPUInfer output data formats to the format which the Overlay module accepts using the MetaConvert module.</p>
 <p><strong>Metaconvert instantiation</strong>: MetaConvert module’s instance can be created using the <a class="reference internal" href="api_reference.html#c.vvas_metaconvert_create" title="vvas_metaconvert_create"><code class="xref c c-func docutils literal notranslate"><span class="pre">vvas_metaconvert_create()</span></code></a> API</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VvasMetaConvert</span><span class="w"> </span><span class="o">*</span><span class="n">vvas_metaconvert_create</span><span class="w"> </span><span class="p">(</span><span class="n">VvasContext</span><span class="w"> </span><span class="o">*</span><span class="n">vvas_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">VvasMetaConvertConfig</span><span class="w"> </span><span class="o">*</span><span class="n">cfg</span><span class="p">,</span><span class="n">VvasLogLevel</span><span class="w"> </span><span class="n">log_level</span><span class="p">,</span><span class="w"> </span><span class="n">VvasReturnType</span><span class="w"> </span><span class="o">*</span><span class="n">ret</span><span class="p">)</span><span class="w"></span>
@@ -522,7 +520,7 @@ b. Or the frame is the same current frame (if the current access-unit frame was 
 </div>
 </div>
 <div class="section" id="sink">
-<h2>Sink<a class="headerlink" href="#sink" title="Permalink to this heading">¶</a></h2>
+<h2>Sink<a class="headerlink" href="#sink" title="Permalink to this headline">¶</a></h2>
 <p>After the overlay operation as inference data is rendered over the original decoded data, we can consume this video-frame/buffer; either dump it into a file or display it or do whatever it is needed to do. Once this video-frame/buffer is consumed, we can re-feed it to the decoder for reusing it.</p>
 </div>
 </div>

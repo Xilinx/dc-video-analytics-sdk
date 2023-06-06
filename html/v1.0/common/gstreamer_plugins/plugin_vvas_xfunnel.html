@@ -31,9 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -144,7 +142,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
            <div itemprop="articleBody">
              
   <div class="section" id="vvas-xfunnel">
-<span id="id1"></span><h1>vvas_xfunnel<a class="headerlink" href="#vvas-xfunnel" title="Permalink to this heading">¶</a></h1>
+<span id="id1"></span><h1>vvas_xfunnel<a class="headerlink" href="#vvas-xfunnel" title="Permalink to this headline">¶</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">vvas_xfunnel</span></code> VVAS Gstreamer plug-in serializes data on its sink pads by iterating through all of them in a round-robin fashion. If a sink pad has a buffer available, it sends the data on the source pad. If a sink pad does not have data available, the plug-in will wait for a user-configurable amount of time before moving on to the next sink pad.</p>
 <p>When a new sink pad is added or removed from the <code class="docutils literal notranslate"><span class="pre">vvas_xfunnel</span></code> plug-in, it sends custom events to notify the <code class="docutils literal notranslate"><span class="pre">vvas_xdefunnel</span></code> plug-in to create or destroy source pads. Each buffer includes metadata that enables the <code class="docutils literal notranslate"><span class="pre">vvas_xdefunnel</span></code> plug-in to determine which source pad the buffer should be sent to.</p>
 <p>The vvas_xfunnel plug-in can support a maximum of 256 sink pads connected to it.</p>
@@ -166,7 +164,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>There are several custom events sent from this plugin for <code class="docutils literal notranslate"><span class="pre">vvas_xdefunnel</span></code> plug-in, intermediate plug-ins must pass these events.</p>
 </div>
 <div class="section" id="control-parameters-and-plug-in-properties">
-<h2>Control Parameters and Plug-in Properties<a class="headerlink" href="#control-parameters-and-plug-in-properties" title="Permalink to this heading">¶</a></h2>
+<h2>Control Parameters and Plug-in Properties<a class="headerlink" href="#control-parameters-and-plug-in-properties" title="Permalink to this headline">¶</a></h2>
 <p>The following table lists the GStreamer plug-in properties supported by the vvas_xfunnel plug-in.</p>
 <p>Table 1: vvas_xfunnel Plug-in Properties</p>
 <table class="docutils align-default">
@@ -216,7 +214,7 @@ value in both the cases</p></td>
 </table>
 </div>
 <div class="section" id="example-pipelines">
-<h2>Example Pipelines<a class="headerlink" href="#example-pipelines" title="Permalink to this heading">¶</a></h2>
+<h2>Example Pipelines<a class="headerlink" href="#example-pipelines" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gst-launch-1.0 -v \
 videotestsrc num-buffers=50 pattern=0  ! video/x-raw,format=NV12,width=640,height=480 ! funnel.sink_0 \
 videotestsrc num-buffers=80 pattern=19 ! video/x-raw,format=NV12,width=640,height=480 ! funnel.sink_1 \

@@ -31,9 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -131,7 +129,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
            <div itemprop="articleBody">
              
   <div class="section" id="quickstart-tutorial">
-<span id="getting-started-tutorial-rst"></span><h1>Quickstart Tutorial<a class="headerlink" href="#quickstart-tutorial" title="Permalink to this heading">¶</a></h1>
+<span id="getting-started-tutorial-rst"></span><h1>Quickstart Tutorial<a class="headerlink" href="#quickstart-tutorial" title="Permalink to this headline">¶</a></h1>
 <p>This tutorial introduces the VVAS Core Plugins deployable on the V70 Platform. The goal of this tutorial is to familiarize you with the foundational plugins, and their properties quickly, even without writing any code. So we will demonstrate the usage of the plugins with the GStreamer command line.</p>
 <p>The tutorial starts with a very simple video streaming pipeline without any V70-specific plugin. Then the tutorial demonstrates adding V70-specific plugins to take the advantage of the acceleration provided by the V70 platform.</p>
 <p>By the end of this tutorial, you will have a comprehensive idea of the core plugins offered in V70 platforms and how to use them. You then can integrate these core plugins into your application’s business logic either by native GStreamer APIs or VVAS Core APIs.</p>
@@ -154,7 +152,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 </div>
 <div class="section" id="preparing-the-sample-video-file-for-this-tutorial">
-<h2>Preparing the sample video file for this tutorial<a class="headerlink" href="#preparing-the-sample-video-file-for-this-tutorial" title="Permalink to this heading">¶</a></h2>
+<h2>Preparing the sample video file for this tutorial<a class="headerlink" href="#preparing-the-sample-video-file-for-this-tutorial" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Download a free video from <a class="reference external" href="https://pixabay.com/videos/cars-motorway-speed-motion-traffic-1900/">https://pixabay.com/videos/cars-motorway-speed-motion-traffic-1900/</a> in 1920x1080 format.</p></li>
 <li><p>Convert the mp4 video file to h264 file using the below command.</p></li>
@@ -165,7 +163,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </pre></div>
 </div>
 <div class="section" id="step-0-starting-with-software-plugins">
-<h3>Step 0: Starting with software plugins<a class="headerlink" href="#step-0-starting-with-software-plugins" title="Permalink to this heading">¶</a></h3>
+<h3>Step 0: Starting with software plugins<a class="headerlink" href="#step-0-starting-with-software-plugins" title="Permalink to this headline">¶</a></h3>
 <p>Let’s start with a very basic GStreamer pipeline demonstarting playing an input video. The pipeline below is utilizing native GStreamer plugins such as <code class="docutils literal notranslate"><span class="pre">decodebin</span></code>, <code class="docutils literal notranslate"><span class="pre">videoconvert</span></code> and <code class="docutils literal notranslate"><span class="pre">fpsdisplaysink</span></code>. Any v70-specific or VVAS plugin is not used.</p>
 <img alt="_images/0_stream.png" src="_images/0_stream.png" />
 <p>Run the below command to play the input video.</p>
@@ -185,7 +183,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </div>
 <div class="section" id="step-1-hardware-accelerated-scaling-by-vvas-abr-scaler-plugin">
-<span id="label-1"></span><h3>Step 1: Hardware-accelerated Scaling by VVAS ABR Scaler Plugin<a class="headerlink" href="#step-1-hardware-accelerated-scaling-by-vvas-abr-scaler-plugin" title="Permalink to this heading">¶</a></h3>
+<span id="label-1"></span><h3>Step 1: Hardware-accelerated Scaling by VVAS ABR Scaler Plugin<a class="headerlink" href="#step-1-hardware-accelerated-scaling-by-vvas-abr-scaler-plugin" title="Permalink to this headline">¶</a></h3>
 <p>Now we will modify the pipeline by inserting our first VVAS plugin, <code class="docutils literal notranslate"><span class="pre">vvas_xabrscaler</span></code>, which enables hardware-accelerated scaling and color space conversion.</p>
 <p>The properties required for <code class="docutils literal notranslate"><span class="pre">vvas_xabrscaler</span></code> plugin are as below</p>
 <ul class="simple">
@@ -222,7 +220,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </div>
 <div class="section" id="step-2-hardware-accelerated-decoding-by-vvas-video-decoder-plugin">
-<span id="label-2"></span><h3>Step 2: Hardware-accelerated Decoding by VVAS video decoder plugin<a class="headerlink" href="#step-2-hardware-accelerated-decoding-by-vvas-video-decoder-plugin" title="Permalink to this heading">¶</a></h3>
+<span id="label-2"></span><h3>Step 2: Hardware-accelerated Decoding by VVAS video decoder plugin<a class="headerlink" href="#step-2-hardware-accelerated-decoding-by-vvas-video-decoder-plugin" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">vvas_xvideodec</span></code> plugin enables hardware accelerated decoding.</p>
 <p>The properties we will be using for <code class="docutils literal notranslate"><span class="pre">vvas_xvideodec</span></code> plugin are as below</p>
 <ul class="simple">
@@ -270,7 +268,7 @@ gst-launch-1.0 -v <span class="se">\</span>
 </div>
 </div>
 <div class="section" id="step-3-using-inference-plugin-for-model-inference">
-<span id="label-3"></span><h3>Step 3: Using Inference plugin for Model Inference<a class="headerlink" href="#step-3-using-inference-plugin-for-model-inference" title="Permalink to this heading">¶</a></h3>
+<span id="label-3"></span><h3>Step 3: Using Inference plugin for Model Inference<a class="headerlink" href="#step-3-using-inference-plugin-for-model-inference" title="Permalink to this headline">¶</a></h3>
 <p>V70 supports many CNN-based pre-trained deep learning models for prediction. These models are precompiled and can be deployed inside your video analytics pipeline to get meaningful insights of the incoming video streams. The pre-trained models available in Vitis AI Model Zoo <a class="reference external" href="http://xilinx.github.io/Vitis-AI/docs/workflow-model-zoo.html">VITIS AI Model Zoo</a> are great vehicles to get started with your video analytics workflow. The plugin <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> is required to deploy these models.</p>
 <p>The plugin <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> has the following two properties</p>
 <ul class="simple">
@@ -417,7 +415,7 @@ gst-launch-1.0 -v <span class="se">\</span>
 </div>
 </div>
 <div class="section" id="step-4-using-metadata-conversion-and-overlay-plugins">
-<span id="label-4"></span><h3>Step 4: Using Metadata conversion and Overlay Plugins<a class="headerlink" href="#step-4-using-metadata-conversion-and-overlay-plugins" title="Permalink to this heading">¶</a></h3>
+<span id="label-4"></span><h3>Step 4: Using Metadata conversion and Overlay Plugins<a class="headerlink" href="#step-4-using-metadata-conversion-and-overlay-plugins" title="Permalink to this headline">¶</a></h3>
 <img alt="_images/4_bb.png" src="_images/4_bb.png" />
 <p>The plugins <code class="docutils literal notranslate"><span class="pre">vvas_xmetaconvert</span></code> and <code class="docutils literal notranslate"><span class="pre">vvas_xoverlay</span></code> are used in series to display the inference result on-screen. The functionalities of these two plugins are:</p>
 <ul class="simple">
@@ -527,7 +525,7 @@ gst-launch-1.0 -v <span class="se">\</span>
 </div>
 </div>
 <div class="section" id="step-5-serving-multiple-streams">
-<span id="label-5"></span><h3>Step 5: Serving Multiple Streams<a class="headerlink" href="#step-5-serving-multiple-streams" title="Permalink to this heading">¶</a></h3>
+<span id="label-5"></span><h3>Step 5: Serving Multiple Streams<a class="headerlink" href="#step-5-serving-multiple-streams" title="Permalink to this headline">¶</a></h3>
 <p>So far we have only worked with a single video stream. The current version of the V70 platform supports 16 video streams in parallel.</p>
 <img alt="_images/5_funnel.png" src="_images/5_funnel.png" />
 <p>We will now see how to add another video stream in parallel using the <code class="docutils literal notranslate"><span class="pre">vvas_xfunnel</span></code> and <code class="docutils literal notranslate"><span class="pre">vvas_xdefunnel</span></code> plugins.</p>
@@ -589,7 +587,7 @@ gst-launch-1.0 -v <span class="nv">$CMD</span>
 </div>
 </div>
 <div class="section" id="step-6-deploying-multiple-models">
-<span id="label-6"></span><h3>Step 6: Deploying multiple models<a class="headerlink" href="#step-6-deploying-multiple-models" title="Permalink to this heading">¶</a></h3>
+<span id="label-6"></span><h3>Step 6: Deploying multiple models<a class="headerlink" href="#step-6-deploying-multiple-models" title="Permalink to this headline">¶</a></h3>
 <p>The VVAS Framework supports multiple model inferences in cascade.</p>
 <p>In this section, you will see how we can run an object detection model followed by three classification models.</p>
 <img alt="_images/6_multiple_inference.png" src="_images/6_multiple_inference.png" />
@@ -708,7 +706,7 @@ gst-launch-1.0 -v <span class="nv">$CMD</span>
 </div>
 </div>
 <div class="section" id="step-7-using-tracker">
-<span id="label-7"></span><h3>Step 7: Using Tracker<a class="headerlink" href="#step-7-using-tracker" title="Permalink to this heading">¶</a></h3>
+<span id="label-7"></span><h3>Step 7: Using Tracker<a class="headerlink" href="#step-7-using-tracker" title="Permalink to this headline">¶</a></h3>
 <p>The VVAS framework supports tracking the detected object. Instead of running object detection in every frame, a tracker can be used to track the detected objects, thus reducing DPU usage which is often compute-intensive. To use a tracker three plugins are used</p>
 <ul class="simple">
 <li><p>vvas_xskipframe : The plugin is used to skip the inference of the incoming frames.</p></li>
@@ -770,7 +768,7 @@ gst-launch-1.0 -v <span class="nv">$CMD</span>
 </div>
 </div>
 <div class="section" id="summary">
-<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">¶</a></h3>
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
 <p>Great!! Now you are at the end of this quickstart tutorial. You should have got a basic understanding of the core VVAS plugins and how they can be connected to build the flexible pipeline. From here you can take the following paths to continue</p>
 <blockquote>
 <div><ul class="simple">

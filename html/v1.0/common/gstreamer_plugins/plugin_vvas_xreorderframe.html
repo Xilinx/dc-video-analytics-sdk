@@ -31,9 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -143,11 +141,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
            <div itemprop="articleBody">
              
   <div class="section" id="vvas-xreorderframe">
-<span id="id1"></span><h1>vvas_xreorderframe<a class="headerlink" href="#vvas-xreorderframe" title="Permalink to this heading">¶</a></h1>
+<span id="id1"></span><h1>vvas_xreorderframe<a class="headerlink" href="#vvas-xreorderframe" title="Permalink to this headline">¶</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">vvas_xreorderframe</span></code> plug-in is utilized in video analytics pipelines to perform inference in conjunction with <a class="reference internal" href="plugin_vvas_xskipframe.html#vvas-xskipframe"><span class="std std-ref">vvas_xskipframe</span></a> plug-in, which regulates the inference rate. This plug-in comprises two sink pads and one source pad. One of the sink pads is linked with the <a class="reference internal" href="plugin_vvas_xskipframe.html#vvas-xskipframe"><span class="std std-ref">vvas_xskipframe</span></a> plug-in, while the other sink pad is connected to the <a class="reference internal" href="plugin_vvas_xinfer.html#vvas-xinfer"><span class="std std-ref">vvas_xinfer</span></a> plug-in. It has the ability to receive frames in arbitrary order from both <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> and <code class="docutils literal notranslate"><span class="pre">vvas_xskipframe</span></code> plug-ins, and it rearranges them into the correct order of presentation before sending them downstream. Additionally, <code class="docutils literal notranslate"><span class="pre">vvas_xreorderframe</span></code> is capable of handling frames/images from multiple sources, and it employs the <code class="docutils literal notranslate"><span class="pre">GstVvasSrcIDMeta</span></code> metadata attached to GstBuffer to obtain the stream ID and frame ID and arrange the frames of various sources in the appropriate order.</p>
 <p>Refer the example pipeline in <a class="reference internal" href="plugin_vvas_xtracker.html#vvas-xtracker"><span class="std std-ref">vvas_xtracker</span></a> plugin for the usage of <a class="reference internal" href="#vvas-xreorderframe"><span class="std std-ref">vvas_xreorderframe</span></a> plugin along with <a class="reference internal" href="plugin_vvas_xskipframe.html#vvas-xskipframe"><span class="std std-ref">vvas_xskipframe</span></a> plugin to achieve tracker usecase.</p>
 <div class="section" id="input-and-output">
-<h2>Input and Output<a class="headerlink" href="#input-and-output" title="Permalink to this heading">¶</a></h2>
+<h2>Input and Output<a class="headerlink" href="#input-and-output" title="Permalink to this headline">¶</a></h2>
 <p>vvas_xreorderframe plugin is format agnostic and can accept any format on input and output pads.</p>
 </div>
 </div>

@@ -31,9 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -126,9 +124,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
            <div itemprop="articleBody">
              
   <div class="section" id="supporting-deep-learning-models">
-<h1>Supporting Deep Learning Models<a class="headerlink" href="#supporting-deep-learning-models" title="Permalink to this heading">¶</a></h1>
+<h1>Supporting Deep Learning Models<a class="headerlink" href="#supporting-deep-learning-models" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="vitis-ai-library-classes-natively-supported-by-vvas">
-<h2>Vitis AI Library classes natively supported by VVAS<a class="headerlink" href="#vitis-ai-library-classes-natively-supported-by-vvas" title="Permalink to this heading">¶</a></h2>
+<h2>Vitis AI Library classes natively supported by VVAS<a class="headerlink" href="#vitis-ai-library-classes-natively-supported-by-vvas" title="Permalink to this headline">¶</a></h2>
 <p>The VVAS inference plugin, <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> is designed run inference with the models supported by Vitis AI Library.</p>
 <p>Currently <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> supports most common Vitis AI Library model classes. These supported model classes are mapped to one of the <code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">VvasClass</span></code> type in VVAS source  <a class="reference external" href="https://github.com/Xilinx/vvas-core/blob/master/common/vvas_core/vvas_dpucommon.h">vvas_dpucommon.h</a>.</p>
 <p>Here is a current list of Vitis AI Library model classes and their corresponding <code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">VvasClass</span></code> type. The models belong to these classes are natively supported by the <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> plugin.</p>
@@ -204,7 +202,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </table>
 </div>
 <div class="section" id="v70-and-vvas-supported-model">
-<h2>V70 and VVAS Supported Model<a class="headerlink" href="#v70-and-vvas-supported-model" title="Permalink to this heading">¶</a></h2>
+<h2>V70 and VVAS Supported Model<a class="headerlink" href="#v70-and-vvas-supported-model" title="Permalink to this headline">¶</a></h2>
 <p>Currently all the V70 supported models from the Vitis AI Model Zoo are available in  <a class="reference external" href="https://www.xilinx.com/bin/public/openDownload?filename=xilinx_model_zoo_v70_patch.tar.gz">this link</a>. These models are saved in their DPU deployable state, that means these models are already compiled and compiled model artifacts are saved in their respective model directory.</p>
 <p>The current release has been validated with the below models with VVAS on V70 platform</p>
 <table class="colwidths-given docutils align-default">
@@ -267,10 +265,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </table>
 </div>
 <div class="section" id="integrating-dl-models">
-<h2>Integrating DL Models<a class="headerlink" href="#integrating-dl-models" title="Permalink to this heading">¶</a></h2>
+<h2>Integrating DL Models<a class="headerlink" href="#integrating-dl-models" title="Permalink to this headline">¶</a></h2>
 <p>There are few different ways to integrate these models in VVAS flow.</p>
 <div class="section" id="models-natively-supported-by-vvas-xinfer-plugin">
-<h3>1. Models natively supported by vvas_xinfer plugin<a class="headerlink" href="#models-natively-supported-by-vvas-xinfer-plugin" title="Permalink to this heading">¶</a></h3>
+<h3>1. Models natively supported by vvas_xinfer plugin<a class="headerlink" href="#models-natively-supported-by-vvas-xinfer-plugin" title="Permalink to this headline">¶</a></h3>
 <p>The V70 supported models which are supported by one of the <code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">VvasClass</span></code> (as shown in the above table) can be enabled in VVAS flow very easily.</p>
 <ol class="arabic simple">
 <li><p>Download the compiled model directory</p></li>
@@ -283,7 +281,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ol>
 </div>
 <div class="section" id="models-not-supported-by-vvas-xinfer-plugin">
-<h3>2. Models not supported by vvas_xinfer plugin<a class="headerlink" href="#models-not-supported-by-vvas-xinfer-plugin" title="Permalink to this heading">¶</a></h3>
+<h3>2. Models not supported by vvas_xinfer plugin<a class="headerlink" href="#models-not-supported-by-vvas-xinfer-plugin" title="Permalink to this headline">¶</a></h3>
 <p>The V70 supported models which are not supported by one of the <code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">VvasClass</span></code> (as shown in the above table) can be enabled in VVAS flow in a couple of ways based on your preference.</p>
 <ul class="simple">
 <li><p>Method 1: Add support of the model through Vitis AI Library. This requires the change in the VVAS codebase to use Vitis AI Library API. The advantage of this method is that the user can use higher level Vitis AI Library API which leverage post-processing by the Vitis AI Library directly.</p></li>

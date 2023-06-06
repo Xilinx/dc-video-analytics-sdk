@@ -31,9 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -155,7 +153,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
            <div itemprop="articleBody">
              
   <div class="section" id="vvas-xinfer">
-<span id="id1"></span><h1>vvas_xinfer<a class="headerlink" href="#vvas-xinfer" title="Permalink to this heading">¶</a></h1>
+<span id="id1"></span><h1>vvas_xinfer<a class="headerlink" href="#vvas-xinfer" title="Permalink to this headline">¶</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> GStreamer plug-in is capable of performing inferencing on video frames/images and generating output in the form of a <code class="docutils literal notranslate"><span class="pre">GstInferenceMeta</span></code> object, which is a tree-like structure containing inference results. This metadata is attached to the input GstBuffer. Additionally, this plug-in can perform hardware-accelerated preprocessing operations, such as resize/crop/normalization, on incoming video frames/images before conducting inferencing. The <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> plug-in relies on the <code class="docutils literal notranslate"><span class="pre">Vitis-AI</span></code> library for inferencing.</p>
 <p>The use of preprocessing with the <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> plug-in is optional and requires the presence of the <code class="docutils literal notranslate"><span class="pre">image_processing</span></code> kernel in the hardware design. One can use software image_processing engine too by mentioning in json file. Users may also opt to use software-based preprocessing, which internally uses the <code class="docutils literal notranslate"><span class="pre">Vitis-AI</span></code> library.</p>
 <p>If hardware-accelerated preprocessing is enabled and the <code class="docutils literal notranslate"><span class="pre">vvas_xinfer</span></code> plug-in is not receiving physically contiguous memory, there may be an overhead of copying data into physically contiguous memory before sending it to the preprocessing engine.</p>
@@ -169,7 +167,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>To ensure smooth operation of multithreaded applications, it is important to create the ML pipeline in such a way that vvas_xinfer instances are sequentially created instead of concurrently by multiple threads.</p>
 </div>
 <div class="section" id="input-and-output">
-<h2>Input and Output<a class="headerlink" href="#input-and-output" title="Permalink to this heading">¶</a></h2>
+<h2>Input and Output<a class="headerlink" href="#input-and-output" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>ML hardware engine supports images in BGR/RGB formats only (depending on model). Though this plug-in can accepts buffers with GRAY8, NV12, BGR, RGB, YUY2, r210, v308, GRAY10_LE32, ABGR, ARGB color formats on input GstPad &amp; output GstPad, actual formats supported may vary depending on the hardware design, and the color formats enabled in the hardware design.</p>
 <ul>
@@ -181,7 +179,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 </div>
 <div class="section" id="control-parameters">
-<h2>Control Parameters<a class="headerlink" href="#control-parameters" title="Permalink to this heading">¶</a></h2>
+<h2>Control Parameters<a class="headerlink" href="#control-parameters" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-given docutils align-default" id="id2">
 <caption><span class="caption-text">Control Parameters</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -228,7 +226,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </table>
 </div>
 <div class="section" id="infer-config-json-members">
-<h2>infer-config json members<a class="headerlink" href="#infer-config-json-members" title="Permalink to this heading">¶</a></h2>
+<h2>infer-config json members<a class="headerlink" href="#infer-config-json-members" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 11%" />
@@ -317,7 +315,7 @@ When low-latency is disabled, vvas_xinfer plug-in will wait for inference-max-qu
 </table>
 </div>
 <div class="section" id="infer-config-kernel-json-members">
-<h2>infer-config::kernel json members<a class="headerlink" href="#infer-config-kernel-json-members" title="Permalink to this heading">¶</a></h2>
+<h2>infer-config::kernel json members<a class="headerlink" href="#infer-config-kernel-json-members" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 9%" />
@@ -351,7 +349,7 @@ When low-latency is disabled, vvas_xinfer plug-in will wait for inference-max-qu
 </table>
 </div>
 <div class="section" id="infer-config-config-json-members">
-<h2>infer-config::config json members<a class="headerlink" href="#infer-config-config-json-members" title="Permalink to this heading">¶</a></h2>
+<h2>infer-config::config json members<a class="headerlink" href="#infer-config-config-json-members" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 4%" />
@@ -491,7 +489,7 @@ PCIe: /opt/xilinx/vvas/lib/libvvascore_postprocessor.so</p></td>
 </table>
 </div>
 <div class="section" id="preprocess-config-json-members">
-<h2>preprocess-config json members<a class="headerlink" href="#preprocess-config-json-members" title="Permalink to this heading">¶</a></h2>
+<h2>preprocess-config json members<a class="headerlink" href="#preprocess-config-json-members" title="Permalink to this headline">¶</a></h2>
 <p>Table 4 preprocess-config json members</p>
 <table class="docutils align-default">
 <colgroup>
@@ -682,7 +680,7 @@ aspect-ratio preserved. If not set, default resizing will be done.</p>
 </table>
 </div>
 <div class="section" id="preprocess-config-kernel-json-members">
-<h2>preprocess-config::kernel json members<a class="headerlink" href="#preprocess-config-kernel-json-members" title="Permalink to this heading">¶</a></h2>
+<h2>preprocess-config::kernel json members<a class="headerlink" href="#preprocess-config-kernel-json-members" title="Permalink to this headline">¶</a></h2>
 <p>Table 5: preprocess-config::kernel json members</p>
 <table class="docutils align-default">
 <colgroup>
@@ -730,7 +728,7 @@ aspect-ratio preserved. If not set, default resizing will be done.</p>
 </table>
 </div>
 <div class="section" id="preprocess-config-config-json-members">
-<h2>preprocess-config::config json members<a class="headerlink" href="#preprocess-config-config-json-members" title="Permalink to this heading">¶</a></h2>
+<h2>preprocess-config::config json members<a class="headerlink" href="#preprocess-config-config-json-members" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -771,7 +769,7 @@ Embedded : 2</p></td>
 </table>
 </div>
 <div class="section" id="json-file-for-labels">
-<h2>Json file for Labels<a class="headerlink" href="#json-file-for-labels" title="Permalink to this heading">¶</a></h2>
+<h2>Json file for Labels<a class="headerlink" href="#json-file-for-labels" title="Permalink to this headline">¶</a></h2>
 <p>As of today, the vvas_dpuinfer library need labels information from detection model to map label number from tensor to label string.
 The label number to label string is expected in label.json file inner model directory of respective running model.
 The sample format of label.json is</p>
@@ -807,10 +805,10 @@ The sample format of label.json is</p>
 </div>
 </div>
 <div class="section" id="scaler-types">
-<h2>Scaler Types<a class="headerlink" href="#scaler-types" title="Permalink to this heading">¶</a></h2>
+<h2>Scaler Types<a class="headerlink" href="#scaler-types" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="letterbox">
-<h2>Letterbox<a class="headerlink" href="#letterbox" title="Permalink to this heading">¶</a></h2>
+<h2>Letterbox<a class="headerlink" href="#letterbox" title="Permalink to this headline">¶</a></h2>
 <p>The letterbox scaling technique is used to maintain the aspect ratio of an image while resizing it to a specific resolution. This method involves determining the target aspect ratio and scaling the image down to fit within that ratio while preserving its original aspect ratio. The resulting image will have bars (either on the top and bottom or left and right) to fill in the remaining space, allowing the entire image to be visible without cutting off important parts.</p>
 <p>For instance, consider an input image of 1920x1080 which needs to be resized to a resolution of 416x234 while preserving the aspect ratio. After resizing, the letterbox method is applied by adding black bars horizontally to the image, resulting in a final resolution of 416x416 pixels.</p>
 <div class="figure align-center">
@@ -818,7 +816,7 @@ The sample format of label.json is</p>
 </div>
 </div>
 <div class="section" id="envelope-cropped">
-<h2>Envelope Cropped<a class="headerlink" href="#envelope-cropped" title="Permalink to this heading">¶</a></h2>
+<h2>Envelope Cropped<a class="headerlink" href="#envelope-cropped" title="Permalink to this headline">¶</a></h2>
 <p>Envelope cropped scaling is a digital image processing technique that resizes an image to fit a specific resolution while maintaining its aspect ratio. The algorithm involves several steps:</p>
 <p>First, the target aspect ratio is determined by comparing the aspect ratio of the original image to that of the target resolution. Next, the image is scaled down by a factor that preserves its original aspect ratio while ensuring that the smallest side of the image fits within the target resolution. Finally, the image is cropped by removing equal parts from both sides of the image, thereby retaining the central part of the image.</p>
 <p>This technique ensures that the input image is resized while preserving its aspect ratio and fitting the target resolution by scaling the image down to ensure that the smallest side fits within the target resolution. However, it may result in cutting off important parts of the image, so the potential impact on the model’s performance must be carefully considered.</p>
@@ -856,9 +854,9 @@ The sample format of label.json is</p>
 </div>
 </div>
 <div class="section" id="example-pipelines-and-jsons">
-<h2>Example Pipelines and Jsons<a class="headerlink" href="#example-pipelines-and-jsons" title="Permalink to this heading">¶</a></h2>
+<h2>Example Pipelines and Jsons<a class="headerlink" href="#example-pipelines-and-jsons" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="single-stage-inference-example">
-<h3>Single stage inference example<a class="headerlink" href="#single-stage-inference-example" title="Permalink to this heading">¶</a></h3>
+<h3>Single stage inference example<a class="headerlink" href="#single-stage-inference-example" title="Permalink to this headline">¶</a></h3>
 <p>Below is an example of a simple inference pipeline using YOLOv3. The input for this pipeline is an NV12 YUV file (test.nv12):</p>
 <p>The pipeline employs the yolov3_voc_tf model for ML inference. First, a 1920x1080 NV12 frame is fed into the vvas_xinfer plugin. The pre-processor then resizes the frame and converts the color format to RGB, which is required by the model. In addition, mean value subtraction and normalization operations are performed on the frame. The resized and pre-processed frame is then passed to the inference library, which generates the inference predictions. These predictions are then upscaled to the original resolution (1920x1080) and attached to the output buffer.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gst-launch-1.0 filesrc location=&lt;test.nv12&gt; ! videoparse width=1920 height=1080 format=nv12 ! \
@@ -900,7 +898,7 @@ vvas_xinfer preprocess-config=yolov_preproc.json infer-config=yolov3_voc_tf.json
 </div>
 </div>
 <div class="section" id="level-inference-example">
-<h3>2-level inference example<a class="headerlink" href="#level-inference-example" title="Permalink to this heading">¶</a></h3>
+<h3>2-level inference example<a class="headerlink" href="#level-inference-example" title="Permalink to this headline">¶</a></h3>
 <p>An example cascade inference (YOLOv3+Resnet18) pipeline which takes NV12 YUV file (test.nv12) as input is described below:</p>
 <p>Here the objects detected in level-1 are cropped using <code class="docutils literal notranslate"><span class="pre">vvas_xabrscaler</span></code> and fed to <code class="docutils literal notranslate"><span class="pre">vascore_dpuinfer</span></code> for further inference.
 Refer to jsons in above example for level-1. jsons files for level-2 are provided below.</p>
@@ -944,7 +942,7 @@ vvas_xinfer preprocess-config=resnet_preproc.json infer-config=resnet18.json ! f
 </div>
 </div>
 <div class="section" id="rawtensor-example">
-<span id="raw-tensor-example-label"></span><h3>Rawtensor example<a class="headerlink" href="#rawtensor-example" title="Permalink to this heading">¶</a></h3>
+<span id="raw-tensor-example-label"></span><h3>Rawtensor example<a class="headerlink" href="#rawtensor-example" title="Permalink to this headline">¶</a></h3>
 <p>An example inference pipeline to get tensors is described below:</p>
 <p>The below pipeline performs inference using yolov3_voc_tf model. In the infer-json <code class="docutils literal notranslate"><span class="pre">model-class:</span> <span class="pre">RAWTENSOR</span></code> indicates that tensors are required by the user instead of post-processed inference results.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gst-launch-1.0 filesrc location=&lt;test.nv12&gt; ! videoparse width=1920 height=1080 format=nv12 ! \

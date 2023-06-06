@@ -31,9 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -122,11 +120,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
            <div itemprop="articleBody">
              
   <div class="section" id="features-and-capabilities">
-<span id="features-and-capabilities-rst"></span><h1>Features and Capabilities<a class="headerlink" href="#features-and-capabilities" title="Permalink to this heading">¶</a></h1>
+<span id="features-and-capabilities-rst"></span><h1>Features and Capabilities<a class="headerlink" href="#features-and-capabilities" title="Permalink to this headline">¶</a></h1>
 <p>The Alveo V70 accelerator card is the first AMD Alveo production card leveraging AMD XDNA™ architecture with AI Engines. It is designed for AI inference efficiency and is tuned for video analytics and natural language processing applications. Providing low power and a small form factor, the V70 helps reduce cost per AI channel and provides high channel density for video applications allowing you to meets your demanding AI performance requirements.</p>
 <p>The Alveo V70 is pre-equipped with best in class Versal high-throughput DPU (DPUCV2DX8G) implemented using next generation AI engine, powerful Video Decoder Unit (VDU), along with other capable hardware accelerator such as ABR Scaler that are used for media processing.</p>
 <div class="section" id="specification-of-video-decoder-unit-vdu">
-<h2>Specification of Video Decoder Unit (VDU)<a class="headerlink" href="#specification-of-video-decoder-unit-vdu" title="Permalink to this heading">¶</a></h2>
+<h2>Specification of Video Decoder Unit (VDU)<a class="headerlink" href="#specification-of-video-decoder-unit-vdu" title="Permalink to this headline">¶</a></h2>
 <p>The Xilinx® LogiCORE™ IP H.264/H.265 Video Decode Unit (VDU) is a Hard IP in Alveo V70. The VDU has multiple instances of decoder cores (up to four cores) and the V70 solution uses two instances of the decoder.</p>
 <p>The features of each instance of the decoder core in VDU are as follows:</p>
 <ul>
@@ -161,7 +159,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div></blockquote>
 </div>
 <div class="section" id="specification-of-image-processing-accelerator">
-<h2>Specification of Image Processing Accelerator<a class="headerlink" href="#specification-of-image-processing-accelerator" title="Permalink to this heading">¶</a></h2>
+<h2>Specification of Image Processing Accelerator<a class="headerlink" href="#specification-of-image-processing-accelerator" title="Permalink to this headline">¶</a></h2>
 <p>The image processing accelerator kernel is based on the Xilinx® LogiCORE™ IP Video Multi-Scaler core. It provides functionalities of resize, color space conversion, mean subtraction and normalization. It will be used as a pre-processing block before inferencing in AI/ML use-cases.</p>
 <p>The features of image processing accelerator are as follows:</p>
 <ul class="simple">
@@ -177,7 +175,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 </div>
 <div class="section" id="specification-of-deep-learning-processing-unit-dpu">
-<h2>Specification of Deep learning Processing Unit (DPU)<a class="headerlink" href="#specification-of-deep-learning-processing-unit-dpu" title="Permalink to this heading">¶</a></h2>
+<h2>Specification of Deep learning Processing Unit (DPU)<a class="headerlink" href="#specification-of-deep-learning-processing-unit-dpu" title="Permalink to this headline">¶</a></h2>
 <p>The Xilinx® Versal® Deep Learning Processing Unit (DPUCV2DX8G) is a configurable computation engine optimized for convolution neural networks in Versal ACAP devices with AI
 Engines. The DPUCV2DX8G is targeted specifically for Versal devices that leverage the AI Engine-ML version of the AI Engine. The degree of parallelism used in the engine is a design parameter and can be selected according to the target device and application. The DPU supports a set of highly optimized instructions, and supports most convolutional neural networks, such as VGG, ResNet, GoogLeNet, YOLO, SSD, MobileNet, FPN, and others.</p>
 <p>The DPUCV2DX8G has the following features:</p>

@@ -31,9 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -147,11 +145,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
            <div itemprop="articleBody">
              
   <div class="section" id="vvas-xcompositor">
-<span id="id1"></span><h1>vvas_xcompositor<a class="headerlink" href="#vvas-xcompositor" title="Permalink to this heading">¶</a></h1>
+<span id="id1"></span><h1>vvas_xcompositor<a class="headerlink" href="#vvas-xcompositor" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">vvas_xcompositor</span></code> is a Gstreamer plug-in that composes multiple video frames into a single frame. The composition can be hardware accelerated using <code class="docutils literal notranslate"><span class="pre">Image_processing</span></code> IP or it can be performed using software implementation as well in case hardware IP is not available. This plug-in can accept frames in different resolutions, color formats on each input pad. Output resolution, color format and framerate can be set to the plugin through output caps. If capabilities are not set through the output caps, then output frame resolution will be set to the resolution of the biggest incoming video stream, output framerate will be set to the highest framerate among all incoming streams and the color format will be that of the first input stream.</p>
 <p>If the input and output resolution and formats differ, the vvas_xcompositor plug-in will perform the color space conversion and resize operation.</p>
 <div class="section" id="parameters-related-to-position-of-input-frame-in-output-frame-can-be-specified-using-the-input-pad-properties-mentioned-below">
-<h2>Parameters related to position of input frame in output frame can be specified using the input pad properties mentioned below :<a class="headerlink" href="#parameters-related-to-position-of-input-frame-in-output-frame-can-be-specified-using-the-input-pad-properties-mentioned-below" title="Permalink to this heading">¶</a></h2>
+<h2>Parameters related to position of input frame in output frame can be specified using the input pad properties mentioned below :<a class="headerlink" href="#parameters-related-to-position-of-input-frame-in-output-frame-can-be-specified-using-the-input-pad-properties-mentioned-below" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>“xpos”: The x-co-ordinate position of the top-left corner of the current frame in output frame.</p></li>
 <li><p>“ypos”: The y-co-ordinate position of the top-left corner of the current frame in output frame.</p></li>
@@ -163,7 +161,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>For implementation details, please refer to <a class="reference external" href="https://github.com/Xilinx/VVAS/tree/master/vvas-gst-plugins/sys/compositor">vvas_xcompositor source code</a></p>
 </div>
 <div class="section" id="input-and-output">
-<h2>Input and Output<a class="headerlink" href="#input-and-output" title="Permalink to this heading">¶</a></h2>
+<h2>Input and Output<a class="headerlink" href="#input-and-output" title="Permalink to this headline">¶</a></h2>
 <p>This plug-in accepts buffers with the following color format standards:</p>
 <ul class="simple">
 <li><p>RGBx</p></li>
@@ -197,7 +195,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </div>
 <div class="section" id="plugin-properties">
-<h2>Plugin properties<a class="headerlink" href="#plugin-properties" title="Permalink to this heading">¶</a></h2>
+<h2>Plugin properties<a class="headerlink" href="#plugin-properties" title="Permalink to this headline">¶</a></h2>
 <p>Table 14: <code class="docutils literal notranslate"><span class="pre">vvas_xcompositor</span></code> Plug-in Properties</p>
 <table class="docutils align-default">
 <colgroup>
@@ -348,7 +346,7 @@ scaling.</p></td>
 </table>
 </div>
 <div class="section" id="vvas-xcompositor-pad-properties">
-<h2>vvas_xcompositor pad properties<a class="headerlink" href="#vvas-xcompositor-pad-properties" title="Permalink to this heading">¶</a></h2>
+<h2>vvas_xcompositor pad properties<a class="headerlink" href="#vvas-xcompositor-pad-properties" title="Permalink to this headline">¶</a></h2>
 <p>Table 15: <code class="docutils literal notranslate"><span class="pre">vvas_xcompositor</span></code> Pad Properties</p>
 <table class="docutils align-default">
 <colgroup>
@@ -480,7 +478,7 @@ comp.sink_3
 </div>
 </div>
 <div class="section" id="vvas-xcompositor-with-software-scaling-kernel">
-<h2>vvas_xcompositor with software scaling kernel<a class="headerlink" href="#vvas-xcompositor-with-software-scaling-kernel" title="Permalink to this heading">¶</a></h2>
+<h2>vvas_xcompositor with software scaling kernel<a class="headerlink" href="#vvas-xcompositor-with-software-scaling-kernel" title="Permalink to this headline">¶</a></h2>
 <p>VVAS plugin “vvas_xcompositor” can also work with software implementation of the IP. User has to set “software-scaling” property to “true”, set the “kernel-name” to “image_processing_sw:{image_processing_sw}”,
 also set “coef-load-type” to “fixed” type and set “num-taps” to 12. Below are the formats supported by the current implementation.</p>
 <ul class="simple">
@@ -492,7 +490,7 @@ also set “coef-load-type” to “fixed” type and set “num-taps” to 12. 
 </ul>
 <p>Note: For GRAY8, only scaling is supported, cross format conversion is not supported.</p>
 <div class="section" id="example-pipeline">
-<h3>Example pipeline:<a class="headerlink" href="#example-pipeline" title="Permalink to this heading">¶</a></h3>
+<h3>Example pipeline:<a class="headerlink" href="#example-pipeline" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#! /bin/bash
 
 PAD_PROPERTIES=&quot;\
