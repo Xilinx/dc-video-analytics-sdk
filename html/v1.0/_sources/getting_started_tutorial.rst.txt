@@ -24,7 +24,8 @@ The core plugins demonstrated in this tutorial are as below
 .. note::
 
    - This tutorial assumes you have already followed the :doc:`installation` page and prepared the docker container to build and run the V70 video analytics application.
-   - All scripts and JSON configuration files of this tutorial can be downloaded from  `here <https://gitenterprise.xilinx.com/techdocs/dc-video-analytics-sdk/blob/master/sources/v1.0/tutorial_scripts>`_
+   - All scripts and JSON configuration files of this tutorial can be downloaded from  `here <https://github.com/Xilinx/dc-video-analytics-sdk/tree/main/sources/v1.0/tutorial_scripts>`_
+
 
 
 Preparing the sample video file for this tutorial
